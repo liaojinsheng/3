@@ -1,0 +1,14 @@
+<div>
+  <h1>{{title}}</h1>
+  <button (click)="btnAction()">按钮</button>
+
+  <ul>
+    <li *ngFor="let item of data, let i = index"
+        (click)="liAction(i)"
+         [class.active]="i == selected"
+          [title]="item">
+      {{item}}
+    </li>
+  </ul>
+
+</div>

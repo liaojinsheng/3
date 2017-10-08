@@ -1,0 +1,26 @@
+<div class="page">
+
+  <header class="header">
+    <h1 class="title">外卖</h1>
+    <span class="right-btn" (click)="loginAction()">登录</span>
+  </header>
+
+  <div class="content">
+
+    <ul class="list">
+      <li class="item"
+          *ngFor="let item of movieData"
+          (click)="liAction(item)">
+        <div class="img">
+          <img [src]="item.images.small"/>
+        </div>
+        <h2>{{item.title}}</h2>
+      </li>
+    </ul>
+
+  </div>
+
+</div>
+
+<router-outlet></router-outlet>
+

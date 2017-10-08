@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <button ion-button block (click)="showActionsheet()">按钮1</button>
+  <button ion-button block (click)="showAlert()">按钮2</button>
+  <ion-badge color="danger">260k</ion-badge>
+
+  <ion-card (pan)="tapEvent($event)">
+
+    <ion-card-header>
+      Card Header{{num}}
+    </ion-card-header>
+
+    <ion-list>
+
+      <ion-item>
+        <ion-label>苹果</ion-label>
+        <ion-checkbox color="danger" checked="true"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>香蕉</ion-label>
+        <ion-checkbox color="dark" checked="true"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>梨</ion-label>
+        <ion-checkbox color="dark" checked="true"></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Start Time</ion-label>
+        <ion-datetime displayFormat="YYYY/MM/DD" pickerFormat="YYYY/MM/DD" [(ngModel)]="event.timeEnds"></ion-datetime>
+      </ion-item>
+
+    </ion-list>
+
+  </ion-card>
+
+  <ion-fab right bottom>
+    <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button (click)="btnAction()" ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
+
+      <button ion-fab><ion-icon name="aperture"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+
+
+</ion-content>

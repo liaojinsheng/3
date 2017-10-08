@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/index",
+    "pages/course",
+    "pages/me"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "rgba(46,203,112,0.8)",
+    "navigationBarTitleText": "扣丁学堂",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#ddd",
+    "selectedColor": "rgba(46,203,112,0.8)",
+    "backgroundColor": "#fefefe",
+    "list": [
+      {
+        "pagePath": "pages/index",
+        "text": "首页",
+        "iconPath": "/images/1.png",
+        "selectedIconPath": "/images/2.png"
+      },
+      {
+        "pagePath": "pages/course",
+        "text": "课程",
+        "iconPath": "/images/1.png",
+        "selectedIconPath": "/images/2.png"
+      },
+      {
+        "pagePath": "pages/me",
+        "text": "我的",
+        "iconPath": "/images/1.png",
+        "selectedIconPath": "/images/2.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+<!--  装载路由页面的容器 -->
+<router-outlet></router-outlet>
+
+<!--  触发路由-->
+<!--<a href="/home">外卖</a>-->
+<!--<a href="/discover">发现</a>-->
+
+
+<nav class="tabs">
+    <a class="tab" *ngFor="let tab of tabsData"
+        [routerLink]="[tab.path]"
+            routerLinkActive="active">
+        {{tab.title}}
+    </a>
+</nav>
+
+
+<!--<a [routerLink]="['/home']">外卖</a>-->
+

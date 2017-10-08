@@ -1,0 +1,17 @@
+<li class="item">
+  <div class="img">
+    <img [src]="data.imgPath"/>
+  </div>
+  <div class="item-content">
+    <h2>{{data.title}}</h2>
+    <div>
+          <span *ngFor="let flag of data.genres">
+            {{flag}}
+          </span>
+    </div>
+    <p>评分：{{data.rating}}</p>
+  </div>
+  <div>
+    <button (click)="deleteAction()">删除</button>
+  </div>
+</li>

@@ -1,0 +1,14 @@
+<div class="page">
+  <header class="header">
+    <span class="left-btn" (click)="backAction()">&lt;</span>
+    <h1 class="title">{{title}}</h1>
+  </header>
+
+  <div class="content">
+    <a [routerLink]="['/home/detail', '123']">详情</a>
+
+    <a [routerLink]="['/home']">离开</a>
+
+  </div>
+  详情页
+</div>

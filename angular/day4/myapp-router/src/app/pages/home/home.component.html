@@ -1,0 +1,22 @@
+<div class="page">
+
+  <header class="header">
+    <h1 class="title">外卖</h1>
+    <span class="right-btn" (click)="loginAction()">登录</span>
+  </header>
+
+  <div class="content">
+
+    <ul class="list">
+      <app-item *ngFor="let item of movieData, let i = index"
+                [data]="item"
+                [index]="i"
+                [handle]="deleteHandle"></app-item>
+    </ul>
+
+  </div>
+
+</div>
+
+<router-outlet></router-outlet>
+

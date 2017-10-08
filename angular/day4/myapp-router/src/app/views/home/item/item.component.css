@@ -1,0 +1,14 @@
+.item{
+    border-bottom: 1px solid #ddd;
+    display: flex;;
+}
+
+.item .img{
+    width:100px;
+}
+.item .img img{
+    width:100%;
+}
+.item .item-content {
+    flex: 1;
+}
