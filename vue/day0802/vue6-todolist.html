@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<handle-com @add-data="addListData"></handle-com>
+			
+			<list-com :data="listData"></list-com>
+		</div>
+		
+		<script src="vue.js"></script>
+		<script>
+			
+			var handle = {
+				template: `
+					<div class="handle">
+						<p>
+							姓名:
+							<input type="text" placeholder="姓名" v-model="name"/>
+						</p>
+						<p>
+							年龄:
+							<input type="number" placeholder="年龄" v-model="age"/>
+						</p>
+						<p>
+							<button @click="btnAction()">新增</button>
+						</p>
+						
+					</div>`,
+				data(){
+					return {
+						name: '',
+						age: ''
+					}
+				},
+				methods: {
+					btnAction(){
+						console.log('新增按钮点击了');
+						//触发自定义事件add-data
+						this.$emit('add-data', {
+							name: this.name,
+							age: this.age
+						})
+						
+					}
+				}
+				
+			}
+			
+			var list = {
+				template: `
+					<ul class="list">
+						<li v-for="item in data">
+							姓名： {{item.name}}, 年龄：{{item.age}}
+							<button @click="modifyAction(index)">修改</button>
+							<button @click="deleteAction(index)">删除</button>
+						</li>
+					</ul>`,
+//				props: ['listData']
+				props: {
+					data: Array
+				},
+				methods: {
+					modifyAction(){
+						console.log('修改按钮点击了');
+					},
+					deleteAction(){
+						console.log('删除按钮点击了');
+					}
+				}
+			}
+			
+			
+			var app = new Vue({
+				el: '#app',
+				data: {
+					listData: []
+				},
+				components: {
+					'handle-com': handle,
+					'list-com': list
+				},
+				methods: {
+					addListData(val){
+						console.log('app的addListData事件触发了');
+						console.log(val);
+						//接收到数据后，将数据添加数据源中
+						this.listData.push(val);
+						
+					}
+				}
+				
+			})
+			
+			
+		</script>
+		
+	</body>
+</html>

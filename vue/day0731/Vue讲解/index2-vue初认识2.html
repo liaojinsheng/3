@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			{{msg}}
+			
+			<div class="box" v-on:click="testAction()"></div>
+			
+		</div>
+		
+		<script src="vue.js"></script>
+		<script>
+			
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					msg: 'hello vue'
+					
+				},
+				methods: {
+					testAction(){
+						console.log('testAction 触发了');
+					}
+				}
+			})
+			
+			//访问vm实例的data数据
+			console.log(vm.msg);
+			//触发vm实例中methods的事件
+			vm.testAction();
+			
+			//访问整个vue实例
+			console.log(vm);
+			
+			//访问所有数据
+			console.log(vm.$data);
+			
+		</script>
+		
+	</body>
+</html>

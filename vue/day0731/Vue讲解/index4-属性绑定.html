@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div class="app">
+			<!--
+				绑定属性：v-bind:
+					简写：:
+			-->
+			
+			<!--<a href="aHref">百度一下</a>-->
+			<!--<a href="{{aHref}}">百度一下</a>-->
+			
+			<a v-bind:href="aHref">百度一下</a>
+			<img v-bind:src="imgPath" />
+			<p v-bind:title="titleText">千锋教育</p>
+			
+			<hr />
+			<!-- 简写方式 -->
+			<a :href="aHref">百度一下</a>
+			<img :src="imgPath" />
+			<p :title="titleText">千锋教育</p>
+			
+			<h1 :id="str" id="test"   :test="aHref" test="123" class="bigBox" :class="c">QF</h1>
+			
+		</div>
+		
+		<script src="vue.js"></script>
+		<script>
+			var vm = new Vue({
+				el: '.app',
+				data: {
+					c: 'box',
+					str:'qianfeng',
+					titleText: '培训机构',
+					aHref: 'http://www.baidu.com',
+					imgPath: 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png'
+				},
+				methods: {
+					
+				}
+			})
+		</script>
+		
+		
+		
+	</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			'use stirct'
+			var arr = [1,2,3,4,5];
+			
+			//for-in遍历的是下标
+//			for (var i in arr) {
+//				console.log(i)
+//				console.log(arr[i]);
+//			}
+			
+			//for-of遍历的是value值
+//			for (var value of arr) {
+//				console.log(value)
+//			}
+			
+			
+			var str = 'qianfeng';
+//			for(var i in str){
+//				console.log(i);
+//			}
+//			for(var i of str){
+//				console.log(i);
+//			}
+
+			var obj = {
+				a: 'aaa',
+				b: 'bbb',
+				c: 'ccc'
+			}
+			//for-in遍历的是key值
+//			for (var i in obj) {
+//				console.log(i);
+//			}
+			
+			//for-of不能对对象进行遍历，对象没有实现遍历接口（方法）Symbol.iterator
+//			for (var i of obj) {
+//				console.log(i);
+//			}
+			
+			
+			//数组的遍历
+			var arr = [1,2,3,4,5];
+//			for (var i of arr.keys()) {//keys()得到所有的下标，组成一个数组
+//				console.log(i);
+//			}
+			
+			for(var [index, item] of arr.entries()){
+				console.log(item);
+			}
+			
+//			item*2+10
+			//数组推导，将数组的每一项执行val*2+10，得到结果组成了新的数组arr2
+			var arr2 = [for(val of arr)val*2+10];
+			console.log(arr2);
+			
+		</script>
+		
+		
+		
+		
+	</body>
+</html>

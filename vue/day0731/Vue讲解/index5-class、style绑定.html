@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				width: 100px;
+				height: 100px;
+			}
+			.red{
+				background: red;
+			}
+			.yellow{
+				background: yellow;
+			}
+			.green{
+				background: greenyellow;
+			}
+			.border{
+				border: 10px solid #ddd;
+			}
+			.margin{
+				margin: 50px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 属性绑定class用法1： -->
+			<!-- 值为数组，数组中值有什么，class就包含什么 -->
+			<div :class="arr"></div>
+			<div :class="[redClass, boxClass]"></div>
+			
+			<!-- 属性绑定class用法2： -->
+			<!-- 值为对象，key值所对应的value如果为true，就拥有这个class -->
+			<div class="box" :class="obj"></div>
+			<input type="checkbox" v-model="isSelect" />
+			<div class="box" :class="{green: true, border: isSelect}"></div>
+			
+			<!-- 属性绑定style用法1： -->
+			<div class="box" style="font-size: 30px;" :style="{background: 'red'}">
+				qianfengjiaoyu
+			</div>
+			
+			<div class="box" style="font-size: 30px;" :style="styleObj">
+				qianfengjiaoyu
+			</div>
+			
+			
+		</div>
+		
+		<script src="vue.js"></script>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					arr: ['box', 'red', 'yellow', 'border'],
+					redClass: 'red',
+					boxClass: 'box',
+					obj: {
+						yellow: true,
+						red: false,
+						margin: true,
+						border: false
+					},
+					isSelect: true,
+					styleObj: {
+//						'font-style': 'italic'
+						fontStyle: 'italic',
+						backgroundColor: 'pink'
+					}
+				}
+			})
+			
+		
+		</script>
+	</body>
+</html>

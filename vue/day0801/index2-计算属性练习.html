@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="app">
+			<div class="box1">
+				<div class="name">商品名称：{{name}}</div>
+				<div class="price">单价：{{price}}</div>
+				<div class="count">
+					数量:
+					<button @click="subAction">-</button>
+					<input type="number" v-model="count" />
+					<button @click="addAction">+</button>
+				</div>
+				<div class="total1">总价：{{total}}</div>
+			</div>
+			<div class="box2">
+				<div class="postage">邮费：{{postage}}(599包邮，满800减50)</div>
+				<div class="total">应付：{{pay}}</div>
+			</div>
+		</div>
+		<script src="vue.js"></script>
+		<script>
+			var vm = new Vue({
+				el:".app",
+				data:{
+					name:"电风扇1039型号",
+					//单价
+					price:99,
+					tmp: 0
+				},
+				computed:{
+					//数量
+					//数量
+					count: {
+						set(val){
+							if(val>=0){
+								//让count=val
+								this.tmp = val;
+							}else{
+								//让count=0
+								this.tmp = 0;
+							}
+						},
+						get(){
+							return this.tmp;
+						}
+					},
+					//总价
+					total:function(){
+						return this.price*this.count;
+					},
+					//邮费
+					postage: function(){
+						if(this.total > 599){
+							return 0;
+						}else{
+							return 8;
+						}
+					},
+					//应付
+					pay: function(){
+						if(this.total >= 800){
+							return this.total + this.postage - 50;
+						}else{
+							return this.total + this.postage;
+						}
+						
+					}
+				},
+				methods: {
+					subAction(){
+						this.count--;
+					},
+					addAction(){
+						this.count++;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

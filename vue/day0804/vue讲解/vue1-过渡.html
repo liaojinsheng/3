@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				width: 300px;
+				height: 200px;
+				background: palevioletred;
+				margin: 10px auto;
+			}
+			/*
+			 离开的class
+			 fade-leave-active fade-leave-to fade-leave
+			 开始执行离开的那一刻fade-leave
+			 正在离开， 开始执行离开的那一刻之后添加的fade-leave-active
+			 离开发生后一直都有的效果fade-leave-to
+			 
+			进入的class
+			开始执行进入的那一刻fade-enter
+			正在进入， 开始执行进入的那一刻之后添加的fade-enter-active
+			 fade-enter-active fade-enter-to fade-enter
+			 * */
+			
+			.ani-enter-active, .ani-leave-active {
+			  transition: opacity 10s
+			}
+			.ani-enter, .ani-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+			  opacity: 0
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			<input type="checkbox" v-model="isShow"/>
+			<transition name="ani">
+				<div class="box" v-if="isShow"></div>
+			</transition>
+		</div>
+		
+		<script src="vue.js"></script>
+		
+		<script>
+			var app = new Vue({
+				el: '#app',
+				data: {
+					isShow: false
+				}
+			})
+			
+			
+		</script>
+		
+	</body>
+</html>

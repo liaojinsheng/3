@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.bigBox{
+				width: 150px;
+				height: 150px;
+				margin: 10px;
+			}
+			.box1{
+				background: yellow;
+			}
+			.box2{
+				background: darkmagenta;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 为了vue在这个节点内起作用 -->		
+		<div id="app">
+			{{msg}}
+			
+			<br />
+			{{num * 12 - 34}}
+			
+			<br />
+			<!--
+				在vue中，数据是双向绑定的。
+				//js中的data数据绑定在dom结构上。
+				//dom结构的数据发生了变化，变化会传递给js。
+				
+				指令: 在指令内部不需要写{{}}解析变量，直接当成变量使用
+				v-model
+				v-for 可以遍历数组，对象
+				v-on 实现事件绑定
+			-->
+			<input type="text" v-model="msg"/>
+			
+			
+			<ul>
+				<li v-for="item in arr">
+					{{item}}					
+				</li>
+			</ul>
+			<ul>
+				<li v-for="(item, i) in arr">
+					{{i}}----{{item}}					
+				</li>
+			</ul>
+			
+			<ul>
+				<li v-for="(val, key) in obj" v-on:click="liAction(val, key)">
+					{{key}}---{{val}}					
+				</li>
+			</ul>
+			
+			<input type="checkbox" v-model="isShow" />
+			
+			<div v-if="isShow" class="bigBox box1"></div>
+			<div v-show="isShow" class="bigBox box2"></div>
+			
+			<div v-if="str == 'a'">1111</div>
+			<div v-else-if="str == 'b'">2222</div>
+			<div v-else-if="str == 'c'">3333</div>
+			<div v-else>4444</div>
+			
+			<div v-on:click="boxAction()" style="width: 100px; height: 100px; background: red;"></div>
+			
+		</div>
+		
+			<!--{{msg}}
+			{{num * 12 - 34}}-->
+		
+		
+		<script src="vue.js"></script>
+		<script>
+			//创建vue实例对象
+			//参数：vue配置对象
+			var vm = new Vue({
+				el: '#app', //选择vue作用的节点
+				data: {//提供vue实例中需要使用数据
+					msg: 'hello vue',
+					num: 10,
+					arr: ['a', 'b', 'c', 'd'],
+					obj: {
+						name: 'zhangsan',
+						age: 30,
+						height: 180
+					},
+					isShow: true,
+					str: 'c'
+				},
+				//自定义方法
+				methods: {
+					boxAction(){
+						console.log('box被点击了');
+					},
+					liAction(v, k){
+						console.log('li');
+						console.log(v);
+						console.log(k);
+					}
+				}
+			});
+			
+			
+			
+			
+			
+		</script>
+		
+		
+		
+	</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				width: 100px;
+				height: 100px;
+				margin: 10px;
+				float: left;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<div class="box" v-drag v-color="'yellow'"></div>
+			<div class="box" v-color="colorVal"></div>
+			<div class="box" v-color="'red'"></div>
+			
+			
+		</div>
+		
+		
+		<script src="vue.js"></script>
+		<script>
+			//创建自定义指令
+			//参数1：指令名字
+			//参数2：指令的实现内容
+			Vue.directive('color', function(el, info){
+				//el:是指令作用的标签
+				//info：指令的信息
+				console.log(info)
+				el.style.background = info.value;
+			})
+			
+			//作业
+			Vue.directive('drag', function(el, info){
+				//当dom结构加上了这个v-drag指令，就可以拖拽
+			})
+			
+			
+			var app = new Vue({
+				el: '#app',
+				data: {
+					colorVal: 'blue'
+				}
+			})
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			'use strict'
+			//类方法
+			//判断传入的两个值是否相等
+//			Object.is();
+			
+			console.log(0 === -0);
+			console.log(Object.is(0, -0));
+			
+			console.log(NaN  === NaN);
+			console.log(Object.is(NaN, NaN));
+			
+			console.log({} === {});//引用类型
+			console.log(Object.is({}, {}));
+			
+			console.log(Object.is('a', 'a'));
+			
+			
+			//对象继承
+			var obj1 = {
+				name: 'wangwu',
+				test: 'test'
+			}
+			var obj2 = {
+				name: 'zhangsna',
+				age: '40'
+			}
+			var obj3 = {
+				name: 'lisi'
+			}
+			var obj4 = {};
+//			Object.assign(target, [Source1,Source2....SourceN]);
+			Object.assign(obj4, obj1, obj2, obj3);
+			
+			console.log(obj1);
+			console.log(obj2);
+			console.log(obj3);
+			console.log(obj4);
+			
+			
+			
+			var obj = {
+				a: 1,
+				b: 2
+			}
+			
+			//捕获设置和访问
+			var p1 = new Proxy(obj, {
+				set: function(obj, attr, value){
+					console.log('set触发了');
+					obj[attr] = value;
+					return obj[attr];
+				},
+				get: function(obj, attr){
+					console.log('get触发了');
+					return obj[attr];
+				}
+			})
+			
+			
+			//对对象的属性进行设置
+			p1.a = 3;
+			//对对象的属性进行访问
+			console.log(p1.a);
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

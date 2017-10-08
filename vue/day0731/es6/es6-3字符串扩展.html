@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script>
+			'use strict'
+			
+			var s = 'qianfengjiaoyu!!!';
+			
+			//模板字符串
+			var tmpStr = `培训机构名字:${s},两个人的优惠价是:${2*1.7*0.8}`;
+			
+			console.log(tmpStr);
+			
+			//startsWith() 判断字符串起始位置是否以给定第字符串开始
+			console.log(s.startsWith('qi'));	
+			console.log(tmpStr.startsWith('qi'));	
+			
+			//endsWith() 判断字符串末尾位置是否以给定第字符串结束
+			console.log(s.endsWith('!!!!'));
+			
+			//判断字符串是否包含给定的字符串,
+			//参数1：需要查询字符串
+			//参数2：查询的起始位置
+			console.log(s.includes('feng', 4));
+			
+		</script>
+		
+	</body>
+</html>

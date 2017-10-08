@@ -1,0 +1,94 @@
+前端---》》用户
+1.向用户展示数据    model->Controller->view
+2.用户操作数据       view ->Controller->model
+
+view:视图  （负责接收用户的输入操作，负责展示数据）
+
+
+Controller：控制器   （逻辑处理）
+model：数据模型 （数据持久化）
+MVC模式：是比较直观的架构模式，用户操作->View（负责接收用户的输入操作）->
+	Controller（业务逻辑处理）->Model（数据持久化）->View（将结果反馈给View）。
+
+
+
+VUE   DOM --->> js
+	js ------>> dom
+model   ViewModel    view
+view    ViewModel    model 
+MVVM模式：它是将“数据模型数据双向绑定”的思想作为核心，因此在View和Model之间没有联系，
+	通过ViewModel进行交互，而且Model和ViewModel之间的交互是双向的，因此视图的数
+	据的变化会同时修改数据源，而数据源数据的变化也会立即反应到View上。
+/************************************************************/
+
+
+
+
+基础部分：
+指令(缩写)
+	条件渲染
+	列表渲染
+	class / style
+计算属性
+观察/监听(在组件或是是实例的created函数中监听)
+事件处理    （v-on:）   (v-on:click.stop)  (v-on:click.prevent)
+生命周期
+
+<div v-指令名字></div>
+自定义指令      Vue.directive('指令名字', function(el, info){      })
+
+{{val | 过滤器名字}}
+自定义过滤器  Vue.filter('过滤器名字', funtion(val){      return newVal})
+
+/************************************************************/
+组件:
+props
+自定义事件
+slot
+动态组件
+
+/************************************************************/
+过渡
+单个元素过渡    <transition name="ani"> </transition>
+			进入ani-enter   ani-enter-to   ani-enter-active
+			离开ani-leave   ani-leave-to   ani-leave-active
+多个元素过渡  <transition-group name="ani"></transition-group>
+重命名过渡class
+	<transition 
+		enter-class
+		enter-active-class
+		enter-to-class
+		leave-class
+		leave-active-class
+		leave-to-class
+	></transition>
+
+/************************************************************/
+路由
+路由配置
+路由页面展示 router-view
+路由切换 router-link :to
+子路由  children
+传参     /home/:id/:name
+路由方法(编程式导航)
+	router
+	this.$router.forward()
+	this.$router.back()
+	this.$router.go()
+	this.$router.push()
+	this.$router.replace()
+
+重定向
+	{
+		path: '',
+		redirect: ''//重定向
+	}
+
+/************************************************************/
+数据请求
+axios
+fetch
+
+
+
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			价格：{{price | currency}}
+			数量： {{count}}
+			总价： {{price * count | currency}}
+			
+		</div>
+		
+		<script src="vue.js"></script>
+		<script>
+			
+			//创建过滤器
+			//参数1：过滤器的名字
+			//参数2：过滤器执行的方法
+			Vue.filter('currency', function(val){
+				
+				console.log('过滤器触发了');
+				//保留两位小数
+				var res = Math.floor(val*100);
+				res = res / 100.0;
+				
+				//加上货币符号
+				res = '¥'+res;
+				
+				console.log(res)
+				return res;
+			})
+			
+			//1501573101291 ----》》》  2017年08月01号15:38
+			Vue.filter('date', function(){
+				
+			})
+			
+			//236秒  ----》》》  00:03:56
+			Vue.filter('time', function(){
+				
+			})
+			
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					price: 99.99999,
+					count: 5
+				}
+			})
+			
+			
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

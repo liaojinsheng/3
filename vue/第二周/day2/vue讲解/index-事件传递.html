@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<a-com></a-com>
+			
+			<hr />
+			
+			<b-com></b-com>
+			
+		</div>
+		
+		<script src="vue.js"></script>
+		<script>
+			//非父子组件通信方式
+			//通过自定义事件实现
+			//通过创建一个空实例实现
+			var Event = new Vue();
+			
+			//监听事件
+//			Event.$on('test-e', ()=>{
+//				console.log('事件触发了...');
+//			})
+			
+			//触发事件
+//			Event.$emit('test-e');
+			
+			
+			var aaa = {
+				template: `
+					<div class="a-com">
+						<h1>这是a组件</h1>
+						<input type="text" v-model="val"/>
+						<button @click="sendAction">按钮</button>
+					</div>
+				`,
+				data(){
+					return {
+						val: ''
+					}
+				},
+				methods: {
+					sendAction(){
+						Event.$emit('test-e', this.val);
+					}
+				}
+			};
+			var bbb = {
+				template: `
+					<div class="b-com">
+						<h1>这是b组件</h1>
+						<p>{{info}}</p>
+					</div>
+				`,
+				data(){
+					return {
+						info: ''
+					}
+				},
+				created(){
+					Event.$on('test-e', function(val){
+						console.log('事件触发了'+val);
+					})
+				}
+			}
+			
+			var app = new Vue({
+				el: '#app',
+				components: {
+					'a-com': aaa,
+					'b-com': bbb
+					
+				}
+			})
+			
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

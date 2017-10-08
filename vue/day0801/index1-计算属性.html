@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			{{msg}}
+			<br />
+			{{testAction()}}
+			<br />
+			{{b}}
+		</div>
+		
+		<script src="vue.js"></script>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					msg: "hello vue",
+					a: 10,
+					tmp: ''
+				},
+				//也是通过vue实例可以直接访问的值
+				//computed 计算属性
+				computed: {
+					//如果计算属性中，key所对应value值是一个函数，那么访问这个b时，调用的就是这个函数
+					b: function(){
+//						return this.a*2
+						return this.msg.length;
+					},
+					//如果计算属性中，key所对应value值是一个对象
+					//这个对象上可以设置这个属性的set和get方法
+					c: {
+						set: function(val){
+							val = Number(val);
+							if(typeof val == 'number' && val > 0 && val < 100){
+								this.tmp = val;
+							}
+						},
+						get: function(){
+							return this.tmp * 2;
+						}
+					}
+				},
+				methods: {
+					testAction(){
+						return 'this is test function'
+					}
+				}
+			});
+			
+			
+			console.log(vm.msg);
+			console.log(vm.testAction());
+			
+			
+		</script>
+	</body>
+</html>

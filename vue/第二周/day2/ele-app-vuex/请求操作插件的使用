@@ -1,0 +1,45 @@
+1.请求插件axios
+安装
+npm install axios -S
+
+执行请求
+import axios from 'axios'
+axios.get(url)
+//请求成功
+.then((respsonse)=>{
+	
+})
+//请求失败
+.catch((error)=>{
+    console.log(error);
+})
+
+
+///////////////////////////////////////////////////////
+如果axios搭配vue使用：
+import axios from 'axios'
+Vue.prototype.$http = axios;
+
+this.$http.get(url)
+//请求成功
+.then((respsonse)=>{
+	
+})
+//请求失败
+.catch((error)=>{
+    console.log(error);
+})
+
+
+
+
+
+///////////////////////////////////////////////////////
+2.请求插件whatwg-fetch
+npm install whatwg-fetch --save
+
+
+
+
+
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			'use strict'
+			//数组
+			var arr = [1,2,3,4];
+			//数组解构，按照对应的顺序和结构进行解构
+			var [b,a,c] = arr;
+			var a = arr[1];
+			var b = arr[0];
+			var c = arr[2];
+			
+			var arr1 = [1,2,[3,4,[5]]];
+			
+			var [a, b, [c, d, e]] = arr1;
+//			console.log(a);
+//			console.log(b);
+//			console.log(c);
+//			console.log(d);
+//			console.log(e);
+			
+			//对象解构, 跟顺序没有关系，按照key值一一对应进行解构
+			var obj = {
+				o: {},
+				arr: [],
+				str: '123',
+				foo: function(){
+					console.log(this.str);
+				}
+			}
+			
+			var {arr, o , test} = obj;
+//			var arr = obj.arr;
+//			var o = obj.o;
+//			var test = obj.test;
+			console.log(o);
+			console.log(arr);
+			console.log(test);
+			
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

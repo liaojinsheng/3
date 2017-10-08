@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style></style>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<list></list>
+			<li-item></li-item>
+			
+		</div>
+		
+		
+		<script src="vue.js"></script>
+		<script>
+			
+			//组件的内容
+			var liItem = {
+				template: `
+					<li>
+						<p>姓名</p>
+						<p>年龄</p>
+					</li>
+				`
+			}
+			//全局声明
+//			Vue.component('li-item', liItem);
+
+			var list = {
+				template: `
+					<ul>
+						<li-item></li-item>
+					</ul>
+				`,
+				components: {
+					'li-item': liItem
+				}
+			}
+			
+			var app = new Vue({
+				el: '#app',
+				data: {
+					
+				},
+				methods: {
+					
+				},
+				//局部声明
+				components: {
+					'list': list
+				}
+			})
+			
+			
+		</script>
+	</body>
+</html>

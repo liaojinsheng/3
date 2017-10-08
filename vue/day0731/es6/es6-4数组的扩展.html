@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		
+		
+		<script>
+			//数组扩展
+			//dom操作返回的NodeList集合，类数组对象
+//			var divs = document.getElementsByTagName('div');
+//			console.log(divs);
+//			var eles = [].slice().call(divs);
+			
+//			var arr = [1,2,3];
+//			console.log(arr)
+			
+			//将类数组转数组
+//			var eles = Array.from(divs);
+//			console.log(eles);
+//			eles.map((item)=>{})
+
+			//创建数组的方法
+			var arr = new Array(1,2,3,4,5);
+			var arr = new Array(5);//创建一个数组长度为5的新数组
+			console.log(arr);
+			
+			//将一组数组转为数组
+			var arr = Array.of(1,2,3,4);
+			console.log(arr);
+			
+			//遍历数组的方法
+			var arr = ['aa', 'bb', 'cc'];//  ----->>>  ['item:aa', 'item:bb', 'item:cc'];
+			var newArr = arr.map(function(item, index){
+				console.log("item:"+item);
+				console.log("index:"+index);
+				
+				return 'item:'+item;
+			})
+			console.log(newArr);
+			
+			
+			//find
+			var n = arr.find(function(item, index, array){
+				
+				console.log(index);
+				//在find函数中，需要返回一个布尔值。
+				//如果是true，循环就结束，n就等于item
+				//如果都是false，n就是undefined
+				return index >= 1;
+			});
+			console.log(n);
+			
+			
+			var n = arr.findIndex(function(item, index){
+				
+				console.log(index);
+				//在find函数中，需要返回一个布尔值。
+				//如果是true，循环就结束，n就等于index
+				//如果都是false，n就是-1
+				return false;
+			});
+			console.log(n)
+			
+			//填充数组
+			var arr = ['a', 'b', 'c', 'd', 'e', 'f'];
+			//参数1：填充内容
+			//参数2：起始位置
+			//参数3：结束位置（填充不包含结束位置）
+			arr.fill('sss', 2, 7);
+			console.log(arr);
+			
+			
+		</script>
+		 
+	</body>
+</html>

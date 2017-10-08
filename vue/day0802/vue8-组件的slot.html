@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				width: 100px;
+				height: 100px;
+				border: 5px solid #ddd;
+				margin: 20px;
+			}
+			.box.box1{ background: red; }
+			.box.box2{ background: lawngreen; }
+			.box.box3{ background: palevioletred; }
+			.box.box4{ background: peru; }
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			<!-- slot:槽 -->
+			<!--<test-com>
+				<item-a-com slot></item-a-com>
+				<item-b-com slot></item-b-com>
+			</test-com>-->
+			
+			<test-com>
+				<!-- slot:槽 -->
+				<item-a-com slot="a"></item-a-com>
+				<item-b-com slot="b"></item-b-com>
+			</test-com>
+			
+			
+			
+		</div>
+		
+		<script src="vue.js"></script>
+		<script>
+			
+			var itemA = {
+				template: `
+					<ul class="item">
+						<li>item1</li>
+						<li>item2</li>
+						<li>item3</li>
+					</ul>
+				`
+			}
+			
+			var itemB = {
+				template: `
+					<ol class="item">
+						<li>item1</li>
+						<li>item2</li>
+						<li>item3</li>
+					</ol>
+				`
+			}
+			
+			var test = {
+				template: `
+					<div class="test">
+						<slot name="a"></slot>
+						<div class="box box1">box1</div>
+						<div class="box box2">box2</div>
+						<slot name="b"></slot>
+						<div class="box box3">box3</div>
+						<div class="box box4">box4</div>
+						<slot name="a"></slot>
+					</div>
+				`
+			}
+			
+			
+			var app = new Vue({
+				el: '#app',
+				data: {
+					
+				},
+				components: {
+					'test-com': test,
+					'item-a-com': itemA,
+					'item-b-com': itemB
+				}
+			})
+			
+			
+		</script>
+	</body>
+</html>

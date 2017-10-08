@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			{{msg}}
+			<input type="text" v-model="msg" />
+			<button @click="btnAction">按钮</button>
+			<button @click="btn1Action">修改值</button>
+			
+		</div>
+		
+		
+		<button onclick="destroyAction()">销毁</button>
+		
+		<script src="vue.js"></script>
+		<script>
+			//vue的生命周期函数，钩子函数
+			//描述vue实例对象从创建到效果的整个过程所经历的变化。
+			//生命周期函数在vue发生这些变化时被触发。
+			
+			var app = new Vue({
+				
+				data: {
+					msg: 'hello world'
+				},
+				methods: {
+					btnAction(){
+						alert(123)
+					},
+					btn1Action(){
+						this.msg = 'hello vue'
+					}
+				},
+				
+				//生命周期
+				beforeCreate(){
+					console.log('创建前：beforeCreate');
+					console.log(this.msg);
+				},
+				
+				created(){
+					console.log('创建完成：created');
+					console.log(this.msg);
+					console.log(this.$el);
+					
+				},
+				beforeMount(){
+					console.log('跟dom结构挂载前：beforeMount');
+					console.log(this.$el);
+				},
+				mounted(){
+					console.log('跟dom结构挂载完成：mounted');
+					console.log(this.$el);
+				},
+				beforeUpdate(){
+					console.log('数据发生变化前：beforeUpdate');
+				},
+				updated(){
+					console.log('数据发生变化：updated');
+				},
+				beforeDestroy(){
+					console.log('实例销毁前：beforeDestroy');
+				},
+				destroyed(){
+					console.log('实例销毁后：destroyed');
+				}
+				
+			})
+			
+			app.$mount('#app');
+			
+			function destroyAction(){
+				app.$destroy();
+			}
+			
+			
+			//new Vue()执行创建vue实例
+			//beforeCreate()
+			//添加数据观测， 事件配置
+			//created()
+			//判断配置中有没有el，若没有el配置，查找vue实例有没有执行$mount
+			//有没有这个el或$mount中的结构
+			//beforeMount()
+			//mounted()
+			//在这个时候，整个vue就能工作了
+			
+			//如果data，或者是computed中值发生变化，都会执行
+			//beforeUpdate()/updated()
+			
+			//如果实例被销毁了会执行
+			//beforeDestroy()/destroyed()
+			
+			
+		</script>
+	</body>
+</html>

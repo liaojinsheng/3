@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.bigBox, .bigBox2{
+				width: 300px;
+				height: 200px;
+				background: lightblue;
+				margin: 10px;
+			}
+			.box{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<div>{{msg}}</div>
+			<!-- 
+				绑定事件：  v-on:事件名
+					简写： @事件名
+					事件对象： $event
+					
+					点击事件click
+					双击事件dblclick
+					鼠标事件mouse....
+					凡是浏览器支持的事件，只需要将on...改为@
+					
+					@click.stop阻止事件冒泡
+					
+					@contextmenu.prevent 阻止浏览器默认行为
+					
+			-->
+			<!--<button v-on:click="btnAction">按钮</button>-->
+			<button @mouseover="btnAction">按钮</button>
+			
+			<div class="bigBox" @click="bigBoxAction()">
+				bigBox
+				<div class="box" @click.stop="boxAction()">
+					box
+				</div>
+			</div>
+			
+			<div class="bigBox2" @contextmenu.prevent="rightClick()"></div>
+			
+			
+			<!--
+				键盘事件
+				@keydown 按下键盘
+				@keyup 松开键盘
+				
+				常见的键盘事件，已经定义好了
+				//回车
+				@keyup.enter=""
+				//删除
+				@keyup.delete=""
+				//其他
+				@keyup.up=""
+				@keyup.down=""
+				@keyup.left=""
+				...
+			-->
+			<input type="text" @keyup="keyAction($event)" />
+			<input type="text" @keyup.delete="deleteAction($event)" />
+			
+			
+			
+		</div>
+		
+		<script src="vue.js"></script>
+		<script>
+			
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					msg: '1'
+				},
+				methods: {
+					getlist(){
+						console.log('执行数据请求2');
+					},
+					btnAction(){
+						this.msg = '2';
+						this.getlist();
+					},
+					bigBoxAction(){
+						console.log('bigBoxAction触发了');
+					},
+					boxAction(){
+						console.log('boxAction触发了');
+					},
+					rightClick(){
+						alert('点击右键');
+					},
+					keyAction(ev){
+						console.log('按了键盘');
+						console.log(ev);
+						if(ev.keyCode == '81'){
+							
+						}else if(ev.keyCode == '32'){
+							
+						}
+						
+					},
+					deleteAction(ev){
+						console.log('按了delete');
+						console.log(ev);
+					}
+				}
+			});
+			
+			
+			
+		</script>
+	</body>
+</html>

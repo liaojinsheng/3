@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			//大部分es6语法浏览器能够使用。
+			//需要use strict 浏览器才能识别
+			//有部分es6浏览器还没有实现。需要特定的环境：module
+			'use strict'
+			
+			
+			//变量常量的声明
+//			console.log(a);
+//			var a = 1;
+//			var b = 3;
+			
+			//let 声明变量
+			//1.没有预解析过程
+			//2.不可以重复声明
+			//3.{}代表块级作用域，let有块级作用域，var是只有函数作用域
+			{
+				let a = 1;
+				var b = 2;
+			}
+//			console.log(b)
+//			console.log(a );
+
+//			for(var i = 0; i < 5; i++){
+//				(function(num){
+//					setTimeout(
+//						function(){
+//							console.log(num);
+//						}
+//						,
+//						1000
+//					)
+//				})(i)
+//			}
+			
+			//bind 函数方法，给函数执行bind是谁，函数内this就指向谁
+			var test = function(){
+				console.log(this);
+			}.bind({
+				name: 'zhangsan'
+			})
+			test();
+			
+//			for(var i = 0; i < 5; i++){
+//				setTimeout(
+//					function(){
+//						console.log(this);
+//					}.bind(i)
+//					,
+//					1000
+//				)
+//			}
+			let j = 0;
+			for(let i = 0; i < 5; i++){
+				setTimeout(
+					function(){
+						console.log(i);
+					}
+					,
+					1000
+				)
+			}
+			
+			/*
+			//祖级
+			for(let i = 0//父级作用域)
+			{
+				//子级作用域
+			}
+			for(let i = 1//父级作用域)
+			{
+				//子级作用域
+			}
+			for(let i = 2//父级作用域)
+			{
+				//子级作用域
+			}
+			*/
+			
+			//const声明常量（只可以声明一次 ，并且必须要赋值。）
+			//作用：用于防止命名冲突
+			//2.防止之后发生错误的修改
+			//3.常量如果是对象是可以修改属性的
+			const c = 0;
+			
+			const d = {
+				name: 'zhangsan'
+			}
+			
+			d.name = 'lisi';
+			console.log(d)
+			
+			
+		</script>
+		
+	</body>
+</html>

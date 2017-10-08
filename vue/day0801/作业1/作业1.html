@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+	<div id="app">
+		<header class="header">
+			<h1 class="title">后台管理系统</h1>
+			<ul class="nav">
+				<li :class="{'active': key == selectNav}" v-for="(val, key) in navData" @click="navClick(key)">{{key}}</li>
+			</ul>
+		</header>
+		
+		<div class="wrap" v-if="selectNav=='商品管理'">
+			<nav class="list">
+				<li v-for="(item, index) in navData['商品管理']" :class="{'active': index==selectList}" @click="listClick(index)">{{item}}</li>
+			</nav> 
+			
+			<div class="content" v-if="selectList==0">
+				商品列表
+			</div>
+			<div class="content" v-else-if="selectList==1">
+				新增商品
+			</div>
+			<div class="content" v-else-if="selectList==2">
+				修改商品
+			</div>
+			<div class="content" v-else-if="selectList==3">
+				删除商品
+			</div>
+		</div>
+		
+		<div class="wrap"  v-else-if="selectNav=='订单管理'">
+			<nav class="list">
+				<li v-for="(item, index) in navData['订单管理']" :class="{'active': index==selectList}" @click="listClick(index)">{{item}}</li>
+			</nav>
+			
+			<div class="content" v-if="selectList==0">
+				订单列表
+			</div>
+			<div class="content" v-else-if="selectList==1">
+				修改订单
+			</div>
+			<div class="content" v-else-if="selectList==2">
+				删除订单
+			</div>
+		</div>
+		
+		<div class="wrap"   v-else-if="selectNav=='用户管理'">
+			<nav class="list">
+				<li v-for="(item, index) in navData['用户管理']" :class="{'active': index==selectList}" @click="listClick(index)">{{item}}</li>
+			</nav>
+			
+			<div class="content" v-if="selectList==0">
+				用户列表
+			</div>
+			<div class="content" v-else-if="selectList==1">
+				修改用户
+			</div>
+			<div class="content" v-else-if="selectList==2">
+				删除用户
+			</div>
+		</div>
+		
+	</div>		
+		
+		<script src="../vue.js"></script>
+		<script src="app.js"></script>
+		
+	</body>
+</html>

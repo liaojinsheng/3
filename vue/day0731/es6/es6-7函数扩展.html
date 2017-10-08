@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script>
+			'use strict'
+			//函数参数默认值，当没有传参时使用默认值
+//			function fun(a,b=10,c){
+////				b = b || 10;
+//				console.log(a);
+//				console.log(b);
+//				console.log(c);
+//			}
+//			
+//			fun(1,0,3);
+			
+			
+			function fun(val1, val2, ...rest){
+				console.log(val1)
+				console.log(val2)
+				console.log(rest)
+				//rest用于获取函数多余的参数
+				//rest之后不能再有其他参数了
+			}
+			
+			fun(1,2,3,4,5,6);
+			
+			//扩展运算符...
+			var arr = [1,2,3,4,5,6];
+			console.log(...arr);
+			console.log(1,2,3,4,5,6);
+			
+			var str = 'qianfneg';
+			
+			console.log([...str]);
+			
+			
+			//箭头函数
+			var f1 = function(a){
+				console.log(this)
+				return a*2;
+			}
+			f1()
+			
+			var f2 = a=>a*2;
+			//箭头函数中，箭头前是函数的参数，多个参数用()包裹
+			//箭头函数中，箭头后是返回值，如果有多个表达式，或者没有返回值，用{}包裹
+			var f3 = (a, b)=>{
+				console.log(this);
+				return a*b;
+			}
+			f3();
+			//注意：
+			//1、用来作为回调函数使用，一般函数不要用箭头函数替代
+			//2、箭头函数不能作为构造函数，不可以使用new关键字
+			//3、箭头函数this指向，定义时指向谁就是谁，跟使用函数的对象没有关系。
+			//4、箭头函数没有argumens。
+			
+			
+			var f4 = (...rest)=>{
+				console.log(rest);
+			}
+			
+			f4(1,2,3,4);
+			f4(1,2);
+			f4('a','b');
+			
+			
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<father></father>
+			
+		</div>
+		
+		
+		<script src="vue.js"></script>
+		<script>
+			
+			//子组件
+			var sonCom = {
+				template: `
+					<div>
+						<h1>这是子组件</h1>
+						<p>
+							<input type="text" v-model="inputVal"/>
+							<button @click="sendAction">将数据传给父组件</button>
+						</p>
+						
+					</div>
+				`,
+				data(){
+					return {
+						inputVal: ''
+					}
+				},
+				methods: {
+					sendAction(){
+						console.log('子组件事件触发了');
+						
+						//需要将数据传递给父组件
+						//调起父组件事件getSonData---》》get-data
+						//触发自定义事件：get-data
+						//参数1：事件名字
+						//参数2：触发事件时的事件参数
+						this.$emit('get-data', this.inputVal);
+						
+					}
+				}
+			}
+			
+			//父组件
+			var fatherCom = {
+				template: `
+					<div>
+						<h1>这是父组件</h1>
+						<p>
+							这是接收到的子组件数据:{{sonData}}
+						</p>
+						
+						<hr/>
+						  
+						<son-com @get-data="getSonData"></son-com>
+					</div>
+				`,
+				components: {
+					'son-com': sonCom
+				},
+				data(){
+					return {
+						sonData: null
+					}
+				},
+				methods: {
+					getSonData(val){
+						console.log('父组件事件触发了');
+						console.log(val)
+						this.sonData = val;
+					}
+				}
+			}
+			
+			
+			
+			
+			var app = new Vue({
+				el: '#app',
+				components: {
+					'father': fatherCom
+				}
+			})
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

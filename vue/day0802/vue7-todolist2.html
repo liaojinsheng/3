@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<handle-com v-show="!modifyData" @add-data="addListData"></handle-com>
+			<modify-com v-show="modifyData" :data="modifyData" @modify-action="modifyList"></modify-com>
+			
+			<list-com :data="listData" :str="str" @modify-data="modifyListByIndex" @delete-data="deleteListByIndex"></list-com>
+		</div>
+		
+		<script src="vue.js"></script>
+		<script>
+			
+			var modify = {
+				template: `
+					<div class="handle">
+						<p>
+							姓名:
+							<input type="text" placeholder="姓名" v-model="name"/>
+						</p>
+						<p>
+							年龄:
+							<input type="number" placeholder="年龄" v-model="age"/>
+						</p>
+						<p>
+							<button @click="btnAction()">修改</button>
+						</p>
+						
+					</div>`,
+				props: {
+					data: Object
+				},
+//				data(){
+//					var name = '';
+//					var age = '';
+//					if(this.data){
+//						name = this.data.name;
+//						age = this.data.age;
+//					}
+//					return {
+//						name: name,
+//						age: age
+//					}
+//				},
+				data(){
+					return {
+						name: '',
+						age: ''
+					}
+				},
+				methods: {
+					btnAction(){
+						console.log('修改');
+						//将输入框中的值给父级app
+						this.$emit('modify-action', {
+							name: this.name,
+							age: this.age
+						})
+					}
+				},
+				created(){
+					this.$watch('data', function(newVal, oldVal){
+						console.log('发生了变化')
+						console.log('newVal:'+newVal)
+						if(newVal){
+							this.name = newVal.name;
+							this.age = newVal.age;
+						}
+						console.log('oldVal:'+oldVal)
+					})
+				}
+			}
+		
+			
+			var handle = {
+				template: `
+					<div class="handle">
+						<p>
+							姓名:
+							<input type="text" placeholder="姓名" v-model="name"/>
+						</p>
+						<p>
+							年龄:
+							<input type="number" placeholder="年龄" v-model="age"/>
+						</p>
+						<p>
+							<button @click="btnAction()">新增</button>
+						</p>
+						
+					</div>`,
+				data(){
+					return {
+						name: '',
+						age: ''
+					}
+				},
+				methods: {
+					btnAction(){
+						console.log('新增按钮点击了');
+						//触发自定义事件add-data
+						this.$emit('add-data', {
+							name: this.name,
+							age: this.age
+						});
+						this.name = '';
+						this.age = '';
+						
+					}
+				}
+				
+			}
+			
+			var list = {
+				template: `
+					<ul class="list">
+						<li v-for="(item, index) in data">
+							姓名： {{item.name}}, 年龄：{{item.age}}
+							<button @click="modifyAction(index)">修改</button>
+							<button @click="deleteAction(index)">删除</button>
+						</li>
+					</ul>`,
+//				props: ['listData']
+				//接收的是外部数据，只能用，不能改
+				props: {
+					data: Array,
+					str: String
+				},
+				//自己的数据，又能用又能改
+				data(){
+					return {}
+				},
+				methods: {
+					modifyAction(i){
+						console.log('修改按钮点击了');
+						this.$emit('modify-data', i);
+					},
+					deleteAction(i){
+						console.log('删除按钮点击了'+i);
+						this.$emit('delete-data', i);
+					}
+				}
+			}
+			
+			
+			var app = new Vue({
+				el: '#app',
+				data: {
+					listData: [],
+					str: 'abcd',
+					modifyData: null,
+					modifyIndex: -1
+				},
+				components: {
+					'handle-com': handle,
+					'list-com': list,
+					'modify-com': modify
+				},
+				methods: {
+					addListData(val){
+						console.log('app的addListData事件触发了');
+						console.log(val);
+						//接收到数据后，将数据添加数据源中
+						this.listData.push(val);
+						
+					},
+					deleteListByIndex(index){
+						console.log('app的deleteListByIndex事件触发了');
+						console.log(index);
+						this.listData.splice(index, 1);
+					},
+					modifyListByIndex(index){
+						console.log('app的modifyListByIndex事件触发了');
+						console.log(index);
+						this.modifyData = this.listData[index];
+						this.modifyIndex = index;
+						
+					},
+					modifyList(obj){
+						console.log('app的modifyList事件触发了');
+						console.log(obj)
+						this.listData.splice(this.modifyIndex, 1);
+						this.listData.splice(this.modifyIndex, 0, obj);
+//						this.listData[] = obj;
+						console.log(this.listData)
+						this.modifyData = null;
+						this.modifyIndex = -1;
+					}
+				}
+				
+			})
+			
+			
+		</script>
+		
+	</body>
+</html>

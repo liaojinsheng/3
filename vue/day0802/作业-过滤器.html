@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			价格：{{price | currency}}
+			数量： {{count}}
+			总价： {{price * count | currency}}
+			时间：{{time1 | date}}
+			秒数：{{time2 | time}}
+			
+		</div>
+		
+		<script src="vue.js"></script>
+		<script>
+			
+			//创建过滤器
+			//参数1：过滤器的名字
+			//参数2：过滤器执行的方法
+			Vue.filter('currency', function(val){
+				
+				console.log('过滤器触发了');
+				//保留两位小数
+				var res = Math.floor(val*100);
+				res = res / 100.0;
+				
+				//加上货币符号
+				res = '¥'+res;
+				
+				console.log(res)
+				return res;
+			})
+			
+			//1501573101291 ----》》》  2017年08月01号15:38
+			Vue.filter('date', function(val){
+				var date = new Date(val);
+				var year = date.getFullYear();//年
+				var month = date.getMonth()+1;//月
+				var day = date.getDate();//天
+				var hours = date.getHours();//小时
+				var minute = date.getMinutes();//分
+				var second = date.getSeconds();//秒
+				var t = year+"年"+month+"月"+day+"日"+hours+":"+minute+":"+second;
+				return t;
+			})
+			
+			//236秒  ----》》》  00:03:56
+			Vue.filter('time', function(val){
+				
+				function getTime(time){
+					return time < 10 ? ("0"+time): time;
+				}
+				
+				var hours =getTime(Math.floor(val/3600)) ;//小时
+				var minute = getTime(Math.floor((val%3600)/60));//分钟
+				var second = getTime(Math.floor(val%60));//秒
+				var t2 = hours+":"+minute+":"+second;
+				return t2;
+			})
+			
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					price: 99.99999,
+					count: 5,
+					time1:1501573101291,
+					time2:2
+				}
+			})
+			
+			
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

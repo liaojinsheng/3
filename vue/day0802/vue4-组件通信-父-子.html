@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<father-com></father-com>
+			
+		</div>
+		
+		
+		<script src="vue.js"></script>
+		<script>
+			//子组件
+			var sonCom = {
+				template: `
+					<div>
+						<h1>这是子组件</h1>
+						<p>
+							接收到了父组件的值:{{data}}
+						</p>
+						<p>
+							直接接收到了父组件的值:{{data1}}
+						</p>
+					</div>
+				`,
+				//声明能够接收到外部的数据，
+				//props对应的是数组，数组中的值是字符串，就是属性
+				//props: ['data', 'data1']
+				//props对应的是对象，属性校验。
+				props: {
+					data: String,
+					data1: Number
+				}
+			}
+			//父组件
+			var fatherCom = {
+				template: `
+					<div>
+						<h1>这是父组件</h1>
+						<p>
+							<input type="text" v-model="inputVal"/>
+							<button @click="sendAction">传值给子组件</button>
+						</p>
+						<p>
+							<input type="text" v-model="inputVal1"/>
+						</p>
+						
+						<hr/>
+						
+						<son-com v-bind:data="sendData" :data1="inputVal1"></son-com>
+						
+					</div>
+				`,
+				//组件的data数据对应的是一个函数，通过这个函数，得到data对象
+				data(){
+					//运算
+					return {
+						inputVal: 'test',
+						sendData: '',
+						inputVal1: 123
+					}
+				},
+				methods: {
+					sendAction(){
+						//得到输入框的值
+						//this.inputVal
+						
+						//传输数据
+						this.sendData = this.inputVal;
+					}
+				},
+				components: {
+					'son-com': sonCom
+				}
+			}
+			
+			var app = new Vue({
+				el: '#app',
+				data: {
+					
+				},
+				methods: {
+					
+				},
+				components: {
+					'father-com': fatherCom
+				}
+			})
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<div class="handle">
+				<p>
+					姓名:
+					<input type="text" placeholder="姓名" v-model="name"/>
+				</p>
+				<p>
+					年龄:
+					<input type="number" placeholder="年龄" v-model="age"/>
+				</p>
+				<p>
+					<button @click="btnAction()">{{btnTitle}}</button>
+				</p>
+				
+			</div>
+			
+			
+			<ul>
+				<li v-for="(item, index) in listData">
+					姓名： {{item.name}}, 年龄：{{item.age}}
+					<button @click="modifyAction(index)">修改</button>
+					<button @click="deleteAction(index)">删除</button>
+				</li>
+			</ul>
+			
+			
+		</div>
+		
+		<script src="../vue.js"></script>
+		<script src="app.js"></script>
+		
+	</body>
+</html>

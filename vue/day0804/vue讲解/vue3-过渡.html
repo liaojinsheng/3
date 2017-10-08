@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="animate.css" />
+		<style>
+			.box{
+				width: 300px;
+				height: 200px;
+				background: palevioletred;
+				margin: 10px auto;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<!--
+				自定义过渡的class过渡名字
+				enter-class
+				enter-active-class
+				enter-to-class (2.1.8+)
+				leave-class
+				leave-active-class
+				leave-to-class (2.1.8+)
+			-->
+			<transition 
+				leave-active-class="bounceOutLeft"
+				enter-active-class="bounceInLeft">
+				<div class="box animated" v-show="isShow"></div>
+			</transition>
+			<input type="checkbox" v-model="isShow"/>
+			
+		</div>
+		
+		<script src="vue.js"></script>
+		
+		<script>
+			var app = new Vue({
+				el: '#app',
+				data: {
+					isShow: true
+				}
+			})
+			
+			
+		</script>
+		
+	</body>
+</html>

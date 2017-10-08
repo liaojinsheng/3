@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<p :style="pStyle">{{msg}}</p>
+			<input type="text" v-model="msg" />
+			<hr />
+			<input type="number" v-model="num" />
+		</div>
+		
+		<script src="vue.js"></script>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					msg: 'hello world',
+					pStyle: {},
+					num: 10
+				},
+				methods: {
+					
+				}
+			})
+			
+			//监听msg的变化
+			//参数1：需要监听的值(必须是跟vm实例有关的值)
+			//参数2：当发生了变化，会调用的函数
+//			vm.$watch('msg', function(newVal, oldVal){
+//				console.log('发生了变化');
+//				console.log(newVal)
+//				console.log(oldVal)
+//				if(newVal.length >= 20){
+//					vm.pStyle = {
+//						background: 'red'
+//					}
+//				}else{
+//					vm.pStyle = {};
+//				}
+//			})
+			
+//			vm.$watch('msg.length', function(newVal, oldVal){
+//				console.log('发生了变化');
+//				console.log(newVal)
+//				console.log(oldVal)
+//				
+//			})
+			
+			vm.$watch(function(){
+				return this.num * 2;
+				
+			}, function(newVal, oldVal){
+				console.log('test发生了变化');
+				console.log(newVal)
+				console.log(oldVal)
+				
+			})
+			
+			
+			var a = 1;
+			vm.$watch(function(){
+				return a;
+			}, function(newVal, oldVal){
+				console.log('a发生了变化');
+			})
+			
+		</script>
+	</body>
+</html>

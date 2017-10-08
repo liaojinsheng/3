@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				width: 100px;
+				height: 100px;
+				margin: 10px;
+				
+			}
+			.box1{
+				position: absolute;
+				left:30px;
+				top:50px;
+			}
+			.box2{
+				position: absolute;
+				left:150px;
+				top:50px;
+			}
+			.box3{
+				position: absolute;
+				left:300px;
+				top:50px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<div class="box box1" v-drag v-color="'yellow'"></div>
+			<div class="box box2" v-drag v-color="colorVal"></div>
+			<div class="box box3" v-color="'red'"></div>
+			
+			
+		</div>
+		
+		
+		<script src="vue.js"></script>
+		<script>
+			//创建自定义指令
+			//参数1：指令名字
+			//参数2：指令的实现内容
+			Vue.directive('color', function(el, info){
+				//el:是指令作用的标签
+				//info：指令的信息
+				console.log(info)
+				el.style.background = info.value;
+			})
+			
+			//作业
+			Vue.directive('drag', function(el, info){
+				//当dom结构加上了这个v-drag指令，就可以拖拽
+				el.onmousedown=function(event){
+					var disx = event.offsetX;
+					var disy = event.offsetY;
+					
+					document.onmousemove=function(event){
+						el.style.left=event.pageX-disx+"px";
+						el.style.top=event.pageY-disy+"px";
+						
+					}
+					document.onmouseup = function(){
+						document.onmousemove = null; //移除事件onmousemove
+						document.onmouseup = null;
+					}
+				}
+			})
+			
+			
+			var app = new Vue({
+				el: '#app',
+				data: {
+					colorVal: 'blue'
+				}
+			})
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

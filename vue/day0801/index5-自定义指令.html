@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				width: 100px;
+				height: 100px;
+				margin: 10px;
+				float: left;
+				background: red;
+			}
+			[v-cloak] {
+			  display: none;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<!--
+				v-pre vue不解析这个标签内的内容
+			-->
+			<p v-pre>{{msg}}</p>
+			
+			<!-- 
+				v-cloak 当vue还没作用时，v-cloak当成标签的属性。
+			-->
+			<p v-cloak>{{msg}}</p>
+			
+			<!--
+				v-once只渲染一次变量
+			-->
+			<p v-once>once——————————{{msg}}</p>
+			
+			<p v-text="msg"></p>
+			
+			<!--{{textHtml}}-->
+			<div v-html="textHtml">
+			</div>
+			
+			<input type="checkbox" v-model="val"/>
+			<div class="box" v-show="val">show</div>
+			<div class="box" v-if="val">if</div>
+			
+		</div>
+		
+		
+		<script src="vue.js"></script>
+		<script>
+			var app = new Vue({
+				el: '#app',
+				data: {
+					msg: 'hello world',
+					textHtml: '<h1>千峰</h1>',
+					val: true
+				}
+			})
+			
+			
+		</script>
+		
+	</body>
+</html>

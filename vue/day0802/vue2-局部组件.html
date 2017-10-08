@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			html, body{
+				width: 100%;
+				height: 100%;
+			}
+			.item{
+				display: flex;
+			}
+			.item .img{
+				width: 100px;
+				padding: 10px;
+				box-sizing: border-box;
+			}
+			.item .img img{
+				width: 100%;
+			}
+			.item .main{
+				flex: 1;
+			}
+			.item .main h1{
+				font-size: 16px;
+			}
+			.item .main p{
+				font-size: 12px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<ul class="list">
+				<li-item v-for="item in listData" :item-data="item"></li-item>
+			</ul>
+			
+		</div>
+		
+		<script src="vue.js"></script>
+		<script>
+			
+			//全局组件
+			//局部组件
+			
+			var liItem = {
+				template: //组件的dom结构
+					`<li class="item">
+						<div class="img">
+							<img :src="itemData.imgPath" />
+						</div>
+						<div class="main">
+							<h1>{{itemData.title}}</h1>
+							<p>{{itemData.subTitle}}</p>
+							<p>{{itemData.info}}</p>
+							<button @click="btnAction">按钮</button>
+						</div>
+					</li>`,
+				//接收外部传入的属性
+				props: ['itemData'],
+				methods: {
+					btnAction(){
+						console.log(this.itemData);
+					}
+				}
+			}
+			
+			
+			
+			
+			var app = new Vue({
+				el: "#app",
+				data: {
+					listData: [
+						{
+							imgPath: 'https://p1.meituan.net/merchantpic/71dc3884fe9e2ac140e1258212fcfad4221849.jpg@136w_136h_1e_1c',
+							title: '康师傅私房牛肉面（中心城店）',
+							subTitle: '面条',
+							info: '15元双人下午茶，15元下午茶B，16元下午茶E，18元下午茶A，55元单人餐'
+						},
+						{
+							imgPath:'https://img.meituan.net/msmerchant/8c1a728c2a57e18d200175926fd0daba817303.jpg@136w_136h_1e_1c',
+							title: '汉拿山石锅拌饭（市民中心店）',
+							subTitle: '韩国菜',
+							info: '单人餐19.8元起，25.5元辣五花拌饭套餐'
+						},
+						{
+							imgPath:'https://img.meituan.net/msmerchant/8c1a728c2a57e18d200175926fd0daba817303.jpg@136w_136h_1e_1c',
+							title: '炉鱼（皇庭广场店）',
+							subTitle: '韩国菜',
+							info: '单人餐19.8元起，25.5元辣五花拌饭套餐'
+						}
+					]
+				},
+				methods: {
+					
+				},
+				//声明这个app的vue实例对象，有什么子组件
+				components: {
+					//key：使用组件时的标签名字，value值组件所用的对象
+					'li-item': liItem
+				}
+			})
+			
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

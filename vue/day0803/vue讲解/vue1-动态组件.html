@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<button @click="changeAction('a')">a</button>
+			<button @click="changeAction('b')">b</button>
+			<button @click="changeAction('c')">c</button>
+			
+			<div class="info">
+				
+				<component :is="selectCom"></component>
+				
+			</div>
+			
+			
+		</div>
+		
+		<script src="vue.js"></script>
+		<script>
+			var aCom = {
+				template: `
+					<div>
+						这是a组件
+					</div>
+				`
+			}
+			var bCom = {
+				template: `
+					<div>
+						这是b组件
+					</div>
+				`
+			}
+			var cCom = {
+				template: `
+					<div>
+						这是c组件
+					</div>
+				`
+			}
+			
+			
+			
+			var app = new Vue({
+				el: '#app',
+				components: {
+					'a-com': aCom,
+					'b-com': bCom,
+					'c-com': cCom
+				},
+				data: {
+					selectCom: 'a-com'
+				},
+				methods: {
+					changeAction(title){
+						console.log(title+'-com')
+						this.selectCom = title+'-com';
+					}
+				}
+				
+			})
+			
+		</script>
+	</body>
+</html>
