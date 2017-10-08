@@ -1,0 +1,30 @@
+.box{
+	width: 100px;
+	height: 100px;
+	background: red;
+}
+
+*{
+	margin: 0;
+	padding: 0;
+}
+ul, li{
+	list-style: none;
+}
+
+.list li{
+	/*height: 80px;
+	border-bottom: 1px solid #ddd;
+	display: flex;*/
+}
+.list li.active{
+	background: lightblue;
+}
+.list li img{
+	display: block;
+	width: 80px;
+}
+.list li h3{
+	line-height: 80px;
+	flex: 1;
+}
