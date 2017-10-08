@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//for 循环
+			
+			//1+2+3+..100
+			/*
+			var i = 1;
+			var sum = 0;
+			while (i <= 100){
+				sum += i;
+				i++;
+			}
+			console.log(sum);
+			*/
+			//第1次循环： sum=0, var i=1; 判断i<=100是否成立，如果为true，则执行循环体sum=0+1; 最后执行i++;
+			//第2次循环： sum=0+1，i=2 ; 判断i<=100是否成立,如果为true, 则执行循环体sum=0+1+2; 最后执行i++;
+			//第3次循环： sum=0+1+2，i=3 ; 判断i<=100是否成立,如果为true, 则执行循环体sum=0+1+2+3; 最后执行i++;
+			// ...
+			//第100次循环： sum=0+1+..+99，i=100 ; 判断i<=100是否成立,如果为true, 则执行循环体sum=0+1+2+..+100; 最后执行i++;
+			//第101次循环： sum=0+1+..+99+100，i=101 ; 判断i<=100是否成立,为false, 跳出循环;
+			//
+			var sum = 0;
+			for (var i=1; i<=100; i++){
+				sum += i;
+			}
+			console.log(sum);
+			
+			
+			//打印100以内 7的倍数
+			for (var i=1; i<=100; i++){
+				if (i%7 == 0){
+					console.log(i);
+				}
+			}
+			
+			//三个表达式都可以省略， 但是不建议，如果不写会造成一些问题，比如死循环
+			var i=1;
+			for (; i<=100; i++){
+				console.log(i);
+			}
+			
+			
+			//打印三角形
+			/*
+			 	*
+			 	* *
+			 	* * *
+			  	* * * *
+			  	* * * * *
+			*/
+			for (var i=1; i<=5; i++) {
+				for (var j=1; j<=i; j++){
+					document.write("* ");
+				}
+				document.write("<br>");
+			}
+			
+			
+			//4, 计算10的阶乘   (1*2*3*4*5*6*7*8*9*10   n的阶乘1*2……*n)
+			var n = 10;
+			var s = 1; //求乘积，则初始化为1
+			for (var i=1; i<=n; i++){
+				s = s * i;
+			}
+			console.log(s); //3628800
+			
+			
+			//7, 输出20~80之间能被3整除的整数, 每行5个
+			var count = 0; //记录打印次数
+			for (var i=20; i<=80; i++){
+				if (i%3 == 0) {
+					document.write(i + " ");
+					count++;
+					
+					if (count%5 == 0){
+						document.write("<br>");
+					}
+				}
+			}
+			
+			//8, 打印1000~2000年中所有的闰年, 每行4个
+			var count = 0;
+			for (var i=1000; i<=2000; i++) {
+				if ((i%4==0 && i%100!=0) || i%400==0) {
+					document.write(i + " ");
+					count++;
+					
+					if (count%4 == 0) {
+						document.write("<br>");
+					}
+				}
+			}
+			
+			
+			//9, 求: 1-1/2+1/3-1/4 …  1/100的和
+			// 1/1 + (-1/2) + 1/3 + (-1/4)+.. 1/100
+			var sum = 0;
+			for (var i=1; i<=100; i++) {
+				if (i%2 == 0){
+					sum += -1/i;
+				}else {
+					sum += 1/i;
+				}
+			}
+			console.log(sum); //0.688172179310195
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

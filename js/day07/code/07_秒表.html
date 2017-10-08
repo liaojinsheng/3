@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			
+			//秒表功能
+			//实现秒表功能 : 显示时,分,秒 , 点击按钮开始计时
+			
+			onload = function(){
+				var aSpan = document.getElementsByTagName("span");
+				var oBtn = document.getElementsByTagName("input")[0]; 
+				
+				//点击事件
+				var i = 0; //秒数
+				var timer;
+				oBtn.onclick = function(){
+					
+					//清除原来的定时器
+					clearInterval(timer);
+					
+					//console.log(timer);
+					//if (timer != undefined){
+					//	return;
+					//}
+					
+					//开启定时器， 每隔1秒调用一次
+					timer = setInterval(function(){
+						i++;
+						
+						//a = 345
+						//3 : a/100
+						//4 : (a%100)/10
+						//5 : a%10
+						
+						var h = parseInt(i/3600);
+						var m = parseInt(i%3600 / 60);
+						var s = i%60;
+						
+						aSpan[0].innerHTML = h<10 ? '0'+h : h;
+						aSpan[1].innerHTML = m<10 ? '0'+m : m;
+						aSpan[2].innerHTML = s<10 ? '0'+s : s;
+						
+					}, 1000); 
+					
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<span>00</span>时<span>00</span>分<span>00</span>秒 
+		<input type="button" value="开始计时" />
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//history: 
+			//history对象是window对象的属性，它保存着用户上网的记录,从窗口被打开的那一刻算起.
+			
+			
+			onload = function(){
+				console.log(history.length);
+			}
+			
+			//history.back(); 	//前往浏览器历史条目前一个URL, 类似后退
+			//history.forward();  //前往浏览器历史条目下一个URL, 类似前进
+			//history.go(-1);	//浏览器在history对象中向前或向后(-1代表后退, 1代表向前,0表示刷新当前页面)
+			
+			
+			function fn(){
+				history.forward();
+				console.log("向前");
+			}
+			
+		</script>
+	</head>
+	<body>
+		<h2>第一个页面</h2>
+		<!--<a href="javascript:;">打开第二个页面</a>-->
+		
+		<a href="javascript:location.href='06_history2.html';">打开第二个页面</a> <br>
+		<a href="javascript:history.forward()">向前</a> <br>
+		<a href="javascript:fn();">向前2</a> <br>
+		<a href="javascript:history.go(1)">向前go</a> <br>
+		<a href="javascript:history.go(0)">刷新go</a>
+		
+	</body>
+</html>

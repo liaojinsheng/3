@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script src="move.js"></script>
+		<script> 
+			onload = function(){
+				
+				var oBtn = document.getElementsByTagName("button")[0];
+				var oBox = document.getElementById("box");
+				
+				oBtn.onclick = function(){
+					//animate(oBox, "left", 300);
+					//animate(oBox, "top", 300);
+					
+					animate(oBox, {left:50, top:300,width:200, height:200}, function(){
+						console.log("运动停止");
+					});
+					
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button>开始运动</button>
+		<div id="box" style="width: 100px; height: 100px; background: green; position: absolute;left: 50px; top: 50px;"></div>
+	</body>
+</html>

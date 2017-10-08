@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>三角形</title>
+<style>
+*{margin:0;padding:0;}
+h2{text-align:center;margin-top:30px;}
+h2 span{font-size:24px;font-weight:700;color:#f40;}
+/*方法一*/
+.box1{
+	width:250px;height:250px;
+	background:red;
+	position:relative;
+	margin:100px auto;
+	overflow:hidden;
+    
+	}
+.box2{
+	width:400px;height:250px;
+	background:#fff;
+	position:absolute;left:0px;top:0px;
+	transform:rotate(-45deg);
+	transform-origin: 0 100%;
+	border:1px solid #000;
+	}
+/*方法二*/
+.triangle{
+	width:250px;height:250px;
+	background:yellow;
+	margin:0 auto;
+	transform: skewX(-45deg);
+	
+	position:relative;
+	}
+.triangle-1{
+	width:250px;height:250px;
+	background:#fff;
+	transform: skewX(45deg);
+	position:absolute;right:-125px;top:0px;
+	border:1px solid #000;
+	}
+/*方法三*/
+.tri{
+	margin:100px auto;width: 0px;height: 0px;
+
+   border-top: 100px solid red;
+
+   border-right: 100px solid blue;
+
+   border-bottom: 100px solid green;
+
+   border-left: 100px solid yellow;
+
+}
+</style>
+
+</head>
+<body>
+	<h2>大家好，我叫<span>王喜斌</span>，今天给大家分享一个用css写<span>三角形</span>的几种方法</h2>
+
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+    
+    <div class="triangle">
+    	<div class="triangle-1"></div>
+    </div>
+	
+    <div class="tri"></div>
+
+
+</body>
+</html>

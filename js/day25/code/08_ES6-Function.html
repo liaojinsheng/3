@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//函数的默认参数
+			//ES5解决默认参数
+			function fn1(name){
+				var a = name || "千锋";
+				console.log(a + " is 1000phone");
+			}
+			fn1("qianfeng");
+			
+			//ES6默认参数
+			function fn2(name="千锋"){
+				console.log(name + " is 1000phone");
+			}
+			fn2("qianfeng");
+			
+			
+			//扩展运算符： ...
+			function fn3(a, b, c, d){
+				console.log(a + "," + b + "," + c + "," + d);
+			}
+			var arr = [2,3,4,5];
+			fn3(...arr);
+	
+			//合并数组
+			var arr1 = [1,2,3];
+			var arr2 = [4,5,6,7];
+			//arr1.concat(arr2);
+			var arr = [...arr1, ...arr2];
+			console.log(arr);
+			
+			
+			
+			//箭头函数
+			// =>
+			/*
+			function f(n){
+				return n;
+			}
+			*/
+			/*
+			let f = function(n){
+				return n;
+			}
+			*/
+			//有一个参数， 一个返回值
+			let f = n=>n;
+			console.log( f(2) );
+
+			//没有参数 或者 有多个参数， 只有一个返回值
+			let f1 = ()=>8; //等价于： function f1(){return 8}
+			console.log( f1() );
+			
+			let f2 = (n,m)=>n+m; //等价于：function f2(n, m){return n+m}
+			console.log( f2(2,3) );
+			
+			//函数代码块中有多条语句，则需要添加{}
+			let f3 = (n,m)=>{let sum = n+m; return sum;}
+			//等价于： function f3(n,m){let sum=n+m; return sum;}
+			console.log( f3(2,3) );
+			
+			//如果只返回一个对象， 则需要在返回的这个对象外面加个()
+			let f4 = (n,m)=>({n:n, m:m});
+			console.log( f4(3,4) ); //{n: 3, m: 4}
+			
+			
+			const isEven = n => n % 2 == 0;
+    		const square = n => n * n;
+			console.log( isEven(2) ); //true
+			console.log( square(3) ); //9
+
+			
+			//可以简化回调函数
+			/*
+			var newArr = [1,2,3].map(function(value){
+				return value * value; 
+			});
+			*/
+			var newArr = [1,2,3].map(v=>v*v);
+			console.log(newArr); //[1, 4, 9]
+			
+			
+			var arr = [2,3,-1,5, -4, 3];
+			var n = arr.find(v=>v<0);
+			console.log(n);
+			
+			
+			//回调函数
+			function f6(f){ //
+				f(1,2); //回调
+			}
+			//f = function(){
+			//	     console.log("f");
+			//    }
+			
+			f6(function(n,m){
+				console.log("ff: " + n + "," + m);
+			});
+			
+			
+			
+			
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

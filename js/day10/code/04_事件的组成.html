@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			window.onload = function(){
+				
+//				document.onclick = function(){
+//					console.log("点击了页面的任意位置");
+//				}
+				//document.onclick(); //onclick是函数
+				
+				//事件的组成
+				//document : 元素节点对象 
+				//onclick (on+click):  事件处理函数 , 事件类型
+				//function(){} ： 事件执行函数
+				
+				//事件处理函数都是小写 
+				
+				
+				//事件的分类： 鼠标事件， 键盘事件， HTML事件
+				
+				//鼠标事件
+				var aInput = document.getElementsByTagName("input");
+				
+				//onclick: 鼠标左键单击， 点击并松开的时候触发
+				aInput[0].onclick = function(){
+					console.log("onclick");
+				}
+				
+				//ondblclick: 双击
+				aInput[1].ondblclick = function(){
+					console.log("ondblclick");
+				}
+				
+				//mousedown: 鼠标按下
+				aInput[2].onmousedown = function(){
+					console.log("onmousedown");
+				}
+				
+				//mouseup: 鼠标松开
+				aInput[2].onmouseup = function(){
+					console.log("onmouseup");
+				}
+				
+				//mousemove: 鼠标移动
+				aInput[2].onmousemove = function(){
+					console.log("onmousemove");
+				}
+				
+				//mouseover: 鼠标移入
+				//mouseout: 鼠标移出
+				aInput[3].onmouseover = function(){
+					console.log("onmouseover");
+				}
+				aInput[3].onmouseout = function(){
+					console.log("onmouseout");
+				}
+				
+				//mouseenter: 鼠标移入
+				//mouseleave:鼠标移出
+				aInput[4].onmouseenter = function(){
+					console.log("mouseenter");
+				}
+				aInput[4].onmouseleave = function(){
+					console.log("mouseleave");
+				}
+				
+				//mouseover: 子元素也会触发
+				//mouseeneter: 子元素不会触发
+				var oBox1 = document.getElementById("box1");
+				var oBox2 = document.getElementById("box2");
+				oBox1.onmouseover = function(){
+					var oldVal = oBox1.children[0].value - 0;
+					oBox1.children[0].value = ++oldVal;
+				}
+				oBox2.onmouseenter = function(){
+					var oldVal = oBox2.children[0].value - 0;
+					oBox2.children[0].value = ++oldVal;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button"  value="click" /> <br>
+		<input type="button"  value="dblclick" /> <br>
+		<input type="button"  value="mousedown/onmousemove/mouseup" /> <br>
+		<input type="button"  value="mouseover/mouseout" /> <br>
+		<input type="button"  value="mouseenter/mouseleave" /> <br>
+			
+			
+		<div id="box1" style="width: 300px; height: 100px; background: green;">
+			<input type="text" value="0" />
+		</div>
+		<div id="box2" style="width: 300px; height: 100px; background: red;">
+			<input type="text" value="0" />
+		</div>
+	</body>
+</html>

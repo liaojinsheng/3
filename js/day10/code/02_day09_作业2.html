@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin: 0; padding: 0; border: none;}
+			ul, li {list-style: none;}
+			#box {
+				width: 400px;
+				height: 400px;
+				margin: 100px auto;
+			}
+			#list  {
+				width: 400px;
+				height: 30px;
+				background: #ccc;
+			}
+			#list li {
+				float:  left;
+				width: 100px;
+				height: 30px;
+				text-align: center;
+				line-height: 30px;
+				cursor: pointer;
+			}
+			#list li.active {
+				background: orange;
+				color: white;
+			}
+			
+			.content {
+				width: 398px;
+				height: 299px;
+				border: 1px solid orange;
+				border-top: none;
+			}
+			
+		</style>
+		<script>
+			onload = function(){
+				
+				var aLi = document.getElementsByTagName("li");
+				var aContent = document.getElementsByClassName("content");
+				
+				for (var i=0; i<aLi.length; i++){
+					aLi[i].index = i;
+					aLi[i].onclick = function(){
+						
+						for (var j=0; j<aLi.length; j++){
+							aLi[j].className = "";
+							aContent[j].style.display = "none"; //隐藏
+						}
+						this.className = "active";
+						aContent[this.index].style.display = "block"; //显示
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<ul id="list">
+				<li class="active">科技</li>
+				<li>探索</li>
+			</ul>
+			<div class="content" >科技科技科技科技科技科技科技科技</div>
+			<div class="content" style="display: none;">探索探索探索探索探索探索探索探索</div>
+		</div>
+	</body>
+</html>

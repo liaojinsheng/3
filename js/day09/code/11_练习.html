@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				var oBox = document.getElementById("box");
+				
+				onscroll = function(){
+					var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+					
+					if (scrollTop >= 2000){
+						oBox.style.display = "block"; //显示
+					}
+					else {
+						oBox.style.display = "none"; //隐藏
+					}
+					
+				}
+				
+				//点击按钮回到顶部
+				oBox.onclick = function(){
+					document.documentElement.scrollTop = document.body.scrollTop = 0;
+				}
+				
+			}
+		</script>
+	</head>
+	<body style="height: 3000px;">
+		<div id="box" style="display: none; position: fixed; bottom: 0; right: 0; width: 100px; height: 100px; background: red;">回到顶部</div>
+	</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div {
+				opacity: 0.5;
+				filter: alpha(opacity=50);
+			}
+		</style>
+		
+		<script src="move.js"></script>
+		<script>
+		
+			//淡入淡出
+		
+			onload = function(){
+				
+				var oBtn = document.getElementsByTagName("button")[0];
+				var oBox = document.getElementById("box");
+				
+				oBtn.onclick = function(){
+					animate2(oBox, "opacity", 10);
+					
+				}
+				
+				//透明度做缓冲变化，实现淡入淡出
+				function animate2(obj, attr, iTarget){
+					
+					clearInterval(obj.timer);
+					obj.timer = setInterval(function(){
+						//1，current
+						var current = Math.round(getStyleAttr(obj,attr) * 100);
+						
+						//2, speed
+						var speed = (iTarget-current)/8;
+						speed = speed>0 ? Math.ceil(speed) : Math.floor(speed);
+						
+						//3， 判断临界值
+						if (current == iTarget) {
+							clearInterval(obj.timer);
+							return;
+						}
+						
+						//4, 运动
+						obj.style[attr] = (current + speed) / 100;
+						obj.style.filter = "alpha(opacity="+ (current+speed) +")";
+						
+					}, 30)
+					
+				}
+				
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<button>开始运动</button>
+		<div id="box" style="width: 100px; height: 100px; background: green; position: absolute;left: 100px; top: 50px;"></div>
+	</body>
+</html>

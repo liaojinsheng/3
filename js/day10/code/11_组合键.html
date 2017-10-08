@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				
+				//键盘事件： onkeydown, onkeypress, onkeyup
+				/*
+				window.onkeydown = function(e){
+					e = e || event;
+					
+					if (e.shiftKey && e.ctrlKey) {
+						console.log("按下了shift键和ctrl键");
+					}
+					
+					//判断是否按下了shift键
+					else if (e.shiftKey) {
+						console.log("按下了shift键");
+					}
+					else if (e.ctrlKey) {
+						console.log("按下了ctrl键");
+					}
+					else if (e.altKey) {
+						console.log("按下了alt键");
+					}
+				}
+				*/
+				
+				//键码keyCode 
+				//A~Z : 65~90
+				//a~z : 97~122
+				//0~9 : 48~57
+				//方向键: 左37 上38 右39 下40
+				//空格： 32
+				//回车： 13
+				
+				//keyCode: 不区分大小写
+				window.onkeydown = function(e){
+					e = e || event;
+					console.log("键码： " + e.keyCode); 
+				}
+				
+				//字符编码charCode
+				//数字， 字母， 字符（逗号，句号..）空格， 回车
+				window.onkeypress = function(e){
+					e = e || event;
+					console.log("字符编码： " + e.charCode);
+					
+					console.log( String.fromCharCode(e.charCode) );
+				}
+				
+				
+				
+				
+				
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

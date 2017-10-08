@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				//id
+				var username = document.getElementById("name"); 
+				var age = document.getElementById("age"); 
+				var xl = document.getElementById("xl"); 
+				var zy = document.getElementById("zy"); 
+				var save = document.getElementById("save"); 
+				save.onclick = function(){
+					console.log("姓名：" + username.value + ",年龄：" + age.value + "，学历：" + xl.value + ",专业：" + zy.value);
+				}
+				
+				//tagName
+				var aInput = document.getElementsByTagName("input");
+				aInput[4].onclick = function(){
+					console.log("姓名：" + aInput[0].value + ",年龄：" + aInput[1].value + "，学历：" + aInput[2].value + ",专业：" + aInput[3].value);
+				}
+				
+				//name
+				var aInput = document.getElementsByName("txt");
+				aInput[4].onclick = function(){
+					console.log("姓名：" + aInput[0].value + ",年龄：" + aInput[1].value + "，学历：" + aInput[2].value + ",专业：" + aInput[3].value);
+				}
+				
+				//document.getElementsByClassName()
+				
+			}
+		</script>
+	</head>
+	<body>
+		<input id="name" name="txt" type="text" placeholder="姓名"/>
+		<input id="age" name="txt" type="text" placeholder="年龄"/> <br>
+		<input id="xl" name="txt" type="text" placeholder="学历"/>
+		<input id="zy" name="txt" type="text" placeholder="专业"/> <br>
+		<input id="save" name="txt" type="button" value="保存" />
+	</body>
+</html>

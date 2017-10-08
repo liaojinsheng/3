@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			// () : 分组
+			var reg = /8(.*)8/;
+			var str = "i am 8google8 baidu8 bing8";
+			console.log( str.match(reg) ); //[8google8 baidu8 bing8, google8 baidu8 bing]
+			console.log(RegExp.$1); //google8 baidu8 bing, 获取第一个()中的内容
+			
+			var str = "google 2017";
+			var reg = /(google)\s(\d+)/;
+			console.log(reg.exec(str)); //[google 2017, google, 2017]
+			console.log(RegExp.$1); //google
+			console.log(RegExp.$2); //2017
+			
+			// ?:  ： 非捕获性
+			var str = "google 2017";
+			var reg = /(google)\s(?:\d+)/;
+			console.log(reg.exec(str)); //[google 2017, google]
+			console.log(RegExp.$1); //google
+			console.log(RegExp.$2); //""
+			
+			
+			//转义符  : 将带语义的字符变成没有语义
+			var str = ".[/b]";
+			var reg = /\.\[\/b\]/;
+			console.log( reg.test(str) );
+			//  \* 表示字符*
+			
+			//g:
+			//i
+			//m: 换行模式， 每行都会重新进行匹配
+			var reg = /^\d+/mg;
+			var str = "1,baidu\n2,google\n3,bing";
+			console.log(str.replace(reg, "#"));
+
+			
+			//邮政编码
+			var reg = /^[1-9]\d{5}$/;
+			var str = "518000";
+			console.log(reg.test(str)); 
+			
+			
+			//610567895@qq.com
+			//fasd.fasdf.dfa@163.cn.com
+			//         @1000phone.cn
+			//电子邮件(xxxx@xxx(.xxx)+)
+			var reg = /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/;
+			var str = "zh.an.san@1000phone.com"
+			console.log(reg.test(str));
+			
+			
+			//13838384489
+			//手机号(13或14或15或18开头的11位数字)
+			var pattern = /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18([0-3]|[5-9])))\d{8}$/;
+			var str = "18676273422";
+			console.log(pattern.test(str));
+			
+			
+			//用户名(只能使用数字字母下划线, 且数字不能开头, 长度在6-15位)
+			var reg = /^[a-zA-Z_]\w{5,14}$/;
+
+			
+			//删除多余空格
+			var str = "   zhang  san";
+			var reg = /\s+/g;
+			console.log( str.replace(reg, "") );  //zhangsan
+			
+			//身份证
+			var reg = /^\d{17}(\d|X)$/;
+			var str = "42517372848273771X";
+			console.log(reg.test(str));	
+			
+			
+			//中文
+			var str = "张三";
+			var reg = /[\u4e00-\u9fa5]+/;
+			console.log( reg.test(str) );
+			
+			
+			//简单日期格式
+			var str = "2017-1-11";
+			var reg = /^\d{4}\-\d{1,2}\-\d{1,2}$/;
+			console.log( reg.test(str) );  
+
+			//图片文件格式
+			var str = "aa.jpg";
+			var reg = /\.(jpg|jpeg|gif)$/i;
+			console.log( reg .test(str) );  
+
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

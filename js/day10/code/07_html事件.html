@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//加载页面
+			onload = function(){
+				console.log("onload");
+				
+				//onselect : 选择输入框中的内容时触发
+				var aInput = document.getElementsByTagName("input");
+				aInput[0].onselect = function(){
+					console.log("onselect");
+				}
+				
+				//onchange： 改变输入框中的内容并失去焦点时触发
+				aInput[0].onchange = function(){
+					console.log("onchange");
+				}
+				
+				//onfocus: 获取到焦点
+				aInput[0].onfocus = function(){
+					console.log("onfocus");
+				}
+				
+				//onblur : 失去焦点
+				aInput[0].onblur = function(){
+					console.log("onblur");
+				}
+				
+				//onsubmit: 提交表单
+				var oForm = document.getElementsByTagName("form")[0];
+				oForm.onsubmit = function(){
+					console.log("onsubmit");
+				}
+				
+				//onreset: 重置
+				oForm.onreset = function(){
+					console.log("onreset");
+				}
+				
+				//onscroll: 滚动页面时触发
+				
+				
+				
+				
+			}
+			//卸载页面
+			onunload = function(){
+				console.log("onunload");
+			}
+			
+		</script>
+	</head>
+	<body>
+		<form>
+			<input type="text" /><br>
+			<input type="password" /> <br>
+			<input type="submit" />
+			<input type="reset" />
+		</form>
+	</body>
+</html>

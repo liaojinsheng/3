@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//location对象
+			
+//			console.log(location); //简单
+//			console.log(window.location);
+//			console.log(document.location);
+			
+			//location的属性
+			//锚点
+			console.log( location.hash ); //#1
+			location.hash = "#dd"
+			
+			//主机
+			console.log( location.host ); //127.0.0.1:8020
+			
+			console.log( location.hostname); //127.0.0.1
+			
+			console.log( location.href ); //http://127.0.0.1:8020/www/day08/code/04_location.html#dd
+			//location.href = "http://www.ifeng.com";
+			
+			//接口： 
+			//http: 协议
+			//127.0.0.1： ip地址
+			//8020： 端口
+			//路径： www/day08/code/04_location.html
+			//参数部分： name=w&pwd=123456
+			//http://127.0.0.1:8020/www/day08/code/04_location.html?name=w&pwd=123456
+			console.log( location.pathname ); ///www/day08/code/04_location.html
+			
+			console.log( location.port ); //8020
+			console.log( location.protocol ); //http:
+			
+			//参数部分
+			console.log( location.search ); //?name=w&pwd=123456
+			
+			
+			
+			//location的方法
+			//location.assign("http://www.ifeng.com"); //location.href
+			//location.reload(); //刷新，有缓存加载
+			//location.reload(true); //强制刷新
+			
+			//用新的URL替代,可以避免产生历史记录
+			//location.replace("http://www.ifeng.com");
+			
+			
+		</script>
+	</head>
+	<body>
+		<a href="#1">aa</a>
+	</body>
+</html>

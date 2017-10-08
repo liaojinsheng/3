@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//区分普通函数和构造函数: 是否使用new
+			
+			
+			//构造函数（类）
+			function Person(){
+				
+				//var obj = new Object();
+				//this = obj;
+				
+				//this就是外面的person1
+				this.name = "张三";
+				this.age = 33;
+				this.show = function(){
+					console.log("show");
+					
+				}
+				
+				//return this;
+			}
+			var person1 = new Person();
+			console.log( person1.name );
+			console.log( person1.age );
+			person1.show();
+			
+			console.log( person1 instanceof Person ); //true
+			
+			//构造函数和工厂模式的区别：
+			//1. 构造函数方法没有显示的创建对象( 在内部隐式调用了new Object() )；
+			//2. 直接将属性和方法赋值给 this 对象;  
+			//3. 没有 renturn 语句。
+			
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

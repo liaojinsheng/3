@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//定时器
+			// setInterval() : 开启定时器
+			// clearInterval(): 关闭定时器 
+			
+			//setInterval()
+			//每隔2秒调用一次函数
+			var timer = setInterval(function(){
+				//异步
+				console.log("hello 定时器"); //后执行
+				
+			}, 2000);
+			
+			console.log("我会先执行");
+			
+			
+			//clearInterval()
+			clearInterval(timer);
+			
+			
+			//执行10次
+			var count = 2;
+			var timer2 = setInterval(function(){
+				if (count--) {
+					console.log("倒计时： " + count);
+				}
+				else {
+					clearInterval(timer2); //关闭定时器
+				}
+			}, 1000);
+			
+			
+			
+			//三种写法
+			//第一种： 不推荐
+			//setInterval("alert('111')", 2000);
+			
+			//第二种;
+			function fn(){
+				console.log("呵呵 。。");
+			}
+			//setInterval(fn, 2000);
+			
+			//第三种：推荐
+			setInterval(function(){
+				console.log("嘿嘿。。");
+			}, 2000);
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

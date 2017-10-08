@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				var aOption = document.getElementsByClassName("option");
+				var allCheck = document.getElementsByClassName("check")[0];
+				
+				//全选/全不选
+				allCheck.onclick = function(){
+					
+					var value = false; //全不选
+					if (this.checked) {
+						value = true; //全选
+					}
+					for (var i=0; i<aOption.length; i++){
+						aOption[i].checked = value;
+					}
+				}
+				
+				for (var i=0; i<aOption.length; i++){
+					aOption[i].onclick = function(){
+						allcheckOrNot();
+					}
+				}
+				
+				//判断是否是全选
+				function allcheckOrNot(){
+					var sum = 0;
+					for (var i=0; i<aOption.length; i++){
+						sum += aOption[i].checked;
+					}
+					if (sum == aOption.length) {
+						allCheck.checked = true;
+					}
+					else {
+						allCheck.checked = false;
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		
+		<input type="checkbox" class="option" />基围虾 <br>
+		<input type="checkbox" class="option" />小龙虾 <br>
+		<input type="checkbox" class="option" />帝王蟹 <br>
+		<input type="checkbox" class="option" />螃蟹 <br>
+		<input type="checkbox" class="option" />大闸蟹 <br><br>
+			<input type="checkbox" class="check" />全选 
+			
+		
+	</body>
+</html>

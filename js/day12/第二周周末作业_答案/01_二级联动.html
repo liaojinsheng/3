@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				var provinces = [
+					{
+						name:"北京",
+						citys: ["朝阳区","海淀区","昌平区"]
+					},
+					{
+						name:"深圳",
+						citys: ["南山区","罗湖区","宝安区", "福田区"]
+					}
+				];
+				
+				var oPro = document.getElementById("province");
+				var oCity = document.getElementById("city");
+				
+				//先添加身份的选项
+				for (var i=0; i<provinces.length; i++){
+					var obj = provinces[i];
+					
+					//创建省份的option节点
+					var op = document.createElement("option");
+					op.innerHTML = obj.name;
+					oPro.appendChild(op);
+				}
+				
+				
+				//给省份的选项添加一个事件
+				oPro.onchange = function(){
+					//console.log(oPro.value);
+					
+					for (var j=0; j<provinces.length; j++){
+						var obj = provinces[j];
+						if (oPro.value == obj.name){
+							var citys = obj.citys;
+							
+							//清空city中的所有option节点
+							oCity.innerHTML = "<option>--请选择--</option>";
+							
+							//添加节点
+							//创建城市的option节点
+							for (var k=0; k<citys.length; k++){
+								var op = document.createElement("option");
+								op.innerHTML = citys[k];
+								oCity.appendChild(op);
+							}
+							
+						}
+					}
+					
+					console.log(oPro.value + " " + oCity.value);
+				}
+				
+				oCity.onchange = function(){
+					console.log(oPro.value + " " + oCity.value);
+				}
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		省份: <select id="province">
+			<option>--请选择--</option>
+		</select>
+		城市: <select id="city">
+			<option>--请选择--</option>
+		</select>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="ajax.js"></script>
+		<script>
+			
+			//当前电脑： IP地址， 127.0.0.1, localhost
+			
+			var xhr = createXHR();
+			xhr.open("get", "http://10.36.139.168/day22/code/07_sameorign.php", true);
+			xhr.send(null);
+			xhr.onreadystatechange = function(){ 
+				if (xhr.readyState==4 && xhr.status==200) {
+					console.log("111");
+				}
+			}
+			
+			//同源策略： 当前html所在的服务器地址（域名）和ajax请求的接口服务器地址（域名）必须一致
+			
+			
+			//跨域（跨源）
+			// "XMLHttpRequest cannot load http://10.36.139.168/day22/code/new_file.php.
+			//  No 'Access-Control-Allow-Origin' header is present on the requested resource. 
+			//  Origin 'http://127.0.0.1:8020' is therefore not allowed access."	
+
+			
+			//前后端分离
+			
+			
+		</script>
+	</head>
+	<body>
+		<h2>同源策略</h2>
+	</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//变量： var
+			//函数： function
+			
+			//自定义函数
+			//定义了一个fn函数
+			function fn(){
+				console.log("这是fn函数");
+			}
+			//函数不会自动执行， 只有调用时才会执行
+			//调用fn函数
+			fn();
+			
+			
+			//定义一个两个数相加功能的函数
+			function fn2(a1, b1){
+				console.log(a1 + "," + b1);
+				var sum = a1 + b1;
+				console.log(sum);
+				
+				return sum; //返回一个值
+			}
+						
+			var res = fn2(2, 5);  //2,5
+			console.log(res); //7
+			
+			//传参
+			//参数a1, b1 分别会得到2,5
+			//a1 = 2， b1 = 5
+			
+			
+			//求两个数的乘积
+			function fn3(a, b){  //var a; var b;
+				return a * b;
+			}
+			
+			var res = fn3(3, 4);
+			console.log(res); //12
+			
+			
+			//break:  在循环中使用
+			//continue:  在循环中使用
+			//return： 在函数中使用
+			
+			//1, 写一个函数计算1到n的和, 并返回结果打印出来;(n为函数参数)
+			
+			function fn4(n){
+				var sum = 0;
+				for (var i=1; i<=n; i++){
+					sum += i;
+				}
+				console.log("return之前的代码");
+				return sum; //返回sum的值
+				console.log("return之后的代码"); //这里不会执行
+			}
+			console.log( fn4(100) ); //5050
+			
+			
+			//2, 写一个函数计算n的阶乘,并返回结果打印出来
+			function fn5(n){
+				var s = 1;
+				for (var i=1; i<=n; i++){
+					s *= i;
+				}
+				return s;
+			}
+			console.log( fn5(5) );
+			
+			
+			//3, 写一个函数计算两个数的最小公倍数; 并返回结果打印出来
+			function fn6(a, b){
+				var max = a>b ? a : b;
+				for (var i=max; i<=a*b; i++){
+					if (i%a==0 && i%b==0){
+						return i;
+					}
+				}
+			}
+			console.log( fn6(9,6) ); //18
+			
+			
+			
+			//形参和实参
+			//形参： a,b, 是函数定义时()中的参数
+			//实参：4,5， 是函数调用时()中的参数
+			function sum(a, b){
+				return a+b;
+			}
+			sum(4,5);
+			
+			
+			//arguments数组
+			function sum2(a, b){
+				console.log(arguments); //[object Arguments]
+				
+				console.log( arguments.length ); //得到数组arguments的长度（包含的元素个数）
+				console.log( arguments[0] ); //10
+				console.log( arguments[1] ); //20
+				console.log( arguments[2] ); //30
+				
+			}
+			sum2(10,20,30);
+			
+			
+			//不定数量的数值求和
+			function fn7(){
+				var sum = 0;
+				for (var i=0; i<arguments.length; i++){
+					sum += arguments[i];
+				}
+				return sum;
+			}
+			console.log( fn7(2,3,5,67,2) ); //79
+			
+			
+			function addNum(n){
+			    n += 5;  
+			    console.log("n:" + n); //15
+			}
+			var a = 10;
+			addNum(a);           
+		    console.log("a:" + a); //10
+
+			
+			//基本类型
+			var a1 = 3;
+			var b1 = a1;
+			b1 = 4;
+			
+			console.log("a1:" + a1); //3
+			console.log("b1:" + b1); //4
+			
+			
+			//引用类型
+			//对象
+			
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

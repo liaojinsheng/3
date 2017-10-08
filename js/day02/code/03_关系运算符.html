@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//关系运算符
+			// ==, !=, >,>=(大于或等于), <, <=, ===, !==
+			
+			console.log( 3 == 4 );
+			console.log( 3 != 4 );
+			console.log( 3 >= 3 );
+			console.log( 3 <= 3 );
+			
+			console.log( "3" == 3 ); //true, 值相等
+			console.log( "3" === 3 ); //false, 类型不相等
+			console.log( "3" !== 3 ); //true
+			
+			//字符串的比较
+			var a = "a";
+			var b = "b";
+			console.log( a > b ); //ASCII码进行比较,A:97， B:98
+			
+			console.log( "abc" > "abd" ); //false
+			console.log( "adc" > "abcd" ); //true, 因为d>b
+			
+			//常见ASCII码
+			// a~z : 97~122
+			// A~Z : 65~90
+			// 0~9 : 48~57
+			
+			console.log(true == 1); //true
+			console.log(undefined == null); //true
+			console.log( NaN == NaN ); //false
+			console.log( NaN != NaN ); //true
+			
+			/*
+			 关系运算符的比较规则: 
+			     1,  数字和数字比较, 直接比较大小
+			     2,  数字和字符串比较, 字符串转换为数字后再比较
+			     3,  字符串和字符串比较, 进行字符的ASCII码值比较
+			
+			比较注意事项:
+			     1, 布尔值 ture=1, false=0
+			     2, 只要不等于NaN, 就是true,其他有NaN的运算都为false
+			     3, 如果要恒等, 则必须值和类型都要相等;
+
+			 * */
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

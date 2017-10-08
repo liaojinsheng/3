@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//class : 类
+			
+			//类是对象的抽象， 对象是类的具体
+			//类      ： 人，  电脑                         水杯               联想电脑
+			//对象   ： 我, 我桌上的这台电脑     这个水杯       我的这台联想电脑
+			
+			
+			//构造函数
+			//new Object() 
+			//new Array()
+			//new String()
+			//new Date()
+			//new Function()
+			//new RegExp()
+			//...
+			
+			
+			//类
+			class Person{
+				//构造器， 初始化属性, 在创建对象（使用new）的时候会自动调用
+				constructor(name, age){
+					//console.log("构造器");
+					//console.log(name + "," + age);
+					this.name1 = name; //类中的属性 
+					this.age1 = age; //类中的属性
+				}
+				
+				//类中的方法
+				eat(){
+					console.log(this.name1 + this.age1 + "可以吃饭");
+				}
+			}
+			
+			//通过类创建对象(实例化对象)
+			//用类创建出的所有对象都拥有类中的属性和方法
+			var person = new Person("张三", 33);
+			person.eat();  
+			
+			var person2 = new Person("李四", 44);
+			person2.eat();  
+			
+			
+			//继承
+			//A类为父类
+			class A {
+				fn(){
+					console.log("fn");
+				}
+			}
+			var a = new A();
+			a.fn();
+			
+			//B类继承了A类
+			//B类 为 子类
+			class B extends A {
+				fn2(){
+					console.log("fn2");
+				}
+			}
+			var b = new B();
+			b.fn();
+			b.fn2();
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

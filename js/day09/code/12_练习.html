@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			img {
+				width: 100px;
+				height: 80px;
+			}
+		</style>
+		<script>
+			onload = function(){
+				
+				var oTab = document.getElementsByTagName("table")[0];
+				var aImg = oTab.getElementsByTagName("img"); 
+				//console.log(aImg.length); //3
+				var oShowImg = document.getElementById("showImg");
+				
+				for (var i=0; i<aImg.length; i++){
+					aImg[i].onclick = function(){
+						oShowImg.src = this.src;
+					}
+				}
+				
+				
+				oShowImg.onclick = function(){
+					console.log(11);
+				}
+				oShowImg.onclick();
+			}
+			
+			//this是属于函数中的一个对象
+			//this指的是函数所依附的对象： 哪个对象调用了当前函数，那么this就等于该对象 
+			var obj = {a:"n"};
+			obj.fn = function(){
+				//this = obj
+				console.log(this.a); //n
+			}
+			obj.fn(); //obj调用了函数fn
+			
+			
+			//事件中的this 就是触发事件的元素节点对象
+			
+			
+			//普通函数中的this是window对象
+			function fn1(){
+				console.log("fn1: " + this); //[object Window], window对象
+			}
+			fn1();
+			
+			
+			//定时器中的this是window对象
+			setInterval(function(){
+				console.log(this); //[object Window]
+			}, 10000);
+			setTimeout(function(){
+				console.log(this); //[object Window]
+			}, 1000);
+			
+			
+			//构造函数中的this
+			
+			
+		</script>
+	</head>
+	<body>
+		<table border="1">
+			<tr>
+				<td><img src="images/1.jpg"/></td>
+				<td><img src="images/2.jpg"/></td>
+				<td><img src="images/3.jpg"/></td>
+			</tr>
+		</table>
+		<img id="showImg" src="images/1.jpg"/>
+	</body>
+</html>

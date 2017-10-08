@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				var provinces = [
+					{
+						name:"北京",
+						citys: ["朝阳区","海淀区","昌平区"]
+					},
+					{
+						name:"深圳",
+						citys: ["南山区","罗湖区","宝安区", "福田区"]
+					}
+				];
+				
+				var oPro = document.getElementById("province");
+				var oCity = document.getElementById("city");
+				
+				//先添加省份的选项
+				for (var i=0; i<provinces.length; i++){
+					var obj = provinces[i];
+					
+					//创建省份的option节点
+					var op = document.createElement("option");
+					op.innerHTML = obj.name;
+					oPro.appendChild(op);
+				}
+				
+				
+				//选择了省份后触发事件
+				oPro.onchange = function(){
+					//console.log(oPro.value);
+					//代码
+					
+					console.log(oPro.value + " " + oCity.value);
+				}
+				
+				//选择了城市后触发事件
+				oCity.onchange = function(){
+					console.log(oPro.value + " " + oCity.value);
+				}
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		省份: <select id="province">
+			<option>--请选择--</option>
+		</select>
+		城市: <select id="city">
+			<option>--请选择--</option>
+		</select>
+	</body>
+</html>

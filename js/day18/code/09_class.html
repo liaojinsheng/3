@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//ES5： 构造函数（模拟类）
+			//ES6： class
+			
+			//构造函数
+			function Person(name, age){
+				this.name = name;
+				this.age = age;
+				this.show = function(){
+					console.log("show");
+				}
+			}
+			var person = new Person("张三", 33);
+			
+			
+			//class
+			class Person {
+				constructor(name, age){ //构造器
+					this.name = name;
+					this.age = age;
+				}
+				show(){
+					console.log("show");
+				}
+			}
+			var person = new Person("张三", 33);
+			
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

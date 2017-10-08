@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			function fn(){
+				
+				var oInput = document.getElementById("txt");
+				console.log(oInput.value);
+				
+				oInput.value = "";
+			}
+			
+		</script>
+	</head>
+	<body>
+		<input id="txt" type="text" placeholder="请输入电影名"/>
+		<input type="button" value="搜索" onclick="fn();" />
+	</body>
+</html>

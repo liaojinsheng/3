@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//练习: 
+			//   1, 写一个函数判断一个年份是不是闰年
+			function fn1(year){
+				if ((year%4==0 && year%100!=0) || year%400==0) {
+					return true; //表示是闰年
+				}
+				return false; //不是闰年
+			}
+			console.log( fn1(2016) );
+			
+			
+			//   2, 写一个函数判断一个数是不是素数 (又称质数,除了1和本身以外不再有其他数整除)
+			function fn2(n){
+				for (var i=2; i<n; i++){
+					if (n%i == 0) {
+						return false;
+					}
+				}
+				return true;
+			}
+			console.log( fn2(37) ); //true
+			
+			
+			//   3, 年月日分别为自定义函数的参数，判断某一个日期是否为合法的日期;
+			//	    如: 2016年12月33日不是合法的日期
+			//        2017, 2, 29 不合法
+			//	      2016年11月13日是合法的日期
+			function fn3(year, month, day) {
+				
+				if (year < 0) {
+					return false;
+				}
+				if (month<1 || month>12) {
+					return false;
+				}
+				
+				//day
+				var dayMax = 0;
+				if (month == 2){
+					if ( fn1(year) ){
+						dayMax = 29;
+					}
+					else {
+						dayMax = 28;
+					}
+				}
+				else if (month==4 || month==6 || month==9 || month==11){
+					dayMax = 30;
+				}
+				else {
+					dayMax = 31;
+				}
+				
+				if (day<0 || day>dayMax){
+					return false;
+				}
+				return true;
+			}
+			console.log( fn3(2017,2,28) );
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

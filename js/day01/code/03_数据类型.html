@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//数据类型
+			/*
+			 JS数据类型一般可以分为: 
+			      Boolean: 布尔类型
+			      Number：数字（整数int，浮点数float）
+			      String：字符串
+			      Array：数组 
+			      Object：对象
+			特殊数据类型 Null、Undefined
+			 */
+			
+			//typeof: 检测变量的数据类型
+			
+			//Boolean ： 布尔类型
+			var a = true;
+			console.log(a);  //true
+			console.log(typeof a);  //boolean:类型的值
+			
+			//Number
+			var b = 18;
+			console.log(b); //18
+			console.log(typeof b); //number, 数字类型
+			
+			//String
+			var c =  "张三";
+			console.log(c);  //张三
+			console.log(typeof c); //string, 字符串类型
+			
+			//Array
+			var d = ["张三", "李四"];
+			console.log(d); // [张三,李四]
+			console.log(typeof d); //object, 表示类型是对象
+			
+			//Object
+			var e = {name:"张三", age:33, sex: "人妖"};
+			console.log(e); //[object Object]
+			console.log(typeof e);  //object, 表示类型是对象
+			
+			//Null: 空对象
+			var f = null; 
+			console.log(f); //null
+			console.log(typeof f); //object
+			
+			//Undefined：定义了但没有赋值
+			var g;
+			console.log(g); //undefined
+			console.log(typeof g); //undefined
+			
+			//Function
+			function fn(){}
+			console.log(fn); //function fn(){} 
+			console.log(typeof fn); //function, 表示函数类型 
+			
+			
+			//四则运算： +, - , * , /, %(取余数)
+			var a = 10;
+			var b = 5;
+			console.log(a + b); //15
+			console.log(a - b); //5
+			console.log(a * b); //50
+			console.log(a / b); //2
+			console.log(a % b); //0
+			
+			var c = 0.05; //5%
+			console.log(c);
+			
+			
+			//第二阶段 第四周周五考试
+			//第8周周五考试，交项目
+			
+			
+			
+			//Null和Undefined
+			var a1; //undefined
+			var b1 = null;
+			console.log( a1 == b1 ); //true, 值相等
+			console.log( typeof a1 == typeof b1 ); //false, 数据类型不相等
+			console.log( a1 === b1 ); //false, 全等（恒等），值和类型都要相等
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

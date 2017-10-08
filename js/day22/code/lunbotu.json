@@ -1,0 +1,26 @@
+[
+	{
+		"img": "images/b1.jpg",
+		"bg": "red"
+	},
+	{
+		"img": "images/b2.jpg",
+		"bg": "green"
+	},
+	{
+		"img": "images/b3.jpg",
+		"bg": "yellow"
+	},
+	{
+		"img": "images/b4.jpg",
+		"bg": "blue"
+	},
+	{
+		"img": "images/b1.jpg",
+		"bg": "red"
+	},
+	{
+		"img": "images/b2.jpg",
+		"bg": "green"
+	}
+]

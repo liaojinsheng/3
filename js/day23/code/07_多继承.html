@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//多继承
+			function A(name){
+				this.name = name;
+			}
+			
+			function B(age){
+				this.age = age;
+			}
+			
+			function C(name, age, sex){
+				A.call(this, name); //继承A的name属性
+				B.call(this, age); //继承B的age属性
+				
+				this.sex = sex;
+			}
+			
+			var c = new C("李四", 44, "人妖");
+			console.log(c.name);
+			console.log(c.age);
+			console.log(c.sex);
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

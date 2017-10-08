@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			onload = function(){
+				
+				
+				//Ajax: 一种与服务器进行数据交互的技术
+				//同步：按照步骤顺序执行
+				//异步：同时可以执行多个任务
+				
+				//Ajax的核心： XMLHttpRequest
+				
+				//创建xhr对象
+				//var xhr = new XMLHttpRequest();  //支持IE7+, 非IE
+				//console.log(xhr); //[object XMLHttpRequest]
+				
+				//var xhr = new ActiveXObject("Microsoft.XMLHTTP"); //支持IE6
+				
+				
+				//创建xhr对象
+				function createXHR(){
+					if (window.XMLHttpRequest) {
+						return new XMLHttpRequest(); //支持IE7+，非IE
+					}
+					return new ActiveXObject("Microsoft.XMLHTTP"); //支持IE6
+				}
+				
+				
+				//同步
+				//请求数据分4步
+				//1,创建xhr对象
+				var xhr = createXHR();
+				
+				//2,xhr.open()
+				//准备工作
+				//第一个参数: 请求方式（GET， POST，  PUT, HEAD, DELETE...）
+				//第二个参数：接口（url）
+				//第三个参数：是否异步（false表示同步）
+				xhr.open("GET", "person.json", false);
+				
+				//3,xhr.send()
+				//发送
+				xhr.send(null);
+				
+				//4,接收数据
+				if (xhr.status == 200) {
+					console.log(xhr.responseText); //服务器响应的数据
+					console.log(typeof xhr.responseText); //string
+					
+					//json解析
+					var responseArr = JSON.parse(xhr.responseText);
+					console.log(responseArr[0].name); //张三
+					
+				} 
+				
+				//console.log(xhr.responseText);
+				//console.log(xhr.status); //状态码
+				//console.log(xhr.statusText); //状态码说明
+				 
+				//200: 成功
+				//40X： 客户端错误
+				//50X： 服务器错误
+				
+				
+				
+				//异步
+				//1, 创建xhr对象
+				var xhr = createXHR();
+				
+				//2, xhr.open()
+				//true:表示异步
+				xhr.open("get", "person.json", true);
+				
+				//3, xhr.send()
+				xhr.send(null);
+				
+				//xhr.abort(); //取消异步请求
+				
+				//4, 接收数据
+				xhr.onreadystatechange = function(){
+					//console.log(xhr.readyState);
+					//xhr.readyState==4: 服务器处理了数据
+					//xhr.status==200: 处理的结果是成功的
+					if (xhr.readyState == 4 && xhr.status == 200) {
+						console.log(xhr.responseText);
+						console.log("我会被后调用");
+						
+						
+					}
+				}
+				
+				console.log("我会被先调用");
+				//console.log(xhr.responseText); //获取不到数据
+				
+				
+				
+				
+				
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

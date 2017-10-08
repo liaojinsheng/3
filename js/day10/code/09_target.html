@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				//target: 所点击的目标元素
+				
+				document.onclick = function(e){
+					e = e || event;
+					console.log(e.target); //
+					console.log(this); //document
+				}
+				
+				document.documentElement.onclick = function(e){
+					e = e || event;
+					console.log(e.target); //
+					console.log(this); //html
+				}
+				
+				document.getElementById("box").onclick = function(e){
+					e = e || event;
+					console.log(e.target); 
+					console.log(this); //div	
+				}
+				document.getElementById("btn").onclick = function(e){
+					e = e || event;
+					console.log(e.target); 
+					console.log(this); //input		
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box" style="width: 200px; height: 200px; background: green;">
+			<input id="btn" type="button" value="按钮" />
+		</div>
+	</body>
+</html>

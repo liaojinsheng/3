@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {margin: 0; padding: 0; border: none;}
+			ul, li {
+				list-style: none;
+			}
+			#list {
+				width: 400px;
+				height: 30px;
+				margin: 100px auto;
+				position: relative;
+			}
+			#list li {
+				width: 98px;
+				height: 28px;
+				border: 1px solid #ccc;
+				float: left;
+				font-size: 14px;
+				text-align: center;
+				line-height: 28px;
+				cursor: pointer;
+			}
+			#list li.bg {
+				background: red;
+				width: 100px;
+				height: 3px;
+				position: absolute;
+				left: 0;
+				top: 26px;
+			}
+		</style>
+		
+		<script src="move.js"></script>
+		<script>
+			onload = function(){
+				
+				var aLi = document.getElementsByTagName("li");
+				var oBg = document.getElementsByClassName("bg")[0];
+				
+				for (var i=0; i<aLi.length-1; i++){
+					aLi[i].onmouseenter = function(){
+						//animate(oBg, {left:this.offsetLeft});
+						startMove(oBg, "left", this.offsetLeft);
+					}
+				}
+				
+				//弹性运动
+				function startMove(obj, attr, iTarget){
+					
+					var speed = 0;
+					clearInterval(obj.timer);
+					obj.timer = setInterval(function(){
+						
+						//1, current
+						var current = parseInt(getStyleAttr(obj, attr));
+						
+						//2, speed
+						speed += (iTarget-current)/8;
+						
+						speed *= 0.8;
+						//从最左端往右： 
+						//   速度方向向右： 正数
+						//   速度大小:0->速度最大->0
+						// 加速度大小:先变小， 然后变大
+						
+						//从最右端往左：
+						//   速度方向向左： 负数
+						//   速度大小： 0->速度最大->0
+						//加速度大小： 先变小， 然后变大
+						
+						
+						//3, 判断临界值
+						if ( Math.abs(iTarget-current)<1 && Math.abs(speed)<1){
+							console.log("停止移动")
+							obj.style[attr] = iTarget + "px";
+							clearInterval(obj.timer); //关闭定时器
+							return;
+						}
+						
+						
+						//4，运动
+						obj.style[attr] = current + speed + "px"
+						
+					}, 50);
+					
+					
+				}
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<li>首页</li>
+			<li>关于我们</li>
+			<li>产品</li>
+			<li>联系我们</li>
+			<li class="bg"></li>
+		</ul>
+	</body>
+</html>

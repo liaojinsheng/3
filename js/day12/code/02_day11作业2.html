@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				var oImg = document.getElementsByTagName("img")[0];
+				
+				var lastIndex = 0;
+				document.onmousedown = function(e){
+					e = e || event;
+					e.preventDefault();
+					
+					var startX = e.pageX; //鼠标点击的位置
+					
+					var index;
+					document.onmousemove = function(e){
+						e = e || event;
+						var disX = startX - e.pageX;
+						index = (parseInt(disX/10) + 77*10 + lastIndex)%77;
+						//console.log(index);
+						oImg.src = "images/images3/"+ index +".jpg";
+						
+					}
+					document.onmouseup = function(){
+						document.onmousemove = null;
+						document.onmouseup = null;
+						
+						lastIndex = index;
+					}
+					
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<img src="images/images3/0.jpg" />
+	</body>
+</html>

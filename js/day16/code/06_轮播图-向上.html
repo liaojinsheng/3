@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {margin: 0; padding: 0; border: none;}
+			ul, li {list-style: none;}
+			#box {
+				width: 200px;
+				height: 100px;
+				margin: 100px auto;
+				border: 10px solid orange;
+				position: relative;
+				overflow: hidden;
+			}
+			#list {
+				width: 200px;
+				height: 400px;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			#list li {
+				width: 200px;
+				height: 100px;
+				text-align: center;
+				font-size: 50px;
+				line-height: 100px;
+			}
+			
+		</style>
+		<script src="move.js"></script>
+		<script>
+			onload = function(){
+				
+				var oBox = document.getElementById("box");
+				var oList = document.getElementById("list");
+				
+				var i = 0; //即将显示的li下标
+				setInterval(function(){
+					i++;
+					move();
+				}, 3000);
+				
+				//移动到第i个li
+				function move(){
+					if (i >= 4){
+						i = 0;
+					}
+					animate(oList, {top:-100*i});
+				}
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<ul id="list">
+				<li style="background: red;">1</li>
+				<li style="background: green;">2</li>
+				<li style="background: blue;">3</li>
+				<li style="background: gray;">4</li>
+			</ul>
+		</div>
+	</body>
+</html>

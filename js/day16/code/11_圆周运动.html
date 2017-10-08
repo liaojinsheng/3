@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				var oBox = document.getElementById("box");
+				
+				var r = 100;
+				var d = 0.5; //接近30°
+				//180° = π
+				//  x  = 0.5
+				
+				setInterval(function(){
+					
+					//sinx = y/r
+					//cosx = x/r
+					
+					oBox.style.left = Math.cos(d) * r + 195 + "px";
+					oBox.style.top = Math.sin(d) * r + 195 + "px";
+					
+					d += 0.05;
+					
+				}, 30);
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div style="width: 200px;height: 200px; border: 1px solid green; background: white; border-radius: 50%; position: absolute; left: 100px; top: 100px;"></div>
+		<div id="box" style="width: 10px; height: 10px; border-radius: 50%; background: black; position: absolute; left:95px; top: 200px;"></div>
+	</body>
+</html>

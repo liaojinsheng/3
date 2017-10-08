@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//练习: 
+			//1,  将下面的字符串str的敏感字符*用空字符串””替换; (要正确表示*得转义成:\*) 
+			//2,  将str的空格用空字符串””替换;
+			//     var str = "H e  l  ** l    o    Wo r         L d  !";
+			var str = "H e  l  ** l    o    Wo r         L d  !";			
+			var str2 = str.replace(/\*/g, "");
+			console.log(str2); //"H e  l   l    o    Wo r         L d  !"
+			
+			var str3 = str2.replace(/ /g, "");
+			console.log(str3); //"HelloWorLd!"
+			 
+			
+			//3,  随机产生一个四位数的验证码（纯数字(0-9)生成一个字符串）
+			//     使用随机值(0~1): Math.random()
+			//  5463  
+			var str = "";
+			for (var i=0; i<4; i++){
+				str += parseInt(Math.random()*10);
+			}
+			console.log(str); 
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//获取box中的三个img
+			//document.getElementById();
+			//box.getElementsByTagName();
+			
+			onload = function(){
+				
+				var oBox = document.getElementById("box");
+				var aImg = oBox.getElementsByTagName("img");
+				//console.log(aImg.length); //3
+				
+				
+//				aImg[0].onclick = function(){
+//					//this是当前点击的节点对象aImg[0]
+//					console.log(this); //[object HTMLImageElement]
+//					console.log(this.src); //images/4.jpg
+//				}
+
+				var obj = {};
+				obj.age = 2;
+				console.log(obj.age); //2
+				
+				//
+				aImg[0].aa = 20;
+				console.log(aImg[0].aa); //20
+				
+				
+				//
+				/*
+				aImg[0].index1 = 0;
+				aImg[0].onclick = function(){
+					//this = aImg[0]
+					console.log(this.index1); //0
+				}
+				aImg[1].index1 = 1;
+				aImg[1].onclick = function(){
+					//this = aImg[1]
+					console.log(this.index1);
+				}
+				aImg[2].index1 = 2;
+				aImg[2].onclick = function(){
+					//this = aImg[2]
+					console.log(this.index1);
+				}
+				*/
+				
+				for (var i=0; i<aImg.length; i++){
+					aImg[i].index = i;
+					aImg[i].onclick = function(){
+						
+						//console.log(this.src);
+						//console.log(i); //3, 不可以使用i，
+						// 因为此时的i已经变成了数组aImg的长度， for循环已经执行完了
+						
+						console.log(this.index);
+						
+					}
+				}
+				console.log("我是在for循环后打印的i :" + i);
+			}
+			
+		</script>
+	</head> 
+	<body>
+		<div id="box">
+		    <img src="images/4.jpg">
+		    <img src="images/2.jpg">
+		    <img src="images/3.jpg">
+		</div>
+		<img id="showImg" src="images/1.jpg" />
+
+
+	</body>
+</html>

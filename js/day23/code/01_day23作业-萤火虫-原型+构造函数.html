@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			html,body {
+				width: 100%;
+				height: 100%;
+				background: url(images/bg.jpg) center;
+				background-size: cover;
+			}
+			img {
+				width: 18px;
+				height: 18px;
+				position: absolute;
+			}
+		</style>
+		<script src="move.js"></script>
+		<script>
+			onload = function(){
+				
+				//构造函数
+				function Fireworm(){
+					
+					//属性
+					//ele
+					this.ele = document.createElement("img");
+				}
+				//原型
+				//初始化
+				Fireworm.prototype.init = function(){
+					this.ele.src = "images/1.jpg";
+					this.ele.style.left = this.randomPoint().left + "px"; //位置
+					this.ele.style.top = this.randomPoint().top + "px"; 
+					document.body.appendChild(this.ele); 
+					return this;
+				}
+
+				//方法:fly
+				Fireworm.prototype.fly = function(){
+					var that = this;
+					animate(this.ele, this.randomPoint(), function(){
+						that.fly();
+					});
+				}
+				
+				//随机位置
+				Fireworm.prototype.randomPoint = function(){
+					var x = parseInt(Math.random()*document.documentElement.clientWidth);
+					var y = parseInt(Math.random()*document.documentElement.clientHeight);
+					return {left:x, top:y};
+				}
+				
+				var count = 20;
+				var timer = setInterval(function(){
+					if (count-- > 0) {
+						var fireworm = new Fireworm();
+						fireworm.init().fly(); 
+					}
+					else  {
+						clearInterval(timer);
+					}
+				}, 1000);
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

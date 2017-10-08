@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//1,  计算2017年11月11日 11时 11分 11秒 距离当前日期的时间差, 并以指定的格式
+     		//     (天/时/分/秒)的形式显示.
+			var date1 = new Date();
+			var date2 = new Date("2017-11-11 11:11:11");
+			//var date2 = new Date(2017,10,11,11,11,11);
+			var timeOffset = Math.abs(date1 - date2);
+			var day = parseInt(timeOffset/(1000*3600*24)); //天
+			var hour = parseInt(timeOffset/(1000*3600)) % 24; //时
+			var min = parseInt(timeOffset/(1000*60)) % 60; //分
+			var sec = parseInt(timeOffset/1000) % 60 ; //秒
+			console.log(day + "/" + hour + "/"+ min + "/"+ sec); //171/3/0/35
+			
+			
+			window.onload = function(){
+				
+				//2, 实现秒表功能, 包含时,分,秒,毫秒，点击按钮1开始计时，点击按钮2结束计时
+
+				var aSpan = document.getElementsByTagName("span"); //4个span
+				var aInput = document.getElementsByTagName("input"); //2个按钮
+				
+				//点击开始计时
+				var i = 0;
+				var timer;
+				aInput[0].onclick = function(){
+					//i = 0;
+					
+					//先关闭之前的定时器
+					clearInterval(timer);
+					
+					//开启新的定时器
+					timer = setInterval(function(){
+						i += 100;
+						
+						var hour = parseInt(i/(1000*60*60)); //时 
+						var min = parseInt( i/(1000*60) ) % 60; //分
+						var sec = parseInt(i/1000) % 60; //秒
+						var minSec = parseInt((i%1000)/100); //毫秒
+						
+						aSpan[0].innerHTML = hour<10 ? "0"+hour : hour;
+						aSpan[1].innerHTML = min<10 ? "0"+min : min;
+						aSpan[2].innerHTML = sec<10 ? "0"+sec : sec;
+						aSpan[3].innerHTML = minSec;
+						
+					}, 100);
+					
+				}
+				
+				//暂停
+				aInput[1].onclick = function(){
+					clearInterval(timer);
+				}
+				
+				
+				//3, 使用定时器实现进度条, 
+				//   提示:  获取标签对象, 并改变style属性的width值
+				//	var proBar = document.getElementById("progressBar");
+				//	proBar.style.width = barW + "px"; 
+				var oDiv = document.getElementsByTagName("div")[1];
+				var oProgress = document.getElementById("progress"); //进度值
+				
+				//console.log(oDiv.length);
+				var j = 0;
+				var timer = setInterval(function(){
+					j += 3;
+					oDiv.style.width = j + "px";
+					oProgress.innerHTML = parseInt(j/200 * 100) + "%";
+					
+					if (j >= 200){
+						oDiv.style.width = 200 + "px";
+						oProgress.innerHTML =  "100%";
+						clearInterval(timer);
+					}
+					
+				}, 30);
+				
+				
+				
+				//4, 广告窗口自动关闭, 倒计时5秒后关闭窗口 (分别使用定时器和延时器) 
+				var oWin = document.getElementById("win");
+				var oSpan = oWin.getElementsByTagName("span")[0];
+				
+				//使用定时器
+				/*
+				var timer2 = setInterval(function(){
+					oSpan.innerHTML = --oSpan.innerHTML;
+					if (oSpan.innerHTML <= 0) {
+						clearInterval(timer2);
+						oWin.style.display = "none"; //隐藏
+					}
+				}, 1000);
+				*/
+				
+				//延时器
+				var timer3 = setTimeout(fn, 1000);
+				function fn(){
+					oSpan.innerHTML = --oSpan.innerHTML;
+					if (oSpan.innerHTML <= 0) {
+						oWin.style.display = "none"; //隐藏
+					}
+					else {
+						setTimeout(fn, 1000);
+					}
+				}
+			}
+
+		</script>
+	</head>
+	<body>
+		<span>00</span>时<span>00</span>分<span>00</span>秒 <span>0</span>毫秒
+		<input type="button" value="开始计时" />
+		<input type="button" value="暂停" />
+		
+		
+		<br><br>
+		<div id="box" style="width: 200px; height: 30px;border: 1px dashed black; ">
+			<div style="width: 0px; height: 30px; background: red;"></div>
+		</div>
+		<p id="progress">0%</p>
+		
+		<br><br>
+		<br><br>
+		<div id="win" style="width: 300px; height: 200px; background: pink;">
+			我是一条广告， 谢谢 <span>5</span> 秒后自动关闭
+		</div>
+		
+		
+	</body>
+</html>

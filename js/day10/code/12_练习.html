@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			onload = function(){
+				
+				/*  练习: 
+					有一个红色的div块
+						1, 如果我按下ctrl+c变换颜色
+						2, 如果我按下ctrl + shift + r 重置颜色,恢复初始颜色
+						3, 如果我按下向上箭头,向上移动, 同理还可以向下,左,右移动
+						4, 如果我按下ctrl + 上下左右,走的步数变大
+				*/
+				
+				var oBox = document.getElementById("box");
+				
+				window.onkeydown = function(e) {
+					e = e || event;
+					
+					if (e.ctrlKey && e.keyCode==67){
+						oBox.style.background = "rgb(" + parseInt(Math.random()*256) + "," + parseInt(Math.random()*256) + "," + parseInt(Math.random()*256) + ")"; 
+					}
+					
+					else if (e.ctrlKey && e.shiftKey && e.keyCode==82) {
+						oBox.style.background = "green";
+					}
+					
+					
+					var change = 10;
+					if (e.ctrlKey) {
+						if (e.keyCode == 37) { //左
+							oBox.style.left = parseInt(oBox.style.left) - change*5 + "px";
+						}
+						else if (e.keyCode == 38) { //上
+							oBox.style.top = parseInt(oBox.style.top) - change*5 + "px";
+						}
+						else if (e.keyCode == 39) { //右
+							oBox.style.left = parseInt(oBox.style.left) + change*5 + "px";
+						}
+						else if (e.keyCode == 40) { //下
+							oBox.style.top = parseInt(oBox.style.top) + change*5 + "px";
+						}
+					}
+					else {
+						if (e.keyCode == 37) { //左
+							oBox.style.left = parseInt(oBox.style.left) - change + "px";
+						}
+						else if (e.keyCode == 38) { //上
+							oBox.style.top = parseInt(oBox.style.top) - change + "px";
+						}
+						else if (e.keyCode == 39) { //右
+							oBox.style.left = parseInt(oBox.style.left) + change + "px";
+						}
+						else if (e.keyCode == 40) { //下
+							oBox.style.top = parseInt(oBox.style.top) + change + "px";
+						}
+					}
+					
+				}
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="box" style="width: 100px; height: 100px; background: green; position: absolute; left: 100px; top: 100px;"></div>
+	</body>
+</html>

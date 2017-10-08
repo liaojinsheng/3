@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script src="move.js"></script>
+		<script> 
+			onload = function(){
+				
+				var img = document.getElementsByTagName("img")[0];
+				
+				//拖拽
+				document.onmousedown = function(e) {
+					e = e || event;
+					
+					var arr = [];
+					document.onmousemove = function(e) {
+						e = e || event;
+						
+						//(e.pageX, e.pageY)
+						arr.push({x:e.pageX, y:e.pageY});
+						
+					}
+					
+					document.onmouseup = function(){
+						document.onmousemove = null;
+						document.onmouseup = null;
+						//console.log(arr.length);
+						
+						var i = 0; //数组arr的下标
+						img.src = "images/images2/2.gif";
+						var timer = setInterval(function(){
+							
+							var point = arr[i]; //每个点
+							img.style.left = point.x + 'px';  
+							img.style.top = point.y + 'px'; 
+							
+							
+							if (++i > arr.length-1) {
+								clearInterval(timer);
+								img.src = "images/images2/1.gif";
+							}
+							
+						}, 50);
+						
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<img src="images/images2/1.gif" style="width: 48px; height: 40px; position: absolute; left: 10px; top: 10px;"/>
+	</body>
+</html>

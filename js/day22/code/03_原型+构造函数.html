@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			
+			//只使用原型：
+			//无法初始化属性
+			//原型中共享的属性如果在其中一个对象中更改了， 其他对象也被更改了
+			
+			//构造函数+原型
+			//构造函数中写属性
+			//原型中写方法或共享属性
+			
+			function Person(){
+			}
+			Person.prototype = {
+				constructor: Person,
+				name: "张三",
+				family: ["爸爸","妈妈", "哥哥"],
+				show: function(){}
+			}
+			
+			//小明
+			var xiaoming = new Person();
+			console.log(xiaoming.family);
+			
+			//小红
+			var xiaohong = new Person();
+			console.log(xiaohong.family);
+			
+			xiaoming.family.push("妹妹");
+			console.log(xiaoming.family);
+			console.log(xiaohong.family);
+			
+			
+			
+			
+			//Iphone
+			function Iphone(color, price){
+				this.color = color; 
+				this.price = price;
+			}
+			Iphone.prototype.playKingGlory = function(){
+				console.log("玩王者荣耀");
+			}
+			Iphone.prototype.playMusic = function(){
+				console.log("播放音乐");
+			}
+			
+			//创建实例对象
+			var iphone7 = new Iphone("骚红色", 1000); //1000刀
+			var iphone7_2 = new Iphone("亮黑色", 2000); 
+			
+			console.log(iphone7.color);
+			console.log(iphone7.price); 
+			console.log(iphone7_2.color);
+			console.log(iphone7_2.price);
+			iphone7.playKingGlory();
+			iphone7.playMusic();
+			
+			
+		</script> 
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			
+			//. ： 表示除了换行以外的任意单个字符
+			var reg = /go.gle/;
+			var str = "gopgle";
+			console.log( reg.test(str) ); 
+			
+			//* ：表示前面的字符可以出现任意多次
+			var reg = /goog*le/;
+			var str = "googggle";
+			console.log( reg.test(str) ); 
+			
+			
+			//[] : 表示范围
+			//[a-z] : 表示小写
+			//[A-Z] : 表示大写
+			//[a-zA-Z] : 表示字母
+			//[a-zA-Z0-9_] : 数字字母下划线
+			var reg = /go[a-zA-Z0-9_]*gle/;
+			var str = "goo89jjhgle";
+			console.log( reg.test(str) ); 
+			
+			
+			//* : 表示任意多个（包含0个）
+			//+ ： 表示前面的字符出现至少一次
+			var reg = /goo+gle/;
+			var str = "goooogle";
+			console.log( reg.test(str) ); 
+			
+			// ^ ： 非字符
+			//[0-9] : 表示数字
+			//[^0-9] : 表示非数字
+			var reg = /go[^0-9]gle/;
+			var str = "go8gle";
+			console.log( reg.test(str) ); 
+			
+			
+			//\w : 表示数字字母下划线, 等价于： [0-9a-zA-Z_]
+			var reg = /go\wgle/;
+			var str = "go8gle";
+			console.log( reg.test(str) ); 
+			
+			
+			// \d : 表示数字 ,等价于： [0-9]
+			var reg = /go\dgle/;
+			var str = "go8gle";
+			console.log( reg.test(str) ); 
+			
+			// \D : 表示非数字， 等价于：[^0-9]
+			var reg = /go\Dgle/;
+			var str = "go8gle";
+			console.log( reg.test(str) ); 
+			
+			
+			// {} : 表示次数
+			// {2} ： 表示出现2次
+			// {2,} : 表示至少出现两次
+			// {2,4} : 表示出现2次到4次之间
+			var reg = /go\d{2}gle/;
+			var str = "go87gle";
+			console.log( reg.test(str) ); 
+			
+			var reg = /go\d{2,}gle/;
+			var str = "go8734234gle";
+			console.log( reg.test(str) ); 
+			
+			var reg = /go\d{2,4}gle/;
+			var str = "go8758gle";
+			console.log( reg.test(str) ); 
+			
+			
+			//用户名： 数字字母下划线， 且长度在6-20位
+			var username = "f423_4dfadsfasdgawer";
+			var reg = /^\w{6,20}$/;
+			console.log( reg.test(username) ); 
+			
+			
+			// /^ : 从开始匹配
+			var reg = /^google/;
+			var str = "google888";
+			console.log( reg.test(str) ); 
+			
+			// $/ : 从结尾匹配
+			var reg = /google$/;
+			var str = "888google";
+			console.log( reg.test(str) );
+			
+			
+			//  /^ $/ : 完全匹配
+			var reg = /^goo{2,3}gle$/;
+			var str = "goooogle";
+			console.log( reg.test(str) ); 
+			
+			
+			//用户名： 数字字母下划线，且第一个不为数字， 长度在6-16
+			var username = "dfasdjf455";
+			var reg = /^[a-zA-Z_]\w{5,15}$/;
+			console.log( reg.test(username) ); 
+			
+			// \s : 表示空格
+			var reg = /^go\s+gle$/;
+			var str = "go    gle";
+			console.log( reg.test(str) );
+			
+			// | : 或
+			var reg = /google|baidu|bing/;
+			var str = "goglefasdfidujlkbing";
+			console.log( reg.test(str) );
+			
+			
+			//() : 分组， 可以将括号()中的内容看成一个整体
+			var reg = /(google)+/;
+			var str = "googlegooglegoogle";
+			console.log( reg.test(str) );
+			
+			var reg = /8(.*)8/;
+			var str = "this is 8google8 baab 8ggg8";
+			console.log( str.match(reg) ); //[8google8 baab 8ggg8, google8 baab 8ggg]
+			console.log( RegExp.$1 ); //google8 baab 8ggg
+			//RegExp.$1: 表示第一个括号中的内容
+			//RegExp.$2: 表示第二个括号中的内容
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

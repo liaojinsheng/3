@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			/*
+//			getName();
+			
+			
+			function Foo() {
+				getName = function() {
+					console.log(1);
+				};
+				return this;
+			}
+			Foo.getName = function() {
+				console.log(2);
+			};
+			Foo.prototype.getName = function() {
+				console.log(3);
+			};
+			var getName = function() {
+				console.log(4);
+			};
+			function getName() {
+				console.log(5); 
+			}
+
+			Foo.getName(); //2
+			getName(); //4
+			Foo().getName(); //1
+			getName(); //1
+			new Foo.getName();  //2
+			new Foo().getName(); //3
+			new new Foo().getName(); //3
+			
+			
+			*/
+			
+			
+			 var a = 10;
+		     var func = function() {
+		     	var a;
+		         console.log(a); //undefined
+		         console.log(this.a); //10
+		         console.log(this.b); //undefined
+		         a = 12;
+		         b = 13
+		         console.log(a); //12 
+		         console.log(b); //13
+		     };	 
+		     func();
+			
+			
+			var date = new Date(2016,10,31);  
+			//2016年12月1号
+			document.write(date.getDate() + " ");
+			document.write(date.getMonth());
+			
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//onclick: 点击事件
+			//document.getElementById("txt") ：获取元素节点
+			//oInput.value : 获取/设置 输入框中的内容
+			
+			function fn(){
+				console.log("fn");
+				
+				//获取id=txt的元素节点
+				var oInput = document.getElementById("txt");
+				console.log( oInput.value );
+				console.log( typeof oInput.value ); //string
+				
+				var val = oInput.value - 0;
+				if (val%2 == 0){
+					console.log("输入的是偶数");
+				}
+				else {
+					console.log("输入的是奇数");					
+				}
+				
+				//oInput.value = 44;
+				
+				//document.write() 在文档页面加载完后使用会覆盖页面内容, 尽量少用
+				//document.write("<b>王者荣耀</b>");
+			}
+
+		</script>
+	</head>
+	<body>
+		<input id="txt" type="text" value="11" />
+		<input type="button" value="按钮" onclick='fn()'/>
+	</body>
+</html>

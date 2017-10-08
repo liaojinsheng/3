@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				var oA = document.getElementsByTagName("a")[0];
+				
+				oA.onclick = function(){
+					console.log("aa");
+					var a = confirm("你确定要去问度娘吗？");
+					if (a) {
+						return true;
+					}
+					else {
+						return false;
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<a href="http://www.baidu.com">去问度娘</a>
+	</body>
+</html>

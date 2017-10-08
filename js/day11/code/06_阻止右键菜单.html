@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				
+				
+				//阻止右键菜单
+				document.oncontextmenu = function(){
+					return false;
+				}
+				
+				var oUl = document.getElementById("list");
+				
+				document.onmousedown = function(e){
+					e = e || event;
+					//console.log(e.button);
+					
+					if (e.button == 2) {
+						console.log("点击了右键");
+						
+						oUl.style.left = e.pageX + "px";
+						oUl.style.top = e.pageY + "px";
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="list" style="list-style: none; background: green; width: 80px; position: absolute; left: 10px; top: 10px;">
+			<li>1111</li>
+			<li>2222</li>
+			<li>3333</li>
+		</ul>
+	</body>
+</html>

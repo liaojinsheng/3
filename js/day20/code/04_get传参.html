@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script src="ajax.js"></script>
+		<script>
+			onload = function(){
+				
+				//检测用户名是否可以注册
+				var aInput = document.getElementsByTagName("input");
+				
+				//用户名输入框失去焦点
+				aInput[0].onblur = function(){
+					var xhr = createXHR();
+					xhr.open("get", "http://60.205.181.47/myPHPCode2/checkname.php?regname="+this.value, true);
+					xhr.send(null);
+					xhr.onreadystatechange = function(){
+						console.log(xhr.readyState);
+						if (xhr.readyState==4 && xhr.status==200){
+							//console.log(xhr.responseText);
+							var responseObj = JSON.parse(xhr.responseText);
+							console.log(responseObj.status);
+							console.log(responseObj.msg);
+						}
+					}
+					
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<h2>注册</h2>
+		<input type="text" placeholder="请输入用户名" /> <br />
+		<input type="password" placeholder="请输入密码" /> <br />
+		<input type="button" value="注册" />
+	</body>
+</html>

@@ -1,0 +1,11 @@
+body {
+	background: url(../images/bg2.jpg);
+}
+
+#box {
+	width: 400px;
+	height: 300px;
+	background: orange;
+	border: 2px solid black;
+	margin: 10px auto;
+}

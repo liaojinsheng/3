@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body {background: black; overflow: hidden;}
+			.fire {
+				width: 3px;
+				height: 30px;
+				position: absolute;
+				background: white;
+			}
+			.spark {
+				width: 3px;
+				height: 3px;
+				position: absolute;
+			}
+		</style>
+		<script src="move.js"></script>
+		<script>
+			onload = function(){
+				
+				//点击页面
+				document.onclick = function(e){
+					e = e || event;
+					
+					//创建烟花对象
+					var fire = new Fire(e.pageX, e.pageY);
+					fire.init().launch();
+				}
+				
+				
+				//构造函数
+				//烟花Fire
+				//属性：ele, 方法：launch,boom
+				function Fire(x, y){
+					this.x = x;
+					this.y = y;
+					this.ele = document.createElement("div");
+				}
+				
+				//原型
+				//方法: init
+				Fire.prototype.init = function(){
+					this.ele.className = "fire";
+					this.ele.style.left = this.x + "px";
+					this.ele.style.top = document.documentElement.clientHeight-30 + "px";
+					document.body.appendChild(this.ele);
+					return this;
+				}
+				//方法： launch
+				Fire.prototype.launch = function(){
+					var that = this;
+					animate(this.ele, {top:this.y, height:3}, function(){
+						//移除烟花节点
+						document.body.removeChild(that.ele);
+						
+						//“爆炸”
+						that.boom();
+					});
+				}
+				//方法： boom
+				Fire.prototype.boom = function(){
+					
+					var count = parseInt(Math.random()*30) + 30; //30~59
+					for (var i=0; i<count; i++){
+						//创建星火对象
+						var spark = new Spark(this.x, this.y);
+						spark.init().fallDown();
+					}
+					
+				}
+				
+				//构造函数
+				//星火Spark
+				//属性：ele, 方法：抛物线运动falldown
+				function Spark(x, y){
+					this.x = x;
+					this.y = y;
+					//属性
+					this.ele = document.createElement("div");
+				}
+				Spark.prototype.init = function(){
+					this.ele.className = "spark";
+					this.ele.style.left = this.x + "px"; //位置
+					this.ele.style.top = this.y + "px"; 
+					this.ele.style.backgroundColor = this.randomColor(); //随机颜色
+					document.body.appendChild(this.ele);
+					return this;
+				}
+				
+				//随机颜色
+				Spark.prototype.randomColor = function(){
+					var arr = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"];
+					var str = "#";
+					for (var i=0; i<6; i++){
+						str += arr[ parseInt(Math.random()*16) ];
+					}
+					return str;
+				}
+				
+				//抛物线运动
+				Spark.prototype.fallDown = function(){
+					
+					var xSpeed = parseInt(Math.random()*20) * (Math.random()>0.5 ? 1 : -1);
+					var ySpeed = parseInt(Math.random()*20) * (Math.random()>0.5 ? 1 : -1);
+					
+					var that = this;
+					var timer = setInterval(function(){
+						ySpeed++;
+						
+						that.ele.style.left = that.ele.offsetLeft + xSpeed + "px";
+						that.ele.style.top = that.ele.offsetTop + ySpeed + "px";
+						
+						//如果超出页面范围， 则删除节点，关闭定时器
+						if (that.ele.offsetLeft<0 
+							|| that.ele.offsetLeft>document.documentElement.clientWidth 
+							|| that.ele.offsetTop>document.documentElement.clientHeight ){
+							
+							document.body.removeChild(that.ele); //删除节点
+							clearInterval(timer); //关闭定时器
+						}
+						
+					}, 30);
+					
+				}
+				
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

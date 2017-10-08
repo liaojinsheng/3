@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//匀速运动-向右
+			
+			onload = function(){
+				
+				var oBtn = document.getElementsByTagName("input")[0];
+				var oBox = document.getElementById("box");
+				
+				//按钮点击事件
+				oBtn.onclick = function(){
+					
+					var timer = setInterval(function(){
+						//1,获取当前值
+						var current = oBox.offsetLeft;
+						
+						//2, 速度: v = s/t 单位时间的距离
+						var speed = -10;
+						
+						//3， 判断临界值
+						if (current <= 30){
+							clearInterval(timer);
+							return;
+						}
+						
+						//4，运动
+						oBox.style.left = current + speed + "px";
+						
+					}, 100);
+					
+					
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="开始运动"/>
+		<div id="box" style="width: 100px; height: 100px; background: red; position:absolute; left: 300px; top: 50px;"></div>
+		<div style="width: 1px; height: 200px; background: black; position: absolute; left: 30px; top: 0;"></div>
+	</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//Boolean: 布尔类型
+			//有两个值： true, false
+			var a = true;
+			console.log(a); //true
+			console.log(typeof a); //boolean
+			
+			
+			/*
+			 Boolean 类型的转换规则: (牢记)
+				String: 非空字符串为true, 空字符串为false
+				Number: 非0数值为true, 0或者NaN为false
+				Object: 对象不为null则为true, null为false
+				Undefined : undefined为false
+			 * */
+			//字符串
+			var str = " ";
+			var b = Boolean(str);
+			console.log(b);  //true
+			
+			//数字
+			var a1 = 0;
+			console.log( Boolean(a1) );
+			
+			//对象
+			var a2 = {};
+			console.log( Boolean(a2) );
+			
+			//Undefined
+			var a3;
+			console.log( Boolean(a3) );  //false
+			
+			//数组
+			var a4 = [];
+			console.log( Boolean(a4) ); //true
+			
+			
+			
+			//Number： 数字类型
+			//包括整型和浮点型
+			
+			var age = 23; //整型
+			console.log(age);
+			
+			var age = 23.3;  //浮点型
+			console.log(age); //23.3
+			
+			var age = 23.0;
+			console.log(age);  //23
+			//如果可以转换成整数的则会去掉小数部分
+			//整数占的内存：4个字节
+			//浮点数占的内存： 8个字节
+			
+			//10月24日 ： 程序员节
+			//1字节 = 1byte
+			//1kb = 1024byte
+			//1MB = 1024KB
+			//1GB = 1024MB
+			//1TB = 1024GB
+			//1PB = 1024TB 
+			//1EB = 1024PB
+			//...
+			
+			
+			var age = .8; 
+			console.log(age); //0.8
+			
+			
+			//科学表示法
+			var b1 = 3.14e5;
+			console.log(b1); //314000
+			
+			var b2 = 3.14e-5;
+			console.log(b2); //0.0000314
+			
+			
+			//正无穷大
+			var b3 = -1/0;
+			console.log(b3); //-Infinity
+			
+			
+			//NaN : Not a Number， 表示进行了非法的数值运算
+			var c1 = 0/0; 
+			console.log(c1); //NaN, 说明0/0的运算是不合法的
+			console.log( Boolean(c1) ); //false
+			
+			var c2 = 1/0 * 0; 
+			console.log(c2); //NaN
+			
+			
+			//isNaN() : 是否为不合法的数值，  判断是否可以转换成正常的数值
+			console.log( isNaN(NaN) ); //true
+			console.log( isNaN(23) ); //false
+			console.log( isNaN("23") );  //false
+			console.log( isNaN("hello") ); //true
+			console.log( isNaN(true) );  //false
+			console.log( isNaN(false) );  //false
+			
+			
+			
+			//parseInt() : 转换成整型
+			var d1 = 23.9;
+			console.log( parseInt(d1) ); //23， 取整数部分
+			
+			var d2 = "24.5px25";
+			console.log( parseInt(d2) ); //24
+			
+			//parseFloat() : 转换成浮点型
+			var d3 = "45.6px";
+			console.log( parseFloat(d3) ); //45.6
+			
+			
+			//Math.round(): 四舍五入
+			console.log( Math.round(34.46) ); //34
+			console.log( Math.random() ); //随机数  0~1， 包括0，不包括1
+			console.log( Math.ceil(3.01) ); //4， 向上取整
+			console.log( Math.floor(-3.6) ); //-4，向下取整
+			//Math.sqrt()
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

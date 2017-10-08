@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//一元运算符: 只有一个操作数
+			//++, --
+			
+			//++ : 自加1
+			//-- : 自减1
+			var a = 10;
+			a = a + 1;
+			console.log(a); //11
+			
+			var a1 = 10;
+			a1++;
+			console.log(a1); //11
+			
+			var a2 = 10;
+			++a2;
+			console.log(a2); //11
+			
+			//++a : 会先自加1， 再做其他运算
+			//a++ : 会使用a的值， 然后再自加1
+			var a3 = 20;
+			var a4 = 20;
+			console.log(a3++); //20
+			console.log(++a4); //21
+			
+			console.log(a3); //21
+			console.log(a4); //21
+			
+			var a5 = 30;
+			console.log(a5++);  //30
+			console.log(++a5);  //32
+			console.log(a5++);  //32
+			console.log(a5);  //33
+			
+			var a6 = 12;
+			var res = a6++ + ++a6 + a6++;
+			//         12  +  14  +  14
+			console.log(res); //40
+			console.log(a6); //15
+			
+			// --  自减1
+			var b = 10;
+			b--;  //b = b-1
+			console.log(b); //9
+			
+			var b = 20;
+			--b;
+			console.log(b); //19
+			
+			
+			var c = 20;
+			var res = c++ + ++c*2 + c-- + c--;
+			//         20 +  44  + 22 + 21
+			console.log(res); //107
+			console.log(c); //20
+			
+			//++，--运算时会强制转换成number类型
+			var d = "89";
+			d--;
+			console.log(d); //88
+			
+			var d = "hello";
+			d--;
+			console.log(d); //NaN
+			
+			var d = true; 
+			d++;
+			console.log(d); //2
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

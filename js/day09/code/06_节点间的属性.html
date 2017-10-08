@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				//节点间的属性
+				//tagName
+				//id
+				//className
+				//title
+				//style
+				//href
+				//innerHTML,  outerHTML, innerText
+				//value : 输入框
+				//src : 图片路径
+				//nodeName, nodeType, nodeValue
+				//childNodes
+				//children
+				//parentNode
+				//firstChild
+				//lastChild
+				//previousSibling : 同级间的上一个节点
+				//nextSibling : 同级间的下一个节点
+				
+				//firstChild ： 第一个子节点
+				var oBox = document.getElementById("box");
+				console.log(oBox.firstChild); //[object Text]
+				console.log(oBox.firstChild.nodeType); //3, 文本节点
+				console.log(oBox.firstChild.nodeValue); //你好
+				console.log( oBox.childNodes[0] ); //等价于firstChild
+				
+				//lastChild
+				console.log( oBox.lastChild ); //[object Text]
+				console.log( oBox.lastChild.nodeValue ); //拜拜
+				console.log( oBox.childNodes[oBox.childNodes.length-1] ); //等价于lastChild
+				
+				//previousSibling : 同级间的上一个节点
+				//nextSibling : 同级间的下一个节点
+				console.log( oBox.lastChild.previousSibling.innerHTML ); //div3
+				console.log( oBox.firstChild.nextSibling.innerHTML ); //div1
+				
+				console.log( oBox.firstChild.nextSibling.nextSibling.nodeValue ); //[object Text]
+				
+				//parentNode
+				var obox1 = document.getElementById("box1");
+				var obox2 = document.getElementById("box2");
+				var obox3 = document.getElementById("box3");
+				console.log( obox1.parentNode == oBox ); //true
+				console.log( obox2.parentNode == oBox ); //true
+				console.log( obox3.parentNode == oBox ); //true
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">你好
+			<div id="box1">div1</div>
+			<div id="box2">div2</div>
+			<div id="box3">div3</div>拜拜
+		</div>
+	</body>
+</html>

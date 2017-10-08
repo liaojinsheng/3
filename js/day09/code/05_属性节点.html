@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				//属性节点
+				//attributes : 获取元素节点的属性节点
+				var oBox = document.getElementById("box");
+				console.log( oBox.attributes ); //[object NamedNodeMap]
+				console.log( oBox.attributes.length ); //3
+				console.log( oBox.attributes[0].nodeName ); //id
+				console.log( oBox.attributes[0].nodeType ); //2
+				console.log( oBox.attributes[0].nodeValue ); //box
+				
+				console.log( oBox.attributes["id"] ); //[object Attr], 属性节点
+				console.log( oBox.attributes["id"].nodeValue ); //box
+				console.log( oBox.attributes.getNamedItem("id").nodeValue ); //box
+				console.log( oBox.id ); //box
+				
+				
+				//数据操作
+				// 增， 删， 改， 查
+				
+				//属性操作
+				//getAttribute() : 获取属性值
+				//setAttribute(,) : 新增或修改属性
+				//removeAttribute() : 删除属性
+				
+				//getAttribute()
+				var oBox1 = document.getElementById("box1");
+				console.log( oBox1.getAttribute("id") ); //box1
+				console.log( oBox1.getAttribute("class") ); //pox
+				console.log( oBox1.className );   //pox, class是保留字
+				console.log( oBox1.aa ); //undefined, 点语法
+				console.log( oBox1.getAttribute("aa") ); //bb
+				
+				//setAttribute(,)
+				//新增属性
+				oBox1.setAttribute("cc","dd"); //cc=dd
+				
+				//修改属性
+				oBox1.setAttribute("class", "pox1");
+				
+				
+				//remveAttribute()
+				oBox1.removeAttribute("class");
+				
+				
+				//
+				//oBox1.style.color = "red"
+				oBox1.setAttribute("style", "color:blue;font-size:30px"); //style="color:blue;font-size:30px"
+				
+				
+				//属性节点中的属性
+				//css样式中的属性
+				//对象中的属性
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box" class="pox" title="标题" style="width: 100px;">div</div>
+		<div id="box1" class="pox" title="标题" aa="bb">div</div>
+	</body>
+</html>

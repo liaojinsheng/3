@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			
+			//1, 课堂代码写一遍,  掌握函数的定义,调用, 能够灵活使用函数
+			//2, 写个函数计算所有传入参数相乘的结果(参数数量不定)
+			function fn1(){
+				var s = 1;
+				for (var i=0; i<arguments.length; i++){
+					s *= arguments[i];
+				}
+				return s;
+			}
+			console.log( fn1(1,2,3,4) ); //24
+			
+			
+			//3, 写个函数实现加减乘除运算(两个操作数, 一个操作符)
+			function fn2(a, p, b){
+				if (p == "+") {
+					return a+b;
+				}
+				else if (p == "-"){
+					return a-b;
+				}
+				else if (p == "*"){
+					return a*b;
+				}
+				else if (p == "/"){
+					return a/b;
+				}
+				return "";
+			}
+			console.log( fn2(2, "*", 4) ); 
+			
+			
+			//4, 写个函数实现n的阶乘
+			//5, 找出0-100之间7的倍数，和包含7的数字  7 17 27.. 71
+			for (var i=0; i<=100; i++){
+				if (i%7==0 || i%10==7 || parseInt(i/10)==7) {
+					console.log(i);
+				}
+			}
+			/*
+			function f(n){
+				if (n==0) return;
+				
+				//n = 100...1
+				if (n%7==0 || n%10==7 || parseInt(n/10)==7) {
+					console.log(n);
+				}
+				
+				f(n-1);
+			}
+			f(100);
+			*/
+			
+			//数组扁平化， 需要使用递归
+			//[1, [2, [3,4,5], 6]] => [1,2,3,4,5,6]
+			
+			
+			//6, 不用循环，计算0-100以内的数字和
+			//7, 制作一个简易计算器（计算两个数的加减乘除, 带可手动输入数字和运算符）
+			function fn3(){
+				
+				//通过标签名tagName获取元素节点
+				var aInput = document.getElementsByTagName("input");  
+				var a = aInput[0].value - 0;
+				var p = aInput[1].value;
+				var b = aInput[2].value - 0;
+				
+				var res = fn2(a, p, b);
+				
+				var oSpan = document.getElementById("result");
+				console.log(oSpan.innerHTML);
+				oSpan.innerHTML = res;
+				
+				
+				//innerHTML： 标签中间的内容， 用在双标签
+				//value: 输入框中的内容
+				
+			}
+			
+			/*
+			 	8, 兔子繁殖问题，设有一对新生兔子，从第四个月开始他们每个月, 月初都生一对兔子, 
+			 		新生的兔子从第四个月月初开始又每个月生一对兔子按此规律，并假定兔子没有死亡, 
+			 		n(n<=20)个月月末共有多少对兔子？
+			 */
+			
+			//	            1月大兔子      2月大兔子     3月大兔子     4月大兔子		  兔子总和
+			//第1个月                  1           0           0          0              1
+			//第2个月                  0           1           0          0              1
+			//第3个月                  0           0           1          0              1
+			//第4个月                  1           0           0          1              2
+			//第5个月                  1           1           0          1              3
+			//第6个月                  1           1           1          1              4
+			//第7个月                  2           1           1          2              6
+			//第8个月                  3           2           1          3              9
+			//第9个月                  4           3           2          4              13
+			//第10个月                6           4           3          6              19
+			//第11个月                9           6           4          9              28
+			//..
+			
+			// f(n) = f(n-1) + f(n-3)
+			// n=3,n=2,n=1  f(n) = 1;
+			function f(n){
+				if (n <= 3){
+					return 1;
+				}
+				return f(n-1) + f(n-3);
+			}
+			console.log( f(11) );   //28
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		<input type="text"  /> <br>
+		<input type="text"  /> <br>
+		<input type="text"  /> <br>
+		<input type="button"  value="计算" onclick="fn3();" /> <br>
+		结果： <span id="result">0<span>dd</span></span>
+		
+	</body>
+</html>

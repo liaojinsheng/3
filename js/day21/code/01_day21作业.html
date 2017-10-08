@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {margin: 0; padding: 0;}
+			ul, li {list-style: none;}
+			ul {
+				width: 300px;
+				margin: 100px auto;
+			}
+			li {
+				width: 298px;
+				border: 1px solid orange;
+				margin-bottom: 10px;
+			}
+			.comment {
+				color: orange;
+			}
+		</style>
+		<script src="ajax.js"></script>
+		<script>
+			onload = function(){
+				
+				//http://60.205.181.47/myPHPCode2/weibo.php
+				
+				var oList = document.getElementById("list");
+				
+				var xhr = createXHR();
+				xhr.open("get", "http://60.205.181.47/myPHPCode2/weibo.php", true);
+				xhr.send(null); 
+				xhr.onreadystatechange = function(){
+					if (xhr.readyState==4 && xhr.status==200){
+						console.log(xhr.responseText);
+						
+						//JSON解析
+						var responseArr = JSON.parse(xhr.responseText);
+						
+						//遍历数组responseArr
+						for (var i=0; i<responseArr.length; i++){
+							var obj = responseArr[i]; 
+							
+							//创建节点
+							var li = document.createElement("li");
+							var comtcnt = obj.comtcnt + "人评论 " + obj.likecnt + "人赞";
+							li.innerHTML = "<p class='content'>"+ obj.content +"</p><p class='comment'>"+ comtcnt +"</p>";
+							oList.appendChild(li);
+						}
+						
+						
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<!--<li>
+				<p class="content">ddd</p>
+				<p class="comment">ddd</p>
+			</li>-->
+		</ul>
+	</body>
+</html>

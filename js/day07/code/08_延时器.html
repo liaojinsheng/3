@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//延时器 ： 延时调用代码
+			//setTimeout() : 开启延时器
+			//clearTimeout() : 关闭延时器
+			
+			//延时2秒调用函数
+			var timer = setTimeout(function(){
+				console.log("哈哈。。");
+				
+			}, 2000)
+			
+			//关闭延时器
+			//clearTimeout(timer);
+			
+			var count = 5;
+			function fn(){
+				console.log("赫赫。。: " + count);
+				if (--count > 0) {
+					setTimeout(fn, 2000);
+				}
+			}
+			setTimeout(fn, 2000);
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

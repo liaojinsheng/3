@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				//键盘事件
+				//keydown, keypress, keyup
+				
+				//keydown ： 按住不松开会持续触发
+				// 不区分大小写
+				window.onkeydown = function(){
+					console.log("键盘上的任意键按下了");
+				}
+				
+				//keypress： 字符集：包括字母，数字， 符号， 空格， 回车
+				//                  不包括shift,ctrl,方向键..
+				//  区分大小写
+				window.onkeypress = function(){
+					console.log("--键盘上的字符键按下了");
+				}
+				
+				//keyup
+				window.onkeyup = function(){
+					console.log("按键松开了");
+				}
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

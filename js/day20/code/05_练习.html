@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {margin: 0; padding: 0; border: none;}
+			ul, li {list-style: none;}
+			ul {
+				width: 300px;
+				margin: 20px auto;
+			}
+			li {
+				width: 298px;
+				border: 1px solid red;
+				margin-bottom: 10px;
+			}
+			.name {color: orange;}
+			div {
+				width: 100px;
+				height: 24px;
+				background: orange;
+				margin: 10px auto;
+			}
+		</style>
+		
+		<script src="ajax.js"></script>
+		<script>
+			onload = function(){
+				
+				var oBtn = document.getElementById("next");
+				var oList = document.getElementById("list");
+				
+				
+				var page = 1;
+				oBtn.onclick = function(){
+					
+					var xhr = createXHR();
+					xhr.open("get", "http://60.205.181.47/myPHPCode2/football.php?page="+page, true);
+					xhr.send(null);
+					xhr.onreadystatechange = function(){
+						if (xhr.readyState==4 && xhr.status==200){
+							
+							//JSON解析
+							var arr = JSON.parse(xhr.responseText);
+							
+							if (arr.length == 0) {
+								return;
+							}
+							
+							oList.innerHTML = ""; //清空oList里面的内容
+							
+							//根据数组arr添加新的节点到oList中
+							for (var i=0; i<arr.length; i++){
+								var obj = arr[i];
+								
+								//创建节点
+								var li = document.createElement("li");
+								li.innerHTML = "<p class='name'>"+ obj.name +"</p><p class='content'>"+ obj.content +"</p>";
+								oList.appendChild(li);
+							}
+							
+							page++;
+						}
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<!--<li>
+				<p class="name">zhangsan</p>
+				<p class="content">dddd</p>
+			</li>
+			<li>
+				<p class="name">zhangsan</p>
+				<p class="content">ff</p>
+			</li>-->
+		</ul>
+		<div id="next">加载下一页</div>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){ 
+				
+				//2, 采用构造函数+原型实现拖拽功能
+				
+				//构造函数
+				function Drag(id){
+					//属性
+					var that = this;
+					this.box = document.getElementById(id);
+					this.box.onmousedown = function(e){
+						e = e || event;
+						that.startMove(e.pageX, e.pageY); //开始移动
+					}
+				}
+				
+				//原型
+				//方法
+				//startMove
+				Drag.prototype.startMove = function(x, y){ 
+					this.disX = x - this.box.offsetLeft;
+					this.disY = y - this.box.offsetTop;
+					
+					var that = this;
+					document.onmousemove = function(e){
+						e = e || event;
+						that.moving(e.pageX, e.pageY); //移动过程中
+					}
+					document.onmouseup = function(){
+						that.stopMove(); //停止移动	
+					}
+				}
+				//moving
+				Drag.prototype.moving = function(x, y){ 
+					this.box.style.left = x - this.disX + "px";
+					this.box.style.top = y - this.disY + "px";
+				}
+				//stopMove
+				Drag.prototype.stopMove = function(){ 
+					document.onmousemove = document.onmouseup = null;
+				}
+				
+				//创建拖拽对象
+				var drag = new Drag("box");
+				var drag1 = new Drag("box1");
+				
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box" style="width: 100px; height: 100px; background: red; position: absolute; left: 10px; top: 10px;"></div>
+		<div id="box1" style="width: 100px; height: 100px; background: green; position: absolute; left: 10px; top: 120px;"></div>
+	</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			/*
+			 
+			 9,  输入两个数，求两个数的最小公倍数（****）
+			        如: 9和6的最小公倍数是18, 
+			         1, 先找出两个数中的最大数   // 9 -> 6*9
+			         2, 最大数++，找出能被两个数整除的数(退出循环)
+			*/
+			// 9  6  18
+			// 6 12  12
+			var a = 12;
+			var b = 6;
+			var max = a>b ? a : b; //最大数
+			while (1){
+				if (max%a==0 && max%b==0) {
+					console.log(a + "和" + b + "的最小公倍数是:" + max);
+					break;
+				}
+				max++;
+			}
+			
+			var a = 9;
+			var b = 6;
+			var max = a>b ? a : b; //最大数
+			for (var i=max; i<=a*b; i++){
+				if (i%a==0 && i%b==0){
+					console.log(a + "和" + b + "的最小公倍数是:" + i);
+					break;
+				}
+			}
+						
+			
+			/*
+			 10,  输入两个数n，a，如果n==3， a == 2；
+			       输出 2 + 22 + 222 的值。（不用输出式子）（****）
+			      如: n == 4， a == 3；
+			      输出 3 + 33 + 333 + 3333的值。
+			      提示: 1、n = 3,相加三次,每次相加比前一次相加的数,多一位
+			               2、每次多的这个位数的值为a,  3, 3*10+3(33), 33*10+3(333),...
+			 */
+			var n = 4, a = 3;
+			var sum = 0;
+			var m = 0;
+			for (var i=1; i<=n; i++){
+				m = m * 10 + a;
+				sum += m;
+			}
+			console.log(sum); //3702
+			
+			
+			/*
+			 11, 五位数中，对称的数称为回文数，找出所有的回文数。
+			      如: 12321
+			 */
+			for (var i=10000; i<100000; i++){
+				var a = parseInt(i/10000); //万位
+				var b = parseInt((i%10000)/1000); //千位
+				var c = parseInt((i%100)/10); //十位
+				var d = i%10; //个位
+				
+				if (a==d && b==c){
+					console.log(i + "是回文数");
+				}
+			}
+			
+			
+			/*
+			 13, 求1!+2!+3!+4!+5! 
+			 */
+			var n = 5;
+			var sum = 0;
+			for (var i=1; i<=n; i++){
+				
+				//i!
+				var s = 1;
+				for (var j=1; j<=i; j++){
+					s *= j;
+				}
+				
+				sum += s;
+			}
+			console.log(sum); //153
+			
+			var n = 5;
+			var sum = 0;
+			var m = 1;
+			for (var i=1; i<=n; i++){
+				m = m * i;
+				//console.log(m);
+				sum += m;
+			}
+			console.log(sum); //153
+			
+			
+			
+			/*
+			 14, 找出所有的水仙花数，三位数，各位立方和等于该数本身。
+			        如: 153 = 1 ^ 3 + 5 ^ 3 + 3 ^ 3 
+	        */
+	        for (var i=100; i<1000; i++){
+	        	var a = parseInt(i/100); //百位
+	        	var b = parseInt((i%100)/10); //十位
+	        	var c = i%10; //个位
+	        	
+	        	if (a*a*a + b*b*b + c*c*c == i) {
+	        		console.log(i + "是水仙花数");
+	        	}
+	        }
+	       
+	       
+	       	/*
+			 15, 输入任意两个数，如果第一个数小，从第一个数打印到第二个数，
+			         如果第二个数小，从第二个数打印到第一个数
+			*/
+			var a = 4;
+			var b = 8;
+			var max = a>b ? a : b; //较大数
+			var min = a>b ? b : a; //较小数
+			for (var i=min; i<=max; i++){
+				console.log(i);
+			}
+			
+			
+			
+			/*
+			 16,  输入两个数，求两个数的最大公约数（*****）
+			        如: 12和8的最大公约数是4,
+			        提示: 能够同时整除两个数的最大数          
+			         1, 先找出两个数中最小的那个数, 
+			         2, 最小数--, 找出能被两个数整除的数(退出循环break)
+			*/
+			//12 8 ： 1 2 4 
+			//12 6 ： 1 2 3 6
+			var a = 12;
+			var b = 6;
+			var min = a>b ? b : a; //较小数
+			for (var i=min; i>=1; i--) {
+				if (a%i==0 && b%i==0){
+					console.log(i + "是最大公约数");
+					break;
+				}
+			}
+			
+			
+			
+			
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

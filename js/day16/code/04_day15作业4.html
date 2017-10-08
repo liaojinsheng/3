@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box {
+				width: 100px;
+				height: 100px;
+				background: yellow;
+				position: absolute;
+				right: 0;
+				top: 200px;
+				border: 1px solid gray;
+			}
+		</style>
+		<script src="move.js"></script>
+		<script>
+			
+			onload = onscroll = onresize = function(){
+				
+				//停在右侧中间
+				var oBox = document.getElementById("box");
+				
+				//浏览器的高度
+				var height = document.documentElement.clientHeight;
+				
+				//滚动页面隐藏的高度scrollTop
+				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+				
+				//目标值
+				var top = (height-oBox.offsetHeight)/2 + scrollTop;
+				
+				animate(oBox, {top:parseInt(top)});
+				
+				
+			}
+		</script>
+	</head>
+	<body style="height: 1000px;">		
+		<div id="box">我是广告</div>
+	</body>
+</html>

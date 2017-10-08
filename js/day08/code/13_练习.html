@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			onload = function(){
+				
+				var arr = ["red", "blue", "yellow", "green", "black", "orange"];
+				
+				var oBox = document.getElementById("box");
+				var oBtn = document.getElementsByTagName("input")[0];
+				var i = 0;
+				var timer ;
+				oBtn.onclick = function(){
+					clearInterval(timer);
+					timer = setInterval(function(){
+						oBox.style.background = arr[++i%6];
+						
+					}, 1000);
+					
+				}
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="box" style="width: 100px; height: 100px; background: red;"></div>
+		<input type="button" value="改变颜色" />
+	</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//日期： Date
+			
+			//创建日期
+			var date = new Date(); 
+			console.log(date); //Tue May 23 2017 10:10:52 GMT+0800 (北亚夏令时)
+			console.log(typeof date); //object
+			
+			var date = new Date("2018/08/08");
+			console.log(date); //Wed Aug 08 2018 00:00:00 GMT+0800 (北亚夏令时)
+			
+			var date = new Date("2019/09/09 10:11:12");
+			console.log(date); //Mon Sep 09 2019 10:11:12 GMT+0800 (北亚夏令时)
+			
+			var date = new Date(2017,12,12, 12,23); //月0~11  
+			console.log(date); //Fri Jan 12 2018 12:23:00 GMT+0700 (北亚标准时间)
+			
+			//getTime(): 获取某个日期的时间戳
+			//console.log(date.getTime());
+			
+			//时间戳：指定日期距离1970年1月1日0点的时间差（毫秒数）
+			var date = new Date(1515734580000);
+			console.log(date); //Fri Jan 12 2018 12:23:00 GMT+0700 (北亚标准时间)
+			
+			
+			//日期的格式化输出
+//			date.toDateString();  以特定的格式显示星期几、月、日和年
+//			date.toTimeString();  以特定的格式显示时、分、秒和时区
+//			date.toLocaleDateString();  以特定地区格式显示年、月、日
+//			date.toLocaleTimeString();  以特定地区格式显示时、分、秒
+//			date.toUTCString();  以特定的格式显示完整的 UTC 日期: 年,月,日,时,分,秒。
+//			
+//			Date.parse(“2015-08-24”);   转换格式默认支持2015-08-24或2015/08/24, 返回距离1970年1月1日0时的毫秒数
+//			date.toString();   把Date对象转换为字符串
+//			date.valueOf();   返回Date对象的原始值
+
+			var date = new Date();
+			console.log( date.toDateString() ); //"Tue May 23 2017"
+			console.log( date.toTimeString() ); //"10:24:34 GMT+0800 (北亚夏令时)"
+			console.log( date.toLocaleDateString() ); //"2017年5月23日"
+			console.log( date.toLocaleTimeString() ); //"上午10:25:18"
+			console.log( date.toUTCString() ); //"Tue, 23 May 2017 02:25:38 GMT"
+			
+			console.log( Date.parse("2017-09-09") ); //1504915200000
+			console.log( date.toString() ); //"Tue May 23 2017 10:27:14 GMT+0800 (北亚夏令时)"
+			console.log( date.valueOf() ); //1495506465227
+			
+			
+			//日期常用方法
+//			setDate() / getDate();   从Date对象中返回一个月中的某一天(1~31)
+//			getDay();   从Date对象返回一周中的某一天(0~6)
+//			set / getMonth();  从Date对象中返回月份(0~11)
+//			set / getFullYear();   从Date对象以四位数返回年份
+//			set / getHours();	  返回Date对象的小时(0~23)
+//			set / getMinutes();   返回Date对象的分钟(0~59)
+//			set / getSeconds();   返回Date对象的秒数(0~59)
+//			set / getMilliseconds();   返回Date对象的毫秒
+//			set / getTime();   返回1970年1月1日至今的毫秒数
+//			getTimezoneOffset();  返回本地时间与格林尼治标准时间(GMT)的分钟差
+			
+			//setDate() / getDate() 
+			var date = new Date();
+			console.log( date.getDate() ); //23
+			date.setDate(26);
+			console.log(date.toLocaleDateString()); //2017年5月26日
+			
+			//getDay() 
+			var date = new Date();
+			console.log( date.getDay() ); //2:星期二 ， 0：表示星期日
+			
+			//set / getMonth() ： 0~11
+			var date = new Date();
+			console.log( date.getMonth() ); //4:5月份
+			date.setMonth(2);
+			console.log(date.toLocaleDateString()); //2017年3月23日
+			
+			//set / getFullYear()
+			var date = new Date();
+			console.log( date.getFullYear() ); //2017
+			date.setFullYear(2019);
+			console.log(date.toLocaleDateString()); //2019年5月23日
+			
+			//set / getHours()
+			var date = new Date();
+			console.log( date.getHours() ); //10
+			date.setHours(13);
+			console.log(date.toLocaleTimeString()); //下午1:35:52
+			
+			//set / getMinutes()
+			var date = new Date();
+			console.log( date.getMinutes() ); //37
+			date.setMinutes(13);
+			console.log(date.toLocaleTimeString());  //上午10:13:01
+			
+			//set / getSeconds()
+			var date = new Date();
+			console.log( date.getSeconds() ); //31
+			date.setSeconds(13);
+			console.log(date.toLocaleTimeString());  //上午10:37:13
+			
+			//set / getMilliseconds()
+			var date = new Date();
+			console.log( date.getMilliseconds() ); //220
+			date.setMilliseconds(13);
+			console.log(date.getMilliseconds());  //13
+			
+			//set/ getTime()
+			var date = new Date();
+			console.log( date.getTime() ); //1495507144150
+			
+			//getTimezoneOffset()
+			var date = new Date();
+			console.log( date.getTimezoneOffset() / 60); //-8小时（ -480分钟）
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//Generator Function: 生成器函数, 最大特点就是可以交出函数的执行权（即暂停执行）
+			//Generator函数的写法： *号是为了区分于普通函数
+			
+			//生成器函数
+			function * gen(x){
+				yield x+2;
+				yield x+3;
+				yield x+4;
+				return x+10;
+			}
+			var g = gen(10);
+			console.log( g.next() ); //{value: 12, done: false}
+			console.log( g.next() ); //{value: 13, done: false}
+			console.log( g.next() ); //{value: 14, done: false}
+			console.log( g.next() ); //{value: 20, done: true}
+			console.log( g.next() ); //{value: undefined, done: true}
+			
+			
+			
+			//严格模式
+			//bind (重点)
+			//indexOf (重点)
+			//forEach (重点)
+			//map 
+			//filter
+			//reduce()
+			
+			//let, const  (重点)
+			//模板字符串 `${n}`  (重点)
+			//Array.from(), Array.of(), find(), findIndex()
+			//for-of  (重点)
+			//默认参数， ...扩展运算符， 箭头函数  (重点)
+			//属性和方法的简写方式 (重点)， Object.is(), Object.assign()
+			//Set， Map
+			//解构赋值
+			//class, 继承extends (重点)
+			//
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

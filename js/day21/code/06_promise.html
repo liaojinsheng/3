@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="ajax.js"></script>
+		
+		<script>
+			onload = function(){
+				
+				
+				
+				/*
+				//登录
+				var xhr2 = createXHR();
+				xhr2.open("POST", "http://60.205.181.47/myPHPCode3/login.php", true);
+				xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				xhr2.send("username=zhangsan&password=123456");
+				xhr2.onreadystatechange = function(){
+					if (xhr2.readyState==4 && xhr2.status==200){
+						console.log("登录");
+						
+						//注册
+						var xhr = createXHR();
+						xhr.open("POST", "http://60.205.181.47/myPHPCode3/register.php", true);
+						xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+						xhr.send("username=zhangsan22d&password=123456&age=33");
+						xhr.onreadystatechange = function(){
+							if (xhr.readyState==4 && xhr.status==200){
+								console.log("注册");
+								
+								
+								var xhr3 = createXHR();
+								xhr3.open("get", "http://60.205.181.47/myPHPCode2/weibo.php", true);
+								xhr3.send(null); 
+								xhr3.onreadystatechange = function(){
+									if (xhr3.readyState==4 && xhr3.status==200){
+										console.log("微博");
+									}
+								}  
+							}
+						}
+					}     
+				}      
+				
+				*/
+				
+				
+				//promise
+				
+				var p = new Promise(function(resolve, reject){
+					
+					//登录
+					var xhr2 = createXHR();
+					xhr2.open("POST", "http://60.205.181.47/myPHPCode3/login.php", true);
+					xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					xhr2.send("username=zhangsan&password=123456");
+					xhr2.onreadystatechange = function(){
+						if (xhr2.readyState==4 && xhr2.status==200){
+							console.log("登录");
+							
+							resolve(1);
+						}
+					}
+				});
+				p.then(function(data){
+					console.log(data); //1
+					
+					
+					new Promise(function(res, rej){
+						//注册
+						var xhr = createXHR();
+						xhr.open("POST", "http://60.205.181.47/myPHPCode3/register.php", true);
+						xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+						xhr.send("username=zhangsan22d&password=123456&age=33");
+						xhr.onreadystatechange = function(){
+							if (xhr.readyState==4 && xhr.status==200){
+								console.log("注册");			
+								
+								res();
+							}
+						}
+					}).then(function(){
+						var xhr3 = createXHR();
+						xhr3.open("get", "http://60.205.181.47/myPHPCode2/weibo.php", true);
+						xhr3.send(null); 
+						xhr3.onreadystatechange = function(){
+							if (xhr3.readyState==4 && xhr3.status==200){
+								console.log("微博");
+							}
+						}  
+					})
+					
+				}).then(function(){
+					console.log(2);
+				})
+				
+				
+				
+				/*
+				function Promise2(f){
+					this.f = f;
+					this.then = function(f1){
+						this.f1 = f1;
+					}
+				}
+				
+				
+				var p = new Promise2(function(resolve, reject){
+					console.log("1");
+					resolve();
+				});
+				p.then(function(){
+					console.log(4);
+				});
+				
+				
+				p.f(function(){
+					console.log(2);
+					p.f1();
+				}, 
+				function(){
+					console.log(3);
+				});
+				
+				*/
+			} 
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

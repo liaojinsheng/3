@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				//拖拽
+				// onmousedown, onmousemove, onmouseup
+				
+				var oBox = document.getElementById("box");
+				
+				//onmousedown
+				oBox.onmousedown = function(e){
+					e  =  e || event;
+					//var disX = e.pageX - parseInt(oBox.style.left);
+					//var disY = e.pageY - parseInt(oBox.style.top);
+					
+					//offsetLeft: 获取left值，只读，不带单位
+					//offsetTop: 获取top值， 只读， 不带单位
+					//var disX = e.pageX - oBox.offsetLeft;
+					//var disY = e.pageY - oBox.offsetTop;
+					
+					var disX = e.offsetX;
+					var disY = e.offsetY;
+					
+					//onmousemove
+					document.onmousemove = function(e){
+						e = e || event;
+						oBox.style.left = e.pageX - disX + "px";
+						oBox.style.top = e.pageY - disY + "px";
+					}
+					//onmouseup
+					document.onmouseup = function(){
+						document.onmousemove = null; //移除事件onmousemove
+						document.onmouseup = null;
+					}
+				}
+				
+				
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box" style="width: 100px; height: 100px; background: green; position: absolute; left: 50px; top: 50px;"></div>
+	</body>
+</html>

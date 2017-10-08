@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//Cookie: 浏览器本地存储的一种技术，存储文本，存储大小4K
+			//
+			
+			//Cookie的格式： 
+			//document.cookie = "name=value;expires=过期时间;path=访问路径;domain=访问域名;secure"
+			//name=value: 必须有
+			
+			// 在浏览器本地存储了一个username的值为zhangsan
+			/*
+			//添加一个cookie
+			document.cookie = "username=zhangsan";
+			document.cookie = "pwd=123456";
+			
+			//修改cookie
+			document.cookie = "username=lisi";
+			
+			//获取cookie
+			console.log(document.cookie); //usersname=zhangsan; pwd=123456
+			*/
+			
+			
+			//URI编码
+			//encodeURIComponent() : 对中文和特殊字符进行编码
+			//decodeURIComponent() : 对中文和特殊字符进行解码
+			/*
+			document.cookie = "username=" + encodeURIComponent("张三,");
+			console.log( decodeURIComponent(document.cookie) ); //username=张三
+			*/
+			
+			//expires: 过期时间
+			//默认的过期时间是浏览器关闭的时候
+			//document.cookie = "username=wangwu";
+			
+			
+			//设置7天后
+			var d = new Date();
+			d.setDate(d.getDate()+7); 
+			document.cookie = "username=wangwu;expires=" + d;
+			
+			
+			//删除cookie
+			//将过期时间设置为过去时间或当期时间
+			/*
+			var d = new Date();
+			d.setDate(d.getDate()-1);
+			document.cookie = "username=zhaoliu";
+			console.log(document.cookie); //username=zhaoliu
+			document.cookie = "username=;expires=" + d; //删除username的cookie
+			console.log(document.cookie); //""
+			*/
+			
+			//path: 访问路径
+			//默认访问路径是当前文件所在目录
+			/*
+			var d = new Date();
+			d.setDate(d.getDate()+7);  //钱七
+			document.cookie = "username=qianqi;expires=" + d + ";path=/";
+			console.log(document.cookie);
+			*/
+			
+			//http://www.12306.cn/mormhweb/
+			//domain: 域名
+			//默认为当前域名
+			//document.cookie = "username=sunba;domain=127.0.0.1";
+			
+			//secure： https协议下访问
+//			var d = new Date();
+//			d.setDate(d.getDate()+7);  //钱七
+//			document.cookie = "username4=qianqi4;expires=" + d + ";secure";
+//			console.log(document.cookie);
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

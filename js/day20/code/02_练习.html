@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="ajax.js"></script>
+		<script>
+			
+			onload = function(){
+				
+				var oBtn = document.getElementsByTagName("input")[0];
+				var oTab = document.getElementsByTagName("table")[0];
+				
+				oBtn.onclick = function(){
+					
+					//1，xhr对象
+					var xhr = createXHR();
+					
+					//2, open()
+					xhr.open("get", "http://60.205.181.47/myPHPCode2/person.php", true);
+					
+					//3, send()
+					xhr.send(null);
+					
+					//4, 接收数据
+					xhr.onreadystatechange = function(){
+						if (xhr.readyState==4 && xhr.status==200) {
+							//console.log(xhr.responseText);
+							
+							//JSON解析
+							var responseArr = JSON.parse(xhr.responseText);
+							
+							for (var i=0; i<responseArr.length; i++){
+								var obj = responseArr[i]; //每个人的数据
+								
+								//创建节点
+								var tr = document.createElement("tr");
+								oTab.children[0].appendChild(tr);
+								
+								var td1 = document.createElement("td");
+								var td2 = document.createElement("td");
+								var td3 = document.createElement("td");
+								var td4 = document.createElement("td");
+								var td5 = document.createElement("td");
+								var td6 = document.createElement("td");
+								
+								td1.innerHTML = obj.name;
+								td2.innerHTML = obj.age;
+								td3.innerHTML = obj.sex;
+								td4.innerHTML = obj.phone;
+								td5.innerHTML = obj.address;
+								td6.innerHTML = obj.qq;
+								
+								tr.appendChild(td1);
+								tr.appendChild(td2);
+								tr.appendChild(td3);
+								tr.appendChild(td4);
+								tr.appendChild(td5);
+								tr.appendChild(td6);
+								
+								
+							}
+							
+						}
+					}
+					
+				}
+				
+				
+				
+				//滚动文字
+				var oTxt = document.getElementById("txt");
+				setInterval(function(){
+					var x = oTxt.offsetLeft - 5;
+					if (x < 0) {
+						x = 300;
+					}
+					oTxt.style.left = x + "px";
+				}, 30);
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<input type="button" value="点我加载数据" />
+		<table border="1">
+			<tr>
+				<th>name</th>
+				<th>age</th>
+				<th>sex</th>
+				<th>phone</th>
+				<th>address</th>
+				<th>qq</th>
+			</tr>
+		</table>
+		
+		<div id="txt" style="width: 80px; height: 30px; position: absolute; left: 300px; top: 500px;">滚动文字</div>
+		
+	</body>
+</html>

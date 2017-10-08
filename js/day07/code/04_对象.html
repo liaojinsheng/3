@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//
+			//数组： 一般保存相同类型的数据
+			//
+			//对象
+			//人： 鼻子，耳朵， 身高， 体重， 姓名，身份证号码... (静态的， 属性-变量)
+			//    吃饭, 跳，跑步，打豆豆， 睡觉 ... （动态的， 行为， 方法-函数）
+			//
+			
+			
+			//new Date()
+			//new String()
+			//new Array() , []
+			
+			//对象
+			//创建对象
+			//方式一：
+			var obj = new Object(); 
+			console.log(obj); //[object Object], {}, 空对象
+			console.log(typeof obj); //object
+			
+			//方式二： 
+			var obj = {};
+			console.log(obj); //[object Object], {}, 空对象
+			console.log(typeof obj); //object
+			
+			//
+			//对象包含： 属性，方法
+			//
+			
+			//属性
+			//key-value :键值对
+			var person = new Object();
+			person.name1 = "王老五"; //添加属性name1， name1的值是'王老五'
+			person.age = 55; 
+			person.sex = "人妖";
+			
+			//JSON.stringify()：将对象转换成字符串
+			console.log( JSON.stringify(person) ); //"{"name1":"王老五","age":55,"sex":"人妖"}"
+			console.log( person.name1 ); //"王老五"
+			console.log( person.age ); //55
+			console.log( person.sex ); //"人妖"
+			console.log( person.height ); //undefined
+			
+			
+			//通过点语法.访问属性或方法
+			//点语法. : 内部有set和get方法
+			// 如果写在赋值符号=左边， 则内部会调用set的方法来设置属性的值，
+			// 否则， 内部会调用get方法来获取属性的值
+			
+			
+			//方法
+			var person = {};
+			person.name = "张三";
+			person.age = 33;
+			person.run = function(){
+				console.log( person.name + "在跑步");
+			} 
+			//console.log(person);
+			console.log( JSON.stringify(person) ); //"{"name":"张三","age":33}"
+			person.run(); //调用方法， "张三在跑步"
+			
+			var person = {
+				"name": "李四",
+				age: 33,
+				run: function(){
+					console.log( person.name + "在跑步");
+				} 
+			}
+			console.log( JSON.stringify(person) ); //"{"name":"李四","age":33}"
+			person.run(); //"李四在跑步"
+			
+			
+			//
+			var person = {
+				name: "马化腾",
+				age: 45
+			}
+			var a = "name";
+			console.log( person.name ); //"马化腾"
+			console.log( person[a] ); //"马化腾"
+			
+			
+			//删除对象中的属性或方法
+			var person = {
+				name: "马化腾",
+				age: 45,
+				playGame: function(){
+					console.log( person.name + "正在玩LOL");
+				}
+			} 
+			console.log(person.name);  //"马化腾"
+			person.playGame();  //"马化腾正在玩LOL"
+			
+			delete person.name; //删除属性
+			console.log(person.name); //undefined
+			
+			delete person.playGame; //删除方法
+			person.playGame(); //报错， undefined is not a function
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

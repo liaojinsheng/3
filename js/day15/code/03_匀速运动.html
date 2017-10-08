@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				var oBtn = document.getElementsByTagName("button")[0];
+				var oBox = document.getElementById("box");
+				var oBox1 = document.getElementById("box1");
+				
+				/*
+				oBox.name = "张三";
+				console.log(oBox.name);
+				
+				oBox1.name = "李四";
+				console.log(oBox1.name);
+				*/
+				
+				
+				//开始运动
+				oBtn.onclick = function(){
+					animate(oBox1, "top", 500);
+					animate(oBox1, "top", 50);
+					animate(oBox, "left", 403);
+				}
+				
+				//封装匀速运动
+				//obj.timer： 保证每个节点对象有独有的一个定时器
+				function animate(obj, attr, iTarget){
+					
+					//先清除旧定时器
+					clearInterval(obj.timer);
+					
+					//再添加新定时器
+					obj.timer = setInterval(function(){
+						
+						//1, 获取当前值
+						var current = parseInt( getStyleAttr(obj, attr) );
+						
+						//2, 速度
+						var speed = current > iTarget ? -5 : 5;
+						
+						//3, 判断临界值
+						if ( Math.abs(current-iTarget) < 5 ) {
+							console.log("停止运动");
+							obj.style[attr] = iTarget + "px"; //直接到达目标位置
+							clearInterval(obj.timer);
+							return;
+						}
+						
+						//4, 运动
+						obj.style[attr] = current + speed + "px";
+						
+					}, 100);
+				}
+				
+				
+				//获取样式属性值
+				function getStyleAttr(obj, attr){
+					if (window.getComputedStyle){
+						return window.getComputedStyle(obj, null)[attr];
+					}
+					return obj.currentStyle[attr];
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<button>开始运动</button>
+		<div id="box" style="width: 100px; height: 100px; background: red;position: absolute; left: 200px; top: 200px;"></div>
+		<div id="box1" style="width: 100px; height: 100px; background: green;position: absolute; left: 200px; top: 200px;"></div>
+		<div style="width: 1px; height: 400px; background: black; position: absolute; left: 403px;" ></div>
+	</body>
+</html>

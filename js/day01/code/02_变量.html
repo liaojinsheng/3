@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//变量: variable	
+			//作用： 保存数据
+			var age; //定义一个变量， 变量名是age, var是关键字
+			console.log(age); //undefined, 未定义（定义了但未给值）
+			
+			age = 23; //赋值符号：=  表示将23赋值给变量age; 表示等于==
+			console.log(age); //23
+			
+			//如果出现相同的变量名称， 则会覆盖前面的
+			var age = 24; //定义变量并赋值
+			console.log(age); //24
+			
+			//同时定义多个变量
+			var a=1, b="张三", c=3;
+			console.log(a+b+c);	 //"1张三3"	
+			//这里的 + ：表示字符串连接
+			
+			
+			//JS是弱数据类型的语言，容错性较高, 在赋值的时候才确定数据类型
+			//js ： var age = 23; 
+			//c : int age = 23;
+			
+			//typeof 用来检测数据类型
+			var d  = 23;
+			console.log(typeof d);  //number, 数字
+			d = "hello";
+			console.log(typeof d);  //string, 字符串
+			
+			
+			/*
+			 	
+			 	变量的命名规范
+					1, 变量名可以是数字,字母,下划线_和美元符$组成;
+					2, 第一个字符不能为数字
+					3, 不能使用关键字或保留字
+					4, 标识符区分大小写，如：age和Age是不同的变量。但强烈不建议用同一个单词的大小写区分两个变量。
+					5, 变量命名尽量遵守驼峰原则: myStudentScore
+					6, 变量命名尽量见名思意, 
+			 
+			 */
+			
+			//var .;
+			//var 3a;
+			var a3;
+			var _ = 11;
+			var $a = 23;
+			console.log($a); //23
+			
+			//var var = 1; //不可以使用关键字或保留字
+			//var new = 2;
+			
+			var age =18;
+			var Age = 16;
+			console.log(age); //18
+			console.log(Age); //16
+			
+			var myStudentScore = 99; //小驼峰
+			var MyStudentScore = 98; //大驼峰
+			
+			//表示数组
+			var aItem = [1,2]; //数组
+			var oPerson = {}; //对象
+			
+			//
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

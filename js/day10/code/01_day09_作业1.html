@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				//吸顶效果
+				
+				
+				var oBox = document.getElementById("box");
+				var top = oBox.offsetTop;
+				console.log(top); 
+				 
+				onscroll = function(){
+					var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+										
+					//console.log(scrollTop);
+					if (scrollTop >= top) {
+						oBox.style.position = "fixed";
+						oBox.style.top = "0";
+					}
+					else {
+						oBox.style.position = "static";
+						
+					}
+				}
+			}
+		</script>
+	</head>
+	<body style="height: 3000px;">
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<div id="box" style="width: 100%; height: 24px; background: blue; color: white;">留言信息</div>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+	</body>
+</html>

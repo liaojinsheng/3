@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//if: 分支语句
+			
+			//if单分支
+			if (" "){
+				console.log("你好"); 
+			}
+			console.log("hello");
+			
+			
+			if (false) {
+				console.log("你好2");
+				console.log("你好3");
+			}
+			
+			
+			//if双分支
+			if (false){
+				console.log("1");
+			}
+			else {
+				console.log("2");
+			}
+			
+			
+			// 1、判断一个数是偶数还是奇数；
+			var a = 12;
+			if (a%2 == 0) {
+				console.log(a + "是偶数");
+			} 
+			else {
+				console.log(a + "是奇数");
+			}
+			
+		    // 2、求两个数的最大数；
+		    var a = 100;
+		    var b = 200;
+		    //var max = a>b ? a : b;
+		    var max = 0;
+		    if (a>b) {
+		    	max = a;
+		    }
+		    else {
+		    	max = b;
+		    }
+		    console.log(max);
+		    
+		    // 3、判断一个年份是闰年还是平年； 
+		    //    （1.能被4整除而不能被100整除.（如2004年就是闰年,1800年不是.）
+			//	    2.能被400整除.（如2000年是闰年））
+			var year = 2017;
+			if ( (year%4==0 && year%100!=0) || year%400==0) {
+				console.log(year + "是闰年");
+			}
+			else {
+				console.log(year + "是平年");
+			}
+			
+			
+			
+			//if多分支语句
+			/*
+			var b = 59;
+			if (b >= 80) {
+				console.log("优秀");
+			}
+			else { //b<80
+				if (b < 60) {
+					console.log("不及格");
+				}
+				else { // b>=60 b<80
+					console.log("良好");
+				}
+			}
+			*/
+			
+			var b = 60;
+			if (b >= 80) {
+				console.log("优秀");
+			}
+			else if (b>=70) {
+				console.log("良好");
+			}
+			else if (b>=60){
+				console.log("及格")
+			}
+			else {
+				console.log("不及格");
+			}
+			
+			
+			//示例
+			//1， 计算y的值
+			var x = 2;
+			var y = 0;
+			
+			if (x < 1) {
+				y = x;
+			}
+			else if (x < 10){
+				y = 2*x + 1;
+			}
+			else {
+				y = 5*x - 17;
+			}
+			console.log(y); //5
+			
+			
+			//if嵌套
+			var x = 10;
+			var y = 0;
+			
+			if (x >= 0){
+				if (x == 0) {
+					y = 0;
+				}
+				else {
+					y = 1;
+				}
+			}
+			else {
+				y = -1;
+			}
+			console.log(y);
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//作用域： 
+			//局部变量
+			//全局变量
+			
+			//函数可以形成作用域
+			
+			var a = 1;  //全局变量
+			console.log(a);
+			
+			function fn(n){ //var n;
+				console.log(b); //undefined
+				
+				//b的作用域只在当前函数内部
+				var b = 2; //局部变量
+				
+				console.log(a);
+				console.log(n);
+			}
+			fn()
+			//console.log(b);
+			//console.log(n)
+			
+			//var可以不写，如果不写，该变量默认会是全局变量, 但是我们尽量写上var
+			
+			
+			//声明提前
+			var c;
+			console.log(c); //undefined
+//			var c = 10;
+			c = 10;
+			console.log(c); //10
+			
+			
+			
+			var a = 10; //全局变量
+		    function m1(){
+		        var a = 5;  //局部变量
+		        console.log(a); //5
+		    }
+		    m1();
+		    console.log(a);   //10
+			
+			
+			/*
+			 	函数的嵌套:   函数内部可以再包含其他函数;
+				函数之间允许相互调用，也允许向外调用, 但是不可以调用同级函数的嵌套函数;
+			 * */
+			function A(){
+				console.log("A");
+				
+				function A1(){
+					console.log("A1");
+				}
+			}
+			
+			function B(){
+				console.log("B");
+				
+				B1();
+				function B1(){
+					console.log("B1");
+					A();
+				}
+			}
+			
+			//A();
+			//A1(); //错误 A1 is not defined
+			
+			B();
+			
+			/*
+			function func(){
+				console.log("func");
+			}
+			*/
+			
+			//匿名函数（没有名字的函数）
+			var func = function (){
+				console.log("func");
+			}
+			func();
+			
+			// 函数名既是函数名称， 也是指向该函数的对象
+			function fn1(){
+				
+				var a1 = 10; //相对函数fn1外部来讲是局部变量， 相对于fn2来说又是全局变量
+				
+				var fn2 = function (){
+					console.log("fn2");
+					console.log('a1:' + a1);
+				}
+				//fn2();
+				return fn2;
+			}
+			
+			var f2 = fn1(); //f2=fn2
+			f2(); //fn2()
+			
+			//console.log(a1);  //错误 a1 is not defined
+			
+			
+			function fn3(){
+				console.log("你好");
+			}
+			var fn4 = fn3;
+			fn4();
+			
+			
+			function fn5(){
+				return function(){
+					console.log("fn6函数被调用");
+				}
+				//return fn6;
+			}
+			fn5()(); // fn6();
+			
+			
+			
+			//函数的自执行
+			(function (){
+				console.log("hello 张三");
+				
+			})();
+			
+			/*
+			var fn7 = function (){
+				console.log("hello 张三");
+			}
+			fn7();
+			*/
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

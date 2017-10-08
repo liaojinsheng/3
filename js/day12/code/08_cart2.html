@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="cookie.js"></script>
+		<script>
+			onload = function(){
+				
+				var oUl = document.getElementsByTagName("ul")[0];
+				
+				//获取cookie
+				var arr = getCookie("cart");
+				
+				if (arr.length > 0) {
+					console.log(arr);
+					arr = JSON.parse(arr); //JSON解析
+					//[{"id":"id1","name":"单车","price":"$100","num":3},{"id":"id2","name":"摩托","price":"$1000","num":2},{"id":"id6","name":"飞船","price":"$10000000","num":6}]
+					
+					for (var i=0; i<arr.length; i++){
+						var obj = arr[i]; //购物车中每个商品的数据
+						
+						//创建节点
+						var li = document.createElement("li");
+						li.innerHTML = "商品名称：" + obj.name + ",商品价格：" + obj.price + ",商品数量：" + obj.num;  
+						oUl.appendChild(li);
+					}
+					
+				}
+				else {
+					console.log("购物车中没有商品");
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<h2>我的购物车</h2>
+		<ul>
+			
+		</ul>
+	</body>
+</html>

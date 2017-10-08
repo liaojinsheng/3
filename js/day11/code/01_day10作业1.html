@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			/*
+			 当鼠标失去焦点时: 检测用户名长度至少6位, 且只能为数字和字母;
+			 检测密码长度至少8位
+			 给登录按钮添加点击事件: 点击后弹出用户名和密码
+			 * */
+			onload = function(){
+				
+				//检测用户名
+				var aInput = document.getElementsByTagName("input");
+				
+				aInput[0].onblur = function(){
+					var val = this.value;
+					
+					if (val.length < 6) {
+						console.log("提示： 用户名长度至少6位");
+					}
+					else {
+						for (var i=0; i<val.length; i++){
+							var ch = val[i];
+							if (ch>='0'&&ch<='9' || ch>='a'&&ch<='z' ||ch>='A'&&ch<='Z') {
+								
+							}
+							else {
+								console.log("提示: 只能为数字和字母");
+								break;
+							}
+						}
+						if (i == val.length) {
+							console.log("用户名合法");
+						}
+					}
+				}
+				
+				//密码
+				aInput[1].onkeyup = function(){
+					var val = aInput[1].value;
+					//console.log(val);
+					if (val.length < 8) {
+						console.log("提示： 密码长度至少为8位");
+					}
+					else {
+						console.log("密码输入合法");
+					}
+				}
+				
+				//登录按钮
+				aInput[2].onclick = function(){
+					alert("用户名：" + aInput[0].value + ",密码：" + aInput[1].value);
+				}
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" placeholder="用户名" /> <br /> 
+		<input type="password" placeholder="密码" /> <br />
+		<input type="button" value="登录"/>
+	</body>
+</html>

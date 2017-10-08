@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				var aInput = document.getElementsByTagName("input");
+				var oTab = document.getElementsByTagName("table")[0];
+				
+				//保存
+				aInput[3].onclick = function(){
+					var uid = aInput[0].value;
+					var uname = aInput[1].value;
+					var phone = aInput[2].value;
+					
+					//创建节点
+					/*
+						 <tr>
+							<td>11</td>
+							<td>张三</td>
+							<td>176882323232</td>
+							<td><a href="javascript:;">删除</a></td>
+						</tr>
+					 * */
+					var tr = document.createElement("tr");
+					//oTab.getElementsByTagName("tbody")[0].appendChild(tr);
+					oTab.children[0].appendChild(tr);
+					
+					//tr.innerHTML = "<td>11</td><td>张三</td><td>176882323232</td><td><a href='javascript:;'>删除</a></td>"
+					
+					//td
+					var td1 = document.createElement("td");
+					var td2 = document.createElement("td");
+					var td3 = document.createElement("td");
+					var td4 = document.createElement("td");
+					
+					td1.innerHTML = uid;
+					td2.innerHTML = uname;
+					td3.innerHTML = phone;
+					//td4.innerHTML = "<a href='javascript:;'>删除</a>";
+					var a = document.createElement("a");
+					a.innerHTML = "删除";
+					a.href = 'javascript:;';
+					td4.appendChild(a);
+					
+					//给删除按钮添加一个点击事件
+					a.onclick = function(){
+						//this.parentNode.parentNode == tr
+						//this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+						oTab.deleteRow(this.parentNode.parentNode.rowIndex); 
+					}
+					
+					tr.appendChild(td1);
+					tr.appendChild(td2);
+					tr.appendChild(td3);
+					tr.appendChild(td4);
+					
+				}
+				
+				//给静态添加的删除按钮一个点击事件
+				var aA = document.getElementsByTagName("a");
+				for (var i=0; i<aA.length; i++){
+					aA[i].onclick = function(){
+						//this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+						oTab.deleteRow(this.parentNode.parentNode.rowIndex); 
+					}
+				}
+				
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		ID<input type="text" /> <br>
+		姓名<input type="text" /> <br>
+		电话<input type="text" /> <br>
+			<input type="button" value="保存" />
+		<table border="1">
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Tel</th>
+				<th>操作</th>
+			</tr>
+			<tr>
+				<td>11</td>
+				<td>张三</td>
+				<td>176882323232</td>
+				<td><a href="javascript:;">删除</a></td>
+			</tr>
+			<tr>
+				<td>22</td>
+				<td>张三</td>
+				<td>176882323232</td>
+				<td><a href="javascript:;">删除</a></td>
+			</tr>
+		</table>
+	</body>
+</html>

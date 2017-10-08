@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			onload = function(){
+				//JavaScript的组成： ECMAScript, BOM, DOM
+				
+				//DOM： 文档对象模型
+				
+				//DOM节点分类： 
+				//1，元素节点
+				//2，属性节点
+				//3，文本节点
+				
+				//<div id="box" title="标题">我是一个好人</div>
+				//元素节点： <div></div> 
+				//属性节点：id="box"， title="标题"
+				//文本节点： 我是一个好人
+				
+				//获取元素节点对象
+				//getElementById();
+				var oBox = document.getElementById("box");
+				console.log(oBox); //[object HTMLDivElement]
+				
+				//getElementsByTagName()
+				var aDiv = document.getElementsByTagName("div");
+				console.log(aDiv); //[object HTMLCollection], 节点数组
+				console.log(aDiv.length); //2
+				
+				//getElementsByName()
+				var aInput = document.getElementsByName("txt");
+				console.log(aInput); //[object NodeList] ,节点列表
+				console.log(aInput.length); //2
+				
+				//getElementsByClassName() : 支持IE9+
+				var aInput = document.getElementsByClassName("pox");
+				console.log(aInput); //[object HTMLCollection]
+				console.log(aInput.length); //2
+				
+				
+				
+				
+				//元素节点的属性
+				var oBox = document.getElementById("box");
+				console.log(oBox.tagName); //DIV
+				console.log(oBox.id); //box
+				console.log(oBox.innerHTML); //"我是一个好人"
+				console.log(oBox.className); //pox1
+				console.log(oBox.style); //[object CSSStyleDeclaration]
+				console.log(oBox.title); //标题
+				console.log(oBox.aa); //undefined,不可以获取自定义的属性
+				
+				//style的属性
+				console.log( oBox.style.width ); //100px
+				console.log( oBox.style.height ); //110px
+				console.log( oBox.style.background ); //red
+				
+				oBox.style.width = "50px";
+				oBox.style.height = "50px";
+				oBox.style.background = "pink";
+				
+				//value ： 输入框
+				//innerHTML： 双标签元素节点
+				console.log(aInput[0].value); //aaaaa
+				
+				
+			}
+			
+			//var oBox = document.getElementById("box");
+			//console.log(oBox); //null
+			
+		</script>
+	</head>
+	<body>
+		<div id="box" title="标题" class="pox1" aa="bb" style="width:100px; height: 110px; background: red;">我是一个好人</div>
+		<div> 你是一个好人 </div>
+		
+		<input type="text" />
+		<input type="text" name="txt" placeholder="用户名" />
+		<input type="text" name="txt" placeholder="密码" />
+		
+		<input type="text" class="pox" placeholder="aaa" value="aaaaa" />
+		<input type="text" class="pox" placeholder="bbb" />
+		
+		
+	</body>
+	
+</html>

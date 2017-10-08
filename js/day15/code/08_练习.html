@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {margin: 0;padding: 0; border: none;}
+			ul,li {list-style: none;}
+			#list {
+				width: 400px;
+				height: 30px;
+				background: #4ac;
+			}
+			#list >li  {
+				width: 100px;
+				height: 30px;
+				float: left;
+				text-align: center;
+				line-height: 30px;
+				cursor: pointer;
+			}
+			
+			#list ul {
+				width: 100px;
+				height: 0px;
+				background: orange;
+				overflow: hidden;
+			}
+		</style>
+		<script type="text/javascript" src="move.js" ></script>
+		<script>
+			onload = function(){
+				
+				var aLi = document.getElementsByClassName("item");
+				
+				for (var i=0; i<aLi.length; i++){
+					aLi[i].onmouseenter = function(){
+						animate2(this.children[0], "height", 200);
+					}
+					aLi[i].onmouseleave = function(){
+						animate2(this.children[0], "height", 0);
+					}
+				}
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<li class="item">bbbbb
+				<ul>
+					<li>aaaaaaaa</li>
+					<li>aaaaaaaa</li>
+					<li>aaaaaaaa</li>
+					<li>aaaaaaaa</li>
+					<li>aaaaaaaa</li>
+					<li>aaaaaaaa</li>
+				</ul>
+			</li>
+			<li class="item">bbbbb
+				<ul>
+					<li>aaaaaaaa</li>
+					<li>aaaaaaaa</li>
+					<li>aaaaaaaa</li>
+					<li>aaaaaaaa</li>
+					<li>aaaaaaaa</li>
+					<li>aaaaaaaa</li>
+				</ul>
+			</li>
+			<li class="item">bbbbb
+				<ul>
+					<li>aaaaaaaa</li>
+					<li>aaaaaaaa</li>
+					<li>aaaaaaaa</li>
+					<li>aaaaaaaa</li>
+					<li>aaaaaaaa</li>
+					<li>aaaaaaaa</li>
+				</ul>
+			</li>
+			<li class="item">bbbbb
+				<ul>
+					<li>aaaaaaaa</li>
+					<li>aaaaaaaa</li>
+					<li>aaaaaaaa</li>
+					<li>aaaaaaaa</li>
+					<li>aaaaaaaa</li>
+					<li>aaaaaaaa</li>
+				</ul>
+			</li>
+		</ul>
+	</body>
+</html>

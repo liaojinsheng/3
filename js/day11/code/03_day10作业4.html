@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {margin: 0; padding: 0; border: none;}
+			ul, li {list-style: none;}
+			body {background: black;}
+			#box {
+				width: 305px;
+				height: 245px;
+				background: white;
+				margin:  20px auto;
+				border-radius: 5px;
+			}
+			ul li {
+				float: left;
+				width: 55px;
+				height: 55px;
+				margin-left: 5px;
+				margin-top: 5px;
+			}
+			ul li img {
+				width: 55px;
+				height: 55px;
+			}
+			
+			.first {
+				width: 175px;
+				height: 175px;
+			}
+			.first img {
+				width: 175px;
+				height: 175px;
+			}
+			
+		</style>
+		<script>
+			onload = function(){
+				
+				var aLi = document.getElementsByTagName("li");
+				
+				for (var i=1; i<aLi.length; i++){
+					aLi[i].onmouseenter = function(){
+						
+						var imgSrc =  this.children[0].src
+						aLi[0].children[0].src = imgSrc.replace("small", "big");
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<li class="first"><img src="images/images1/big_4.jpg"/></li>
+				<li><img src="images/images1/small_1.jpg"/></li>
+				<li><img src="images/images1/small_2.jpg"/></li>
+				<li><img src="images/images1/small_3.jpg"/></li>
+				<li><img src="images/images1/small_4.jpg"/></li>
+				<li><img src="images/images1/small_5.jpg"/></li>
+				<li><img src="images/images1/small_6.jpg"/></li>
+				<li><img src="images/images1/small_7.jpg"/></li>
+				<li><img src="images/images1/small_8.jpg"/></li>
+				<li><img src="images/images1/small_9.jpg"/></li>
+				<li><img src="images/images1/small_10.jpg"/></li>
+				<li><img src="images/images1/small_11.jpg"/></li>
+				
+			</ul>
+		</div>
+	</body>
+</html>

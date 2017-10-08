@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//Array.from()方法用于将两类对象转为真正的数组：
+			// 类似数组的对象（array-like object）和可遍历（iterable）的对象（包括ES6新增的数据结构Set和Map）
+			//Array.from()还可以接受第二个参数，作用类似于数组的map方法，用来对每个元素进行处理.
+			
+			var obj = {
+				"0": "张三",
+				"1": "李四",
+				"2": "王五",
+				"length":3
+			}
+			console.log( Array.from(obj) );
+			
+//			var arr = ["张三","李四", "王五"];
+//			console.log(arr);
+			
+			var arr = [1,2,3,4,5];
+			var arr2 = Array.from(arr, function(value, index){
+				//console.log(arguments.length); //2
+				//console.log(arguments[0] + "," + arguments[1]);
+				return value * value;
+			});
+			console.log(arr2); //[1, 4, 9, 16, 25]
+			
+			
+			//Array.of() : 将一串值转换成一个数组
+			var arr =  Array.of(1,2,4,5);
+			console.log(arr); // [1, 2, 4, 5]
+			
+			
+			//find() : 查找第一个指定的元素
+			//findIndex() ： 查找第一个指定元素的下标
+			var arr = [1,2,-3,4,5,-6];
+			var res = arr.find(function(value, index, array){
+				//console.log(value +","+ index +",");
+				return value>3;
+			})
+			console.log(res); //4
+			
+			var arr = [1,2,-3,4,5,-6];
+			var res = arr.findIndex(function(value, index, array){
+				return value>3;
+			})
+			console.log(res); //3, 下标为3
+			
+			
+			var arr = [2,3,4,5,6,7];
+			//for-in
+			for (let i in arr){
+				console.log(i + ":" + arr[i]); 
+			}
+			//for-of
+			for (let n of arr){
+				console.log(n); //值
+			}
+			for (let i of arr.keys()){
+				console.log(i); //下标
+			}
+			for (let [i,n] of arr.entries()){
+				console.log(i + "," + n); //i下标， n是值
+			}
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

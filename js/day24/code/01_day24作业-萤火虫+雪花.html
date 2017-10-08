@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			html,body {width: 100%; height: 100%; background: url("images/bg.jpg"); overflow: hidden;}
+			.fireworm {
+				width: 18px;
+				height: 18px;
+				position: absolute;
+			}
+			.snow {
+				width: 18px;
+				height: 18px;
+				position: absolute;
+			}
+		</style>
+		<script src="move.js"></script>
+		<script>
+			onload = function(){
+				
+				//父类
+				function Base(imgSrc){
+					//属性:ele
+					//方法：randonPoint
+					if (imgSrc != undefined) {
+						this.ele = document.createElement("img");
+						this.ele.src = imgSrc;
+						document.body.appendChild(this.ele);
+					}
+				}
+				//随机位置
+				Base.prototype.randomPoint = function(){
+					var x = parseInt(Math.random()*document.documentElement.clientWidth);
+					var y = parseInt(Math.random()*document.documentElement.clientHeight);
+					return {left:x, top:y};
+				}
+				
+				
+				//萤火虫
+				function Fireworm(){
+					Base.call(this, "images/1.jpg"); //对象冒充继承属性
+					
+					this.ele.className = "fireworm";
+					this.ele.style.left = this.randomPoint().left + "px";
+					this.ele.style.top = this.randomPoint().top + "px";
+					this.ele.style.opacity = 0.6;
+					this.ele.style.filter = "alpha(opacity=60)";
+					
+				}
+				Fireworm.prototype = new Base(); //原型链继承方法
+				
+				//原型添加方法： fly
+				Fireworm.prototype.fly = function(){
+					var that = this;
+					animate(this.ele, this.randomPoint(), function(){
+						that.fly();
+					})
+				}
+				
+				
+				//雪花
+				function Snow(){
+					Base.call(this, "images/snow.gif");
+					
+					this.ele.className = "snow";
+					this.ele.style.left = this.randomPoint().left + "px";
+					this.ele.style.top = -18 + "px";
+				}
+				Snow.prototype = new Base();
+				
+				//原型中添加方法： falldown
+				Snow.prototype.fallDown = function(){
+					//animate(this.ele, {top:document.documentElement.clientHeight-30});
+					var that = this;
+					setInterval(function(){
+						
+						var y = that.ele.offsetTop + 3;
+						if (y > document.documentElement.clientHeight-50) {
+							y = -18;
+							that.ele.style.left = that.randomPoint().left + "px";
+						}
+						that.ele.style.top = y + "px";
+						
+					},50)
+				}
+				
+				
+				//萤火虫对象
+				for (var i=0; i<20; i++) {
+					var fireworm = new Fireworm();
+					fireworm.fly();
+				}
+				//雪花对象
+				var count = 20;
+				var timer = setInterval(function(){
+					if (count-- > 0) {
+						var snow = new Snow();
+						snow.fallDown()
+					}
+					else  {
+						clearInterval(timer);
+					}
+				}, 1000);
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

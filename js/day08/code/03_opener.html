@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			console.log("11");
+			
+			//opener： 父窗口对象
+			
+			//点击页面的任意位置
+			document.onclick = function(){
+				opener.document.write("哈哈");
+			}
+			
+			//window.document.write("22");
+			
+		</script>
+	</head>
+	<body>
+		<h2>我是被打开的子窗口</h2>
+	</body>
+</html>

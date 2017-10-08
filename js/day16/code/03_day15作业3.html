@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {margin: 0; border: none; padding: 0;}
+			#box {
+				width: 150px;
+				height: 100px;
+				background: green;
+				position: absolute;
+				left: -150px;
+				top: 100px;
+			}
+			#box span {
+				position: absolute;
+				width: 20px;
+				height: 60px;
+				left: 150px;
+				top: 20px;
+				background: pink;
+			}
+		</style>
+		<script src="move.js"></script>
+		<script>
+			onload = function(){
+				
+				var oBox = document.getElementById("box");
+				
+				oBox.onmouseenter = function(){
+					animate(oBox, {left: 0});
+				}
+				oBox.onmouseleave = function(){
+					animate(oBox, {left:-150});
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<span>分享到</span>
+		</div>
+	</body>
+</html>

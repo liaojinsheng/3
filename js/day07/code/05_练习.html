@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			/*
+			 练习: 
+				1, 创建一个人的对象, 添加属性: 姓名 年龄 爱好 薪资期望, 并有一个打印自身信息的方法, 
+				      可以输出自身信息;
+				2, 创建一个锤子对象hammer, 有属性:宽,高,重; 方法:可以锤钉子
+				3, 有一辆50km/h车,跑在一条1000km路上，问多少小时跑完？
+				     对象: 
+					车Car 属性: 速度speed 50km/h
+				 	          功能: 跑在路上runOnRoad(Road)
+					路Road 属性: 长度length 1000km
+			 * */
+			
+			
+			//1, 创建一个人的对象, 添加属性: 姓名 年龄 爱好 薪资期望, 并有一个打印自身信息的方法, 可以输出自身信息;
+			var person = {
+				name: '张三',
+				age: 33,
+				love: "LOL",
+				salary: '10K',
+				print:function(){
+					console.log( person.name + person.age + person.love + person.salary );
+				}
+			}
+			person.print(); //张三33LOL10K
+			
+			
+			//2, 创建一个锤子对象hammer, 有属性:宽,高,重; 方法:可以锤钉子
+			var hammer = {
+				width: 100,
+				height: 50,
+				weight: 10,
+				fn: function(){
+					console.log("可以锤钉子")
+				}
+			}
+			
+			
+			//3, 有一辆50km/h车,跑在一条1000km路上，问多少小时跑完？
+			//对象: 
+			//		车Car 属性: 速度speed 50km/h
+			//	 	          功能: 跑在路上runOnRoad(Road)
+			//		路Road 属性: 长度length 1000km
+			
+			var car = {
+				speed: 50,
+				runOnRoad: function(r){
+					console.log( r.length/car.speed );  
+				}
+			}
+			
+			var road = {
+				length: 1000
+			}
+			
+			car.runOnRoad(road);
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

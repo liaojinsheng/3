@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script src="cookie.js"></script>
+		<script>
+			
+			
+			//增删改查
+			//添加cookie
+			var d = new Date();
+			d.setDate(d.getDate()+7);
+			var res = setCookie("name2", "lisi", d);
+			console.log(res);
+			
+			//修改cookie
+			var res = setCookie("name2", "赵六", d);
+			console.log(res);
+			
+			
+			//获取Cookie
+			console.log( getCookie("name2") ); //赵六
+			console.log( getCookie("name1") ); //zhangsan
+			console.log( getCookie("name1111") ); //""
+			
+			
+			//删除cookie
+			var res = removeCookie("name1");
+			console.log(res);
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

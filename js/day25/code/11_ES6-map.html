@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		
+		<script>
+			
+			//Map
+			var map = new Map([[1,"a"],[2,"b"],[3,"c"]]);
+			console.log(map); //Map {1 => "a", 2 => "b", 3 => "c"}
+			console.log(map.size); //3
+			
+			//他的方法和 Set 差不多:
+			//size：返回成员总数。
+			//	set(key, value)：设置一个键值对。
+			//get(key)：读取一个键。
+			//has(key)：返回一个布尔值，表示某个键是否在Map数据结构中。
+			//delete(key)：删除某个键。
+			//clear()：清除所有成员。
+			//keys()：返回键名的遍历器。
+			//values()：返回键值的遍历器。
+			//entries()：返回所有成员的遍历器
+			
+			var map = new Map();
+			
+			var arr = [];
+			map.set(4, 4);
+			map.set("a", 5);
+			map.set(arr, 6);
+			map.set({}, 7);
+			console.log(map); //Map {4 => 4, "a" => 5, [] => 6, Object {} => 7}
+			
+			console.log( map.get("a") ); //5
+			console.log( map.get(arr) ); //6
+			
+			console.log( map.has("a") ); //true
+			
+			map.delete(4);
+			console.log(map); //Map {"a" => 5, [] => 6, Object {} => 7}
+			
+			map.clear();
+			console.log(map); //Map {}
+			
+		
+			var map = new Map([[1,"a"],[2,"b"],[3,"c"]]);
+			//for-of
+			for ( let n of map ){
+				console.log(n); //键值对
+			}
+			
+			for (let n of map.keys() ) {
+				console.log(n); //键
+			}
+			for (let n of map.values() ) {
+				console.log(n); //值
+			}
+			for (let n of map.entries() ) {
+				console.log(n); //键值对
+			}
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

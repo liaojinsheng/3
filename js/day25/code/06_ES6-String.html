@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//String新增
+			//  includes()：返回布尔值，表示是否找到了参数字符串。
+			//startsWith()：返回布尔值，表示参数字符串是否在源字符串的头部。
+			//endsWith()：返回布尔值，表示参数字符串是否在源字符串的尾部。
+			//  repeat()： 返回一个新字符串，表示将原字符串重复n次.
+			
+			var str = "hello world";
+			console.log( str.includes("hello") ); //true
+			console.log( str.startsWith("hel") ); //true
+			console.log( str.endsWith("ld") ); //true
+			
+			console.log( str.repeat(3) ); //hello worldhello worldhello world
+			
+			var str = "hello world";
+			console.log( str.includes("lo", 6) ); //false, 从下标6开始到最后（包括6）
+			console.log( str.startsWith("lo", 3) ); //true, 从下标3开始到最后（包括3）
+			console.log( str.endsWith('lo', 5) ); //从开始到下标为5的位置（不包括5）
+			
+			
+			//模板字符中，支持字符串插值
+			var str1 = "张三";
+			var str2 = "李四";
+			console.log( "hello " + str1 + " love " + str2 );
+			console.log( `hello ${str1} love ${str2}` );
+			
+			
+			
+	
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

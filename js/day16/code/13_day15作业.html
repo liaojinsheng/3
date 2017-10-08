@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script src="move.js"></script>
+		<script> 
+			onload = function(){
+				
+				var img = document.getElementsByTagName("img")[0];
+				
+				document.onclick = function(e){
+					e = e || event;
+					
+					img.src = "images/images2/2.gif";
+					animate(img, {left:e.pageX-24, top:e.pageY-20}, function(){
+						img.src = "images/images2/1.gif";
+					});
+					
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<img src="images/images2/1.gif" style="width: 48px; height: 40px; position: absolute; left: 10px; top: 10px;"/>
+	</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script src="move.js"></script>
+		<script>
+			onload = function(){
+				
+				var aBtn = document.getElementsByTagName("button");
+				var oBox = document.getElementById("box");
+				
+				
+				//上
+				aBtn[0].onclick = function(){
+					animate(oBox, "top", 40);
+				}
+				//下
+				aBtn[1].onclick = function(){
+					animate(oBox, "top", 400);
+				}
+				//左
+				aBtn[2].onclick = function(){
+					animate(oBox, "left", 40);
+				}
+				//右
+				aBtn[3].onclick = function(){
+					animate(oBox, "left", 400);
+				}
+				//变宽
+				aBtn[4].onclick = function(){
+					animate(oBox, "width", 300);
+				}
+				//变窄
+				aBtn[5].onclick = function(){
+					animate(oBox, "width", 40);
+				}
+				//变高
+				aBtn[6].onclick = function(){
+					animate(oBox, "height", 300);
+				}
+				//变矮
+				aBtn[7].onclick = function(){
+					animate(oBox, "height", 40);
+				}
+				//重置
+				aBtn[8].onclick = function(){
+					oBox.style.left = "300px";
+					oBox.style.top = "200px";
+					oBox.style.width = "100px";
+					oBox.style.height = "100px";
+				}
+				
+				//缓冲运动
+				function animate(obj, attr, iTarget){
+					
+					clearInterval(obj.timer);
+					obj.timer = setInterval(function(){
+						//1, current
+						var current = parseFloat(getStyleAttr(obj, attr));
+						current = Math.round(current);
+						
+						//2, speed
+						var speed = (iTarget-current) / 8;
+						speed = speed>0 ? Math.ceil(speed) : Math.floor(speed); 
+						
+						//3, 判断临界值
+						if (current == iTarget){
+							console.log("停止运动");
+							clearInterval(obj.timer);
+							return ;
+						}
+						
+						//4, 运动
+						obj.style[attr] = current + speed + "px";
+						
+					}, 30);
+					
+				}
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<button>上</button>
+		<button>下</button>
+		<button>左</button>
+		<button>右</button>
+		<button>变宽</button>
+		<button>变窄</button>
+		<button>变高</button>
+		<button>变矮</button>
+		<button>重置</button>
+		
+		<div id="box" style="width: 100px; height: 100px; background: red; position: absolute; left: 300px; top: 200px;"></div>
+	</body>
+</html>

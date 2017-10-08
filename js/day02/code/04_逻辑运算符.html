@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//逻辑运算符
+			// && ， || ， !
+			
+			
+			// &&: 与（且）
+			//都为true则为true
+			console.log( true && true ); //true
+			console.log( true && false ); //false
+			console.log( false && true ); //false
+			console.log( false && false ); //false
+			
+			// ||: 或
+			//都为false则为false
+			console.log( true || true ); //true
+			console.log( true || false ); //true
+			console.log( false || true ); //true
+			console.log( false || false ); //false
+			
+			// ! : 非（取反）
+			console.log(!true); //false
+			console.log(!""); //true
+			
+			//
+			console.log( 3>4 && 5>4 ); //false
+			
+			console.log( true && false && true); //false
+			console.log( false || false || true); //true
+			
+			
+			//短路操作
+			//&& ： 从左往右开始判断，如果碰到操作数为false的情况， 则直接返回该操作数， 
+			//      如果都为true则返回最后一个操作数
+			var a = 4>3 && undefined && 3;
+			console.log(a);  //undefined
+			
+			// || : 从左往右开始判断， 如果碰到操作数为true的情况， 则直接返回该操作数， 
+			//      如果都为false则返回最后一个操作数
+			var b = 0 || undefined || 3;
+			console.log(b);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

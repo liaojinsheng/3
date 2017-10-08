@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			// 4. 使用for-of求5! (1*2*3*4*5) 
+			var arr = [1,2,3,4,5];
+			var s = 1;
+			for (let n of arr){
+				s *= n;
+			}
+			console.log(s); //120
+			
+			
+			// 5, 使用for-of求1!+2!+3!+4!+5! 
+			var arr = [1,2,3,4,5];
+			var sum = 0;
+			var tmp = 1;
+			for (let n of arr){
+				tmp = tmp*n;
+				sum += tmp;
+			}
+			console.log(sum); //153
+			
+			// 6, 使用for-of求数组的最大数和最小数
+			var arr = [2,3,4,8,5,2,1,7];
+			var max = arr[0];
+			var min = arr[0];
+			for (let n of arr){
+				if (max < n) {
+					max = n;
+				}
+				if (min > n) {
+					min = n;
+				}
+			}
+			console.log("最大值：" + max);
+			console.log("最小值：" + min);
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

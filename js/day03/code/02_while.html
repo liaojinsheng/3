@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			
+			//while循环
+			//while语法格式 ：
+			/*
+			while(){
+				
+			}
+			*/
+			//延时1秒后执行
+			setTimeout(function(){
+				
+				//一定不要写死循环
+//				while (true) {
+//					console.log("我是死循环");
+//				}
+				
+			}, 1000);
+			
+			console.log("hello");
+			
+			
+			//循环100次
+			var i = 1;
+			while (i <= 100) {
+				//console.log(i);
+				i++;
+			}
+			console.log(i);
+			
+			
+			//1+2+3+..+100
+			//第1次循环： i=1,sum=0, 先判断i<=100是否成立，为true,  循环结束时： i=2,sum=0+1
+			//第2次循环： i=2,sum=0+1, 先判断i<=100是否成立，为true, 循环结束时： i=3,sum=0+1+2
+			//第3次循环： i=3,sum=0+1+2, 先判断i<=100是否成立，为true, 循环结束时： i=4,sum=0+1+2+3
+			//...
+			//第99次循环： i=99,sum=0+1+2+..+98, 先判断i<=100是否成立，为true, 循环结束时： i=100,sum=0+1+2+3+..+98+99
+			//第100次循环： i=100,sum=0+1+2+..+99, 先判断i<=100是否成立，为true, 循环结束时： i=101,sum=0+1+2+3+..+98+99+100
+			//第101次循环： i=101,sum=0+1+2+3+..+98+99+100, 先判断i<=100是否成立， 为false， 结束循环（跳出循环）
+			
+			
+			var i = 1; //循环初始值
+			var sum = 0; //求和的初始值， 一般给0
+			while (i <= 100){   //循环条件
+				
+				//循环体
+				//console.log(i);
+				sum += i;  //sum = sum + i;
+				
+				i++;  //循环增量/减量
+			}
+			console.log(sum);  //5050
+			
+			
+			
+			//打印100以内 7的倍数
+			var i = 1;
+			while (i <= 100){
+				
+				if (i % 7 == 0) {
+					console.log(i);
+				}
+				
+				i++;
+			}
+			
+			
+			//打印100以内的奇数
+			var i = 1;
+			while (i <= 100) {
+				if (i%2 == 1) {
+					console.log(i);
+				}
+				i++;
+			}
+			
+			
+			//打印100以内所有偶数的和
+			var i = 1;
+			var sum = 0;
+			while (i <= 100){
+				
+				if (i%2 == 0) {
+					sum += i;
+				}
+				
+				i++;
+			}
+			console.log(sum); //2550
+			
+			//打印图形
+			/*
+				* * * * * * * * * *
+				* * * * * * * * * *
+				* * * * * * * * * *
+				* * * * * * * * * *
+			*/
+			var i = 1;
+			while (i <= 4){
+				
+				var j = 1;
+				while (j <= 10) {
+					document.write("* ");
+					j++;
+				}
+				
+				document.write("<br>");
+				i++;
+			}
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

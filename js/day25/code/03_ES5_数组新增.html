@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//indexOf() : 查找数组中某元素的下标, 找不到则为-1
+			var arr = [1,2,3,4,5];
+			var index = arr.indexOf(2);
+			console.log(index); //1
+			
+			
+			//forEach()
+			var arr = [1,2,3,4,5,6];
+			arr.forEach(function(value, index, array){
+				//console.log(arguments.length); //3
+				console.log("值：" + value + ", 下标："+index + ", 数组："+array);
+				if (index == 2) {
+					//break;
+					//continue;
+				}
+			});
+			
+			
+			//for循环: 用于遍历数组，遍历已知次数的
+			//for-in: 一般用于对象
+			//while ： 一般用于不知道遍历次数的情况
+			//do-while
+			//forEach() : 语法较for循环简洁， 但是会遍历所有元素， 且不支持break,continue;
+			//map()
+			//for-of()
+			
+			//for-in
+			//如果属性名是一个变量， 则必须使用中括号[]去调用属性
+			var obj = {name:"张三", age:33, sex:"人妖"};
+			for (var k in obj) {
+				console.log(k + ":" + obj[k]);
+			}
+			
+			
+			//map() ： 映射, 跟forEach用法类似，但是map可以返回一个新数组
+			var arr = [1,2,3,4,5,6];
+			var arr2 = arr.map(function(value, index, array){
+				//console.log("值：" + value + ", 下标："+index + ", 数组："+array);
+				return value*value;
+			});
+			console.log(arr); //[1,2,3,4,5,6]
+			console.log(arr2); //[1,4,9,16,25,36]
+			
+			
+			//reduce()用法： 接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终为一个值，是ES5中新增的一个数组逐项处理方法
+			/*
+			 reduce接收四个两个参数， 第二个参数可选（为pre的初始值）
+				第一个参数是回调函数，该回调函数中又包含四个参数， 分别为：
+				    pre：上一次调用回调函数时的返回值，或者初始值
+				    cur：当前正在处理的数组元素
+				    index : 当前正在处理的数组元素下标
+				    array : 调用reduce()方法的数组
+				result: 遍历完数组后的最终结果
+			*/
+			
+			var arr = [2,3,4,5,6,7,8];
+			var res = arr.reduce(function(pre, cur, index, array){
+				console.log("上一个值：" + pre + ", 当前值："+ cur + ", 下标：" + index + ", 数组："+ array);
+				return cur*2;
+			}, 11)
+			console.log(res);
+			
+			//求和
+			var arr = [1,2,3,4,5,6];
+			var sum = arr.reduce(function(pre, cur){
+				return pre + cur;
+			});
+			console.log(sum); //21
+			
+			
+			//filter() : 过滤出数组中你想要的元素， 不改变原数组
+			var arr = [2,3,4,5,6,7,8];
+			var arr2 = arr.filter(function(n){
+				return n>3;
+			})
+			console.log(arr); //[2,3,4,5,6,7,8]
+			console.log(arr2); //[4,5,6,7,8]
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

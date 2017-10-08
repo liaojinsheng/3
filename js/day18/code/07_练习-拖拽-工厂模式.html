@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				//2, 采用工厂模式, 创建一个函数, 将拖拽功能封装在函数内
+				
+				
+				function dragBox(id){
+					
+					var drag = {};
+				
+					//属性
+					drag.box = document.getElementById(id);
+					drag.box.onmousedown = function(e){
+						e = e || event;
+						drag.startMove(e.pageX, e.pageY); //开始移动
+					}
+					
+					//方法
+					//开始移动
+					drag.startMove = function(x, y){
+						this.disX = x - this.box.offsetLeft;
+						this.disY = y - this.box.offsetTop;
+						
+						document.onmousemove = function(e){
+							e = e || event;
+							drag.moving(e.pageX, e.pageY); //移动过程
+						}
+						document.onmouseup = function(){
+							drag.stopMove(); //停止移动
+						}
+					}
+					
+					//移动过程
+					drag.moving = function(x, y){
+						this.box.style.left = x - this.disX + "px";
+						this.box.style.top = y - this.disY + "px";
+					}
+					
+					//停止移动
+					drag.stopMove = function(){
+						document.onmousemove = null;
+						document.onmouseup = null;
+					}
+					
+					return drag;
+				}
+				
+				var drag1 = dragBox("box");
+				var drag2 = dragBox("box1");
+				var drag3 = dragBox("box2");
+				
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="box" style="width: 100px; height: 100px;background: green; position: absolute; left: 0; top: 0;"></div>
+		<div id="box1" style="width: 100px; height: 100px;background: red; position: absolute; left: 0; top: 110px;"></div>
+		<div id="box2" style="width: 100px; height: 100px;background: yellow; position: absolute; left: 0; top: 220px;"></div>
+	</body>
+</html>

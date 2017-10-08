@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#iphone {
+				background: url(images/images2/iphone.jpg);
+				width: 426px;
+				height: 640px;
+				position: absolute;
+				left: 30px;
+			}
+			#box {
+				width: 360px;
+				height: 62px;
+				/*background: red;*/
+				position: absolute;
+				left: 32px;
+				bottom: 33px;
+			}
+			#lock {
+				background: url(images/images2/unlock_btn.jpg);
+				width: 93px;
+				height: 62px;
+				position: absolute;
+				left: 50px;
+				top: 0;
+				cursor: pointer;
+			}
+			
+		</style>
+		<script>
+		
+			onload = function(){
+				
+				var oPhone = document.getElementById("iphone");
+				var oBox = document.getElementById("box");
+				var oLock = document.getElementById("lock");
+				
+				oLock.onmousedown = function(e){
+					e = e || event;
+					var disX = e.offsetX;
+					
+					document.onmousemove = function(e){
+						e = e || event;
+						var x = e.pageX - disX - oPhone.offsetLeft - oBox.offsetLeft;
+						if (x <= 0 ){
+							x = 0;
+						}
+						else if (x >= oBox.offsetWidth-oLock.offsetWidth) {
+							x = oBox.offsetWidth-oLock.offsetWidth;
+						}
+						oLock.style.left = x + "px";
+					}
+					
+					document.onmouseup = function(){
+						document.onmousemove = null;
+						document.onmouseup = null;
+						
+						if (oLock.offsetLeft <= (oBox.offsetWidth-oLock.offsetWidth)/2) {
+							oLock.style.left = 0;
+						}
+						else {
+							oLock.style.left = oBox.offsetWidth-oLock.offsetWidth + "px";
+						}
+					}
+					oBox.onmouseleave = function(){
+						document.onmousemove = null;
+						document.onmouseup = null;
+						
+						if (oLock.offsetLeft <= (oBox.offsetWidth-oLock.offsetWidth)/2) {
+							oLock.style.left = 0;
+						}
+						else {
+							oLock.style.left = oBox.offsetWidth-oLock.offsetWidth + "px";
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="iphone">
+			<div id="box">
+				<div id="lock"></div>
+			</div>
+		</div>
+	</body>
+</html>

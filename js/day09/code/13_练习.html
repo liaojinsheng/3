@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {margin: 0; border: none; padding: 0;}
+			ul, li {list-style: none;}
+			#box {
+				width: 220px;
+				height: 330px;
+				background: #ccc;
+				margin: 20px auto;
+				
+			}
+			ul {overflow: hidden;}
+			li {
+				width: 58px;
+				height: 53px;
+				float: left;
+				background: gray;
+				margin-left: 10px;
+				margin-top: 10px;
+				text-align: center;
+				font-size: 20px;
+				border: 1px solid gray;
+				color: white;
+			}
+			.active {
+				border: 1px solid red;
+				background: white;
+				color: orange;
+			}
+			#showInfo {
+				width: 200px;
+				height: 40px;
+				border: 1px solid white;
+				margin-top: 10px;
+				margin-left: 10px;
+				background: #aaa;
+			}
+		</style>
+		<script>
+			onload = function(){
+				
+				var aLi = document.getElementsByTagName("li");
+				var oShowInfo = document.getElementById("showInfo");
+				
+				/*
+				for (var i=0; i<aLi.length; i++){
+					aLi[i].index = i;
+					aLi[i].onclick = function(){
+						for (var j=0; j<aLi.length; j++){
+							aLi[j].className = "";
+						}
+						this.className = "active";
+						oShowInfo.innerHTML = this.index+1 + "月份真好";
+					}
+				}
+				*/
+				for (var i=0; i<aLi.length; i++){
+					aLi[i].index = i;
+					aLi[i].onclick = function(){
+						
+						for (var j=0; j<aLi.length; j++){
+							//if (this == aLi[j]) {
+							if (this.index == j) {
+								this.className = "active";
+								oShowInfo.innerHTML = j+1 + "月份真好";
+							}
+							else {
+								aLi[j].className = "";
+							}
+						}
+						
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<ul id="list">
+				<li > <p>1</p><p>Jan</p> </li>
+				<li class="active"> <p>2</p><p>Feb</p> </li>
+				<li> <p>3</p><p>Mar</p> </li>
+				<li> <p>4</p><p>Apr</p> </li>
+				<li> <p>5</p><p>May</p> </li>
+				<li> <p>6</p><p>Jun</p> </li>
+				<li> <p>7</p><p>Jul</p> </li>
+				<li> <p>8</p><p>Aug</p> </li>
+				<li> <p>9</p><p>Sep</p> </li>
+				<li> <p>10</p><p>Oct</p> </li>
+				<li> <p>11</p><p>Nov</p> </li>
+				<li> <p>12</p><p>Dec</p> </li>
+			</ul>	
+			<div id="showInfo">1月份好</div>
+		</div>
+	</body>
+</html>

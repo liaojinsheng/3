@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title><br />
+		
+		<script src="cookie.js"></script>
+		<script>
+			
+			onload = function(){
+				
+				//元素对象的属性
+				//offsetWidth / offsetHeight : 大小
+				//offsetLeft / offsetTop ：位置
+				//clientWidth / clientHeight : 大小
+				
+				//事件对象的属性
+				//offsetX / offsetY
+				//clientX / clientY 
+				//pageX / pageY
+				
+				
+				var oBox = document.getElementById("box");
+				
+				
+				//先获取上一次拖拽松开时的位置
+				var x = getCookie("x");
+				var y = getCookie("y");
+				if (x && y) {
+					oBox.style.left = x + "px";
+					oBox.style.top = y + "px";
+					oBox.innerHTML = "x:" + oBox.offsetLeft + ",y:" + oBox.offsetTop;
+				}
+				
+				oBox.onmousedown = function(e){
+					e = e || event;
+					var disX  = e.offsetX;
+					var disY = e.offsetY;
+					
+					document.onmousemove = function(e){
+						e = e || event;
+						oBox.style.left = e.pageX - disX + "px";
+						oBox.style.top = e.pageY - disY + "px";
+						oBox.innerHTML = "x:" + oBox.offsetLeft + ",y:" + oBox.offsetTop;
+					}
+					document.onmouseup = function(){
+						document.onmousemove = null;
+						document.onmouseup = null;
+						
+						//松开时， 将位置保存
+						var d = new Date();
+						d.setDate(d.getDate()+10);
+						setCookie("x", oBox.offsetLeft, d);
+						setCookie("y", oBox.offsetTop, d);
+						//console.log(getCookie("x"));
+						//console.log(getCookie("y"));
+					}
+				}
+				
+				
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="box" style="background: red; width: 100px; height: 100px; position: absolute; left: 0; top: 0;">x:0,y:0</div>
+	</body>
+</html>

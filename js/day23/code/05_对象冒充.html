@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//对象冒充： 或借用构造函数
+			//call() / apply()
+			
+			//apply和call的作用是一样的， apply的第二个参数是一个数组
+			
+			//构造函数
+			function Person(name, age){
+				this.name = name;
+				this.age = age;
+				this.show = function(){
+					console.log("show");
+				}
+			}
+			Person.prototype.show2 = function(){
+				console.log("show2");
+			}
+			
+			function Man(name, age, sex) {
+				//对象冒充, 继承Person
+				//this = man
+				Person.call(this, name, age);
+				//Person.apply(this, [name, age]); 
+				
+				this.sex = sex;
+			}
+			//Man.prototype = new Person();
+			
+			//创建对象
+			var man = new Man("张三", 33, "男");
+			console.log(man.sex);
+			console.log(man.name);
+			console.log(man.age);
+			man.show();
+			//man.show2();
+			
+			
+			
+			//组合继承
+			//原型链继承 + 对象冒充
+			//对象冒充继承父类的属性
+			//原型链继承父类的方法
+			
+			//Ipad, Iphone
+			//父类： Ipad
+			function Ipad(color, size){
+				this.color = color;
+				this.size = size;
+			}
+			Ipad.prototype.playKingGlory = function(){
+				console.log("玩王者荣耀");
+			}
+			
+			//子类：Iphone
+			function Iphone(color, size, price){
+				//对象冒充继承Ipad类的属性
+				console.log(2);
+				Ipad.call(this, color, size);
+				
+				this.price = price;
+			}
+			console.log(1);
+			Iphone.prototype = new Ipad(); //原型链继承方法
+			Iphone.prototype.callphone = function(){
+				console.log("打电话");
+			}
+			
+//			//创建iphone
+			var iphone = new Iphone("骚红色", "5.5", "$1000");
+			console.log(iphone.color);
+			console.log(iphone.size);
+			console.log(iphone.price);
+			iphone.playKingGlory();
+			iphone.callphone();
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

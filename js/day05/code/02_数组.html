@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//数组 ： 一组数据
+			
+			//定义数组
+			//方式一： 使用new
+			var arr = new Array(); //创建一个数组
+			console.log(arr); //[] , 空数组
+			console.log(typeof arr); //object
+			
+			var arr = new Array(1,2,3);
+			console.log(arr); //[1,2,3]
+			
+			var arr = new Array(1,2,"张三","男", true);
+			console.log(arr); //[1,2,"张三","男",true]
+			
+			var arr = new Array(3); //如果传入一个参数，且参数的类型为数值，表示创建的数组有3个元素
+			console.log(arr); //[,,]
+			
+			
+			//方式二： 字面量
+			var arr = [];
+			console.log(arr); //[], 空数组
+			console.log(typeof arr); //object
+			
+			var arr = [3];
+			console.log(arr); //[3]
+			
+			var arr = [3,4,"张三","李四","王五","赵六","钱七","孙八"];
+			console.log(arr); //[3,4,张三,李四,王五,赵六,钱七,孙八]
+			
+			
+			
+			//数组元素的获取
+			var arr = [10,20,30,40];
+			console.log( arr[0] ); //第一个元素， 下标为0
+			console.log( arr[1] ); //20
+			console.log( arr[2] ); //30
+			console.log( arr[3] ); //40
+			console.log( arr[4] ); //undefined , 如果超出下标，则数组越界，防止数组越界
+			
+			
+			//length：数组的长度
+			var arr = [10,20,30,40];
+			console.log(arr.length);  //4
+			console.log( arr[arr.length-1] ); //表示最后一个元素
+			
+			arr.length = 3;
+			console.log(arr.length); //3
+			console.log(arr); //[10,20,30]
+			
+			
+			//修改数组
+			var arr = [10,20,30,40];
+			arr[0] = 11;
+			console.log(arr); //[11,20,30,40]
+			arr[arr.length] = 50;
+			console.log(arr); //[11,20,30,40,50]
+			
+			
+			//数组搭配循环for使用
+			var arr = [10,20,30,40];
+			for (var i=0; i<arr.length; i++) {
+				arr[i] = i*i;
+			}
+			console.log(arr); //[0,1,4,9]
+			
+			//Math.random() : 0~1， [0,1)
+			var arr = [1,2,3,4,5];
+			for (var i=0; i<arr.length; i++){
+				arr[i] = Math.random()*10 + 10;  //10~20
+			}
+			console.log(arr); //0.09574073785915971,0.4322582012973726,0.5487877307459712,0.02037129085510969,0.38286598678678274
+			
+			
+			//遍历数组
+			//普通for
+			var arr = [10,20,30,40,50];
+			for (var i=2; i<arr.length; i++){
+				console.log( arr[i] );
+			}
+			
+			//for-in : 主要用在遍历对象，也可以遍历数组
+			var arr = [10,20,30,40,50];
+			for (var i in arr) {
+				console.log( arr[i] );
+			}
+			
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

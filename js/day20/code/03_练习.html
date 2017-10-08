@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script src="ajax.js"></script>
+		<script>
+			onload = function(){
+				
+				var oBtn = document.getElementsByTagName("input")[0]; 
+				var oTab = document.getElementsByTagName("table")[0]; 
+				
+				oBtn.onclick = function(){
+					
+					var xhr = createXHR();
+					xhr.open("get", "http://60.205.181.47/myPHPCode2/news.php", true);
+					xhr.send(null);
+					xhr.onreadystatechange = function(){
+						
+						if (xhr.readyState==4 && xhr.status==200){
+							//JSON解析
+							var responseArr = JSON.parse(xhr.responseText);
+							
+							
+							//
+							//oTab.children[0].innerHTML = "<tr><th>title</th><th>time</th></tr>";
+							
+							for (var i=0; i<responseArr.length; i++){
+								var obj = responseArr[i]; //每一条数据
+								
+								//创建节点
+								var tr = document.createElement("tr");
+								oTab.children[0].appendChild(tr);
+								
+								tr.innerHTML = "<td>"+ obj.title +"</td><td>"+ obj.time +"</td>"
+								
+							}
+							
+						}
+					}
+					
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="点我加载数据" />
+		<table border="1">
+			<tr>
+				<th>title</th>
+				<th>time</th>
+			</tr>
+		</table>
+	</body>
+</html>

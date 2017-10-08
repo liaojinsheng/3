@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			/*
+			 1, 找出下面字符串中的bag,beg,big,bog, 忽略大小写, 并将其改为bug:
+				( I am a Big man, I have so mach bag, so veryone call me  beg man,  bog bog bog, I hate you! )
+			*/
+			var str = "I am a Big man, I have so mach bag, so veryone call me  beg man,  bog bog bog, I hate you!";
+			console.log( str.replace(/bag|beg|big|bog/gi, "bug") );
+			
+			/*
+			 2, 假设有一个多字符的片断重复出现，把"really"、"really really "，以及任意数量连续出现的"really"字符串换成一个简单的"very ”
+				( 	Billy tried really hard 
+					Sally tried really really hard 
+					Timmy tried really really really hard 
+					Johnny tried really really really really hard 
+				)
+			*/
+			var str = "Billy tried really hard Sally tried really really hard Timmy tried really really really hard Johnny tried really really really really hard";
+			console.log( str.replace(/(really\s)+/g, "very ") );
+			//Billy tried very hard Sally tried very hard Timmy tried very hard Johnny tried very hard
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

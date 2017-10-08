@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				//DOM操作： 
+				//  createElement(); 创建一个元素节点
+			    //  appendChild(); 添加一个新子节点到子节点的末尾
+			    //  createTextNode(); 创建一个文本节点
+			    //  insertBefore(); 将新节点插入到某节点前面
+			    //  replaceChild(); 将新节点替换旧节点
+			    //  cloneNode(); 复制节点
+			    //  removeChild(); 移除节点
+				
+				
+				//createElement()
+				//appendChild()
+				var div = document.createElement("div"); //<div></div>
+				div.innerHTML = "div1"; //<div>div1</div>
+				div.id = "box"; //<div id=box>div1</div>
+				div.className = "pox";
+				//div.innerHTML = "<div>div2</div>"; //可以识别html标签
+				
+				//document.body
+				//var body = document.getElementsByTagName("body")[0];
+				document.body.appendChild(div);
+				
+				var div2 = document.createElement("div");
+				div2.innerHTML = "div2";
+				document.body.appendChild(div2);
+				
+				
+				//createTextNode()
+				var txtNode = document.createTextNode("我是一个文本");
+				div2.appendChild(txtNode);
+				
+				//封装一个函数, 带两个参数(元素节点的名称, 该节点的文本内容), 
+				//  返回一个带文本内容的元素节点
+				function createMyElement(name, txt){
+					var eleNode = document.createElement(name);
+					var txtNode = document.createTextNode(txt);
+					eleNode.appendChild(txtNode);
+					return eleNode;
+				}
+				var ele = createMyElement("p", "我是一个段落");
+				document.body.appendChild(ele);
+				
+				
+				//removeChild()
+				document.body.removeChild(div2);
+				
+				
+				//insertBefore()
+				var div3 = document.createElement("div");
+				div3.innerHTML = "div3";
+				ele.parentNode.insertBefore(div3, ele); 
+				
+				//replaceChild()
+				var div4 = document.createElement("div");
+				div4.innerHTML = "div4";
+				ele.parentNode.replaceChild(div4, ele);
+				
+				//cloneNode() : 复制标签， 内容不复制
+				//cloneNode(true): 复制标签，以及内容
+				var newDiv = div.cloneNode(true);
+				document.body.appendChild(newDiv);
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

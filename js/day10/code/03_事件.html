@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			function fn(){
+				console.log("我是内联模式");
+			}
+			
+			onload = function(){
+				
+				var aInput = document.getElementsByTagName("input");
+				aInput[2].onclick = function(){
+					console.log("我是脚本模式1");
+				}
+				
+				aInput[3].onclick = btnClick;
+				function btnClick(){
+					console.log("我是脚本模式2");
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="内联模式1" onclick="fn();" />
+		<input type="button" value="内联模式2" onclick="alert('我也是内联模式');" />
+		<br>
+		<input type="button" value="脚本模式1" />
+		<input type="button" value="脚本模式2" />
+		
+	</body>
+</html>

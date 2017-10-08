@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			/*
+			 3, 有以下表单, 验证用户名, 密码, 手机号
+				-> 用户名只包含数字,字母,下划线, 且长度不小于6位
+				-> 密码长度在8到16位
+				-> 手机号要合法
+			 */
+			
+			onload = function(){
+				
+				var aInput = document.getElementsByTagName("input");
+				var oToast = document.getElementById("toast");
+				
+				var flag1 = false; //表示用户名是否合法
+				var flag2 = false; //表示密码是否合法
+				var flag3 = false; //表示手机号是否合法
+				
+				//用户名
+				aInput[0].onkeyup = function(){
+					var val = this.value;
+					var reg = /^\w{6,}$/;
+					if (reg.test(val)) {
+						oToast.innerHTML = "用户名合法";
+						flag1 = true;
+					}
+					else {
+						oToast.innerHTML = "用户名不合法";
+						flag1 = false;
+					}
+				}
+								
+				//密码
+				aInput[1].onkeyup = function(){
+					var val = this.value;
+					var reg = /^.{8,16}$/;
+					if (reg.test(val)) {
+						oToast.innerHTML = "密码合法";
+						flag2 = true;
+					}
+					else {
+						oToast.innerHTML = "密码不合法";
+						flag2 = false;
+					}
+				}
+				
+				//手机号
+				aInput[2].onkeyup = function(){
+					var val = this.value;
+					var reg = /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18([0-3]|[5-9])))\d{8}$/;
+					if (reg.test(val)) {
+						oToast.innerHTML = "手机号合法";
+						flag3 = true;
+					}
+					else {
+						oToast.innerHTML = "手机号不合法";
+						flag3 = false;
+					}
+				}
+				
+				//提交
+				aInput[3].onclick = function(){
+					if (flag1 && flag2 && flag3) {
+						oToast.innerHTML = "输入全部合法";
+					}
+					else {
+						if (!flag1) {
+							oToast.innerHTML = "用户名输入不合法";
+						}
+						else if (!flag2) {
+							oToast.innerHTML = "密码输入不合法";
+						}
+						else if (!flag3) {
+							oToast.innerHTML = "手机号输入不合法";
+						}
+					}
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<h2>注册</h2>
+		<form>
+			用户名<input type="text"  /> <br />
+			 密 &nbsp;&nbsp; 码<input type="password" /> <br />
+			手机号<input type="text" /> <br />
+			<input type="button" value="提交" /> <input type="reset"/> <br />		
+		</form>
+		<p id="toast"></p>
+	</body>
+</html>

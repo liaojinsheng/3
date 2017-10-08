@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {margin: 0; padding: 0; border: none;}
+			body {
+				width: 600px;
+			}
+			.item {
+				padding-left: 5px;
+				padding-right: 5px;
+				float: left;
+			}
+			img {
+				width: 180px;
+				padding: 3px;
+				border: 1px solid #ccc;
+			}
+		</style>
+		<script>
+			
+			onload =  layout;
+			
+			//布局
+			function layout(){
+				
+				//自适应瀑布流
+				
+				var items = document.getElementsByClassName("item");
+				
+				//计算总列数
+				//浏览器宽度
+				//var winWidth = document.documentElement.clientWidth;
+				
+				//总列数
+				columns = 3; // Math.floor(winWidth / items[0].offsetWidth);
+				//console.log(columns);
+				
+				
+				//每一列的总高度
+				var colHeightArr = [];
+				
+				for (var i=0; i<items.length; i++){
+					if (i < columns) { //第一行
+						items[i].style.position = "static"; //默认
+						//将第一行的每个div的高度添加到数组colHeightArr中
+						//为了从第二行开始计算高度中最小的
+						colHeightArr.push( items[i].offsetHeight ); 
+					}
+					else { //从第二行开始
+						
+						var minHeight = colHeightArr[0]; //最小高度
+						var minIndex = 0; //最小高度的下标
+						for (var j=0; j<colHeightArr.length; j++){
+							if (minHeight > colHeightArr[j]){
+								minHeight = colHeightArr[j];
+								minIndex = j;
+							}
+						}
+						
+						//绝对定位
+						items[i].style.position = "absolute";
+						items[i].style.left = items[minIndex].offsetLeft + "px";   
+						items[i].style.top = minHeight + "px";
+						
+						colHeightArr[minIndex] += items[i].offsetHeight;
+					}
+				}				
+			}
+		
+			//滚动事件
+			onscroll = function(){
+				//scrollTop
+				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+				
+				//页面高度
+				var winHeight = document.documentElement.clientHeight;
+				
+				var items = document.getElementsByClassName("item");
+				var lastItemBottom = items[items.length-1].offsetTop + items[items.length-1].offsetHeight;
+				
+				if ( scrollTop + winHeight >= lastItemBottom ) {
+					//alert("已经到较下方了");
+					
+					//加载更多数据
+					//创建div节点
+					//<div class="item"> <img src="images/images1/img (1).jpg" /> </div>
+					for (var i=21; i<43; i++){
+						var div = document.createElement("div");
+						div.className = "item";
+						div.innerHTML = "<img src='images/images1/img ("+ i +").jpg' />";
+						document.body.appendChild(div);
+					}
+					
+					//重新布局
+					layout();
+				}
+			}
+			
+		
+		</script>
+	</head>
+	<body>
+		<div class="item"> <img src="images/images1/img (1).jpg" /> </div>
+		<div class="item"> <img src="images/images1/img (2).jpg" /> </div>
+		<div class="item"> <img src="images/images1/img (3).jpg" /> </div>
+		<div class="item"> <img src="images/images1/img (4).jpg" /> </div>
+		<div class="item"> <img src="images/images1/img (5).jpg" /> </div>
+		<div class="item"> <img src="images/images1/img (6).jpg" /> </div>
+		<div class="item"> <img src="images/images1/img (7).jpg" /> </div>
+		<div class="item"> <img src="images/images1/img (8).jpg" /> </div>
+		<div class="item"> <img src="images/images1/img (9).jpg" /> </div>
+		<div class="item"> <img src="images/images1/img (10).jpg" /> </div>
+		<div class="item"> <img src="images/images1/img (11).jpg" /> </div>
+		<div class="item"> <img src="images/images1/img (12).jpg" /> </div>
+		<div class="item"> <img src="images/images1/img (13).jpg" /> </div>
+		<div class="item"> <img src="images/images1/img (14).jpg" /> </div>
+		<div class="item"> <img src="images/images1/img (15).jpg" /> </div>
+		<div class="item"> <img src="images/images1/img (16).jpg" /> </div>
+		<div class="item"> <img src="images/images1/img (17).jpg" /> </div>
+		<div class="item"> <img src="images/images1/img (18).jpg" /> </div>
+		<div class="item"> <img src="images/images1/img (19).jpg" /> </div>
+		<div class="item"> <img src="images/images1/img (20).jpg" /> </div>
+	</body>
+</html>

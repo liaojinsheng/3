@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			/*
+			 练习：使用组合继承的方式实现以下类的继承
+ 
+				父类：Cat
+				方法： eat; 
+				属性： fur
+				说明： eat吃各种东西
+				
+				子类： TomCat
+				方法：eat; catchMouse
+				属性：fur; friend
+				说明：eat只吃面包
+			 */
+			
+			//Cat
+			function Cat(fur){
+				this.fur = fur;
+				
+			}
+			Cat.prototype.eat = function(){
+				console.log("吃各种东西");
+			}
+			
+			//TomCat
+			function TomCat(fur, friend){
+				Cat.call(this, fur); //对象冒充继承Cat的属性
+				this.friend = friend;
+			}
+			TomCat.prototype = new Cat(); //原型链继承Cat的方法
+			TomCat.prototype.eat = function(){ //重写
+				console.log("吃面包");
+			}
+			TomCat.prototype.catchMouse = function(){
+				console.log("抓老鼠");
+			}
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

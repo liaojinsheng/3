@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				//1, 采用面向对象的思路实现拖拽功能
+				/*
+				var oBox = document.getElementById("box");
+				oBox.onmousedown = function(e){
+					e = e || event;
+					var disX = e.pageX - oBox.offsetLeft;
+					var disY = e.pageY - oBox.offsetTop;
+					
+					document.onmousemove = function(e){
+						e = e || event;
+						oBox.style.left = e.pageX - disX + "px";
+						oBox.style.top = e.pageY - disY + "px";
+					}
+					document.onmouseup = function(){
+						document.onmousemove = null;
+						document.onmouseup = null;
+					}
+				}
+				
+				*/
+				//属性： box
+				//方法：startMove, moving, stopMove
+				var drag = {};
+				
+				//属性
+				drag.box = document.getElementById("box");
+				drag.box.onmousedown = function(e){
+					e = e || event;
+					drag.startMove(e.pageX, e.pageY); //开始移动
+				}
+				
+				//方法
+				//开始移动
+				drag.startMove = function(x, y){
+					this.disX = x - this.box.offsetLeft;
+					this.disY = y - this.box.offsetTop;
+					
+					document.onmousemove = function(e){
+						e = e || event;
+						drag.moving(e.pageX, e.pageY); //移动过程
+					}
+					document.onmouseup = function(){
+						drag.stopMove(); //停止移动
+					}
+				}
+				
+				//移动过程
+				drag.moving = function(x, y){
+					this.box.style.left = x - this.disX + "px";
+					this.box.style.top = y - this.disY + "px";
+				}
+				
+				//停止移动
+				drag.stopMove = function(){
+					document.onmousemove = null;
+					document.onmouseup = null;
+				}
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box" style="width: 100px; height: 100px;background: green; position: absolute; left: 0; top: 0;"></div>
+	</body>
+</html>

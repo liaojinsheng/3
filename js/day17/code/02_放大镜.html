@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				function $(id){
+					return document.getElementById(id);
+				}
+				
+				//获取样式属性值
+				function getStyleAttr(obj, attr){
+					if (window.getComputedStyle){
+						return window.getComputedStyle(obj, null)[attr];
+					}
+					return obj.currentStyle[attr];
+				}
+				
+				//先固定比例
+				//计算小区域的宽高
+				//smallArea.width/bigArea.width == smallImg.width/bigImg.width
+				$("smallArea").style.width = parseInt(getStyleAttr($("bigArea"), "width")) * parseInt(getStyleAttr($("smallImg"), "width")) / parseInt(getStyleAttr($("bigImg"), "width")) + "px";
+				$("smallArea").style.height = parseInt(getStyleAttr($("bigArea"), "height")) * parseInt(getStyleAttr($("smallImg"), "height")) / parseInt(getStyleAttr($("bigImg"), "height")) + "px";
+				
+				//放大比例/放大倍数: 4
+				var scale = parseInt(getStyleAttr($("bigImg"), "width")) / parseInt(getStyleAttr($("smallImg"), "width"));
+				console.log(scale);
+				
+				//在小图上移动
+				$("smallImg").onmousemove = function(e){
+					e = e || event;
+					
+					//显示小区域和大区域
+					$("smallArea").style.display = "block"; //显示小区域
+					$("bigArea").style.display = "block"; //显示大区域
+					
+					
+					
+					var x = e.pageX - $("smallImg").offsetLeft - $("smallArea").offsetWidth/2;
+					var y = e.pageY - $("smallImg").offsetTop - $("smallArea").offsetHeight/2;
+					
+					if (x <= 0) { //控制不超出左边界
+						x = 0;
+					}
+					else if (x >= $("smallImg").offsetWidth-$("smallArea").offsetWidth) { //右边界
+						x = $("smallImg").offsetWidth-$("smallArea").offsetWidth;
+					}
+					if (y <= 0)  { //上边界
+						y = 0;
+					}
+					else if (y >= $("smallImg").offsetHeight-$("smallArea").offsetHeight) { //下边界
+						y = $("smallImg").offsetHeight-$("smallArea").offsetHeight;
+					}
+					
+					//移动小区域
+					$("smallArea").style.left = x + "px";
+					$("smallArea").style.top = y + "px";
+					
+					//移动大图
+					$("bigImg").style.left = -x*scale + "px";
+					$("bigImg").style.top = -y*scale + "px";
+				}
+				
+				//移出小图
+				$("smallImg").onmouseleave = function(){
+					$("smallArea").style.display = "none"; //隐藏小区域
+					$("bigArea").style.display = "none"; //隐藏大区域
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<!--<div id="smallImg" style="background: url(images/星际穿越.jpg); background-size: cover; width: 200px; height: 200px; position: absolute;left: 50px; top: 100px;">-->
+		<div id="smallImg" style=" width: 200px; height: 200px; position: absolute;left: 50px; top: 100px;">
+			<img src="images/星际穿越.jpg" style="width: 200px; height: 200px;" />
+			<div id="smallArea" style="display: none; width: 100px; height: 100px; background: rgba(100,222,200,0.7); position: absolute;left: 50px; top: 50px;"></div>
+		</div>
+		<div id="bigArea" style="overflow: hidden; display: none;  width: 300px; height: 300px; position: absolute; left: 300px; top: 100px;">
+			<img id="bigImg" style="position: absolute; width: 800px; height: 800px; left: -100px; top: -100px;" src="images/星际穿越.jpg" />
+		</div>
+	</body>
+</html>

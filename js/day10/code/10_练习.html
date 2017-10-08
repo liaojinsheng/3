@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				//示例: 
+				//1, 鼠标点击某处, 让精灵移动到该处 (如下图)
+				//2, 鼠标移动时, 让精灵跟随鼠标移动
+				
+				var oBox = document.getElementById("box");
+				//offsetWidth / offsetHeight : 获取元素节点的宽度或高度， 只读
+				//clientWidth / clientHeight : 获取元素的宽度或高度
+				console.log( oBox.offsetWidth + "," + oBox.offsetHeight); //102,102 , 包括边框
+				console.log( oBox.clientWidth + "," + oBox.clientHeight); //100,100 ， 不包括边框
+				
+				document.onclick = function(e){
+					e = e || event;
+					oBox.style.left = e.pageX-oBox.offsetWidth/2 + "px";
+					oBox.style.top = e.pageY-oBox.offsetHeight/2 + "px";
+				}
+				
+				document.onmousemove = function(e){
+					e = e || event;
+					oBox.style.left = e.pageX-oBox.offsetWidth/2 + "px";
+					oBox.style.top = e.pageY-oBox.offsetHeight/2 + "px";
+				}
+				
+				
+			}
+		</script>
+	</head>
+	<body style="background: black;">
+		<div id="box" style="border: 1px solid black; width: 100px; height: 100px; background: url(images/girl.gif) center; position: absolute; left: 10px; top: 10px;"></div>
+	</body>
+</html>

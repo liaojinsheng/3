@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//break : 1跳出switch语句, 2跳出循环（当前这一层循环）
+			
+			//示例: 
+		    //1, 判断一个数是不是合数。
+		    //   (指自然数中除了能被1和本身整除外，还能被其他的数整除（不包括0)的数。)
+		    var n = 35;
+		    for (var i=2; i<n; i++){
+		    	if (n%i == 0){
+		    		console.log(n + "是合数");
+		    		break;  //跳出当前循环
+		    	}
+		    }
+		    
+		    
+		    //2, 判断一个数是不是素数。(除了1和它本身以外不再有其他的除数整除。)
+		    /*
+			var n = 37;
+			for (var i=2; i<n; i++) {
+				if (n%i == 0){
+		    		break;  
+		    	}
+			}
+			//console.log(i);
+			if (i == n){
+				console.log(n + "是素数");
+			}
+			*/
+			
+			var n = 37;
+			var b = true; //表示是素数
+			for (var i=2; i<n; i++) {
+				if (n%i == 0){
+					b = false; //说明不是素数
+		    		break;  
+		    	}
+			}
+			
+			if (b) {
+				console.log(n + "是素数");
+			}
+			
+			
+			//1, break可以跳出循环
+			//2，break只能跳出一层循环
+			//3，break后面的语句不会执行
+			
+			for (var i=1; i<=3; i++) {
+				for (var j=1; j<=3; j++){
+					if (j>2){
+						console.log("hi ");
+						break; //只会跳出当前这一层循环, 后面的语句不会执行
+						console.log("你好啊");
+					}
+					console.log(i + "," + j);
+				}
+			}
+						
+			
+			//continue ： 跳过本次循环，进入下一次循环
+			for (var i=1; i<=5; i++) {
+				if (i%2 == 0){
+					continue;
+				}
+				console.log(i);
+			}
+			
+			
+			//1,求整数1～100的累加值，但要求跳过所有个位为3的数
+			var sum = 0;
+			for (var i=1; i<=100; i++){
+				if (i%10 == 3){ //个位为3
+					continue;
+				}
+				sum += i;
+			}
+			console.log(sum);
+			
+			
+			
+			/*
+			 	12, 宰相的麦子：相传古印度宰相达依尔，是国际象棋的发明者。
+			 	有一次，国王因为他的贡献要奖励他，问他想要什么。达依尔说：
+			 	“只要在国际象棋棋盘上（共64格）摆上这么些麦子就行了：第一格一粒，
+			 	第二格两粒，……，后面一格的麦子总是前一格麦子数的两倍，摆满整个棋盘，
+			 	我就感恩不尽了。”国王一想，这还不容易，刚想答应，如果你这时在国王旁边站着，
+			 	你会不会劝国王别答应，为什么？
+
+			 */
+			
+			var sum = 0;
+			var n = 1; //n表示每格的麦子数
+			for (var i=1; i<=64; i++){
+				//1, 2, 4, 8, 16, 32..
+				//var n =  Math.pow(2, i-1);
+				//console.log(n);
+				sum += n;
+				
+				n *= 2;
+			}
+			console.log(sum/100000000); //184467440737亿颗
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

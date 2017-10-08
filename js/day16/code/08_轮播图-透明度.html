@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {margin: 0; padding: 0; border: none;}
+			ul, li {list-style: none;}
+			#box {
+				width: 600px;
+				height: 300px;
+				margin: 100px auto;
+				border: 10px solid orange;
+				position: relative;
+			}
+			#list {
+				width: 600px;
+				height: 300px;
+				position: relative;
+			}
+			#list li {
+				width: 600px; 
+				height: 300px;
+				position: absolute;
+				left: 0;
+				top: 0;
+				text-align: center;
+				font-size: 50px;
+				line-height: 300px;
+				/*display: none;*/
+				opacity: 0;
+				filter: alpha(opacity=0);
+			}
+			#list li img {
+				width: 600px;
+				height: 300px;
+			}
+			#list2 {
+				width: 500px;
+				height: 50px;
+				position: absolute;
+				top: 330px;
+				left: 50px;
+			}
+			#list2 li {
+				width: 100px;
+				height: 50px;
+				float: left;
+				margin-right: 20px;
+				text-align: center;
+				font-size: 30px;
+				line-height: 50px;
+				opacity: 0.3;
+				filter: alpha(opacity=30);
+			}
+			#list2 li img {
+				width: 100px;
+				height: 50px;
+			}
+		</style>
+		<script src="move.js"></script>
+		<script>
+			onload = function(){
+				
+				var oBox = document.getElementById("box");
+				var oList = document.getElementById("list");
+				var aLi = oList.getElementsByTagName("li");
+				
+				var oList2 = document.getElementById("list2");
+				var aLi2 = oList2.getElementsByTagName("li");
+				
+				//默认显示第一张图
+				aLi[0].style.opacity = 1;
+				aLi[0].style.filter = "alpha(opacity=100)";
+				//默认第一个小图片是选中的
+				aLi2[0].style.opacity = 1;
+				aLi2[0].style.filter = "alpha(opacity=100)";
+				
+				
+				//自动轮播
+				var i = 0; //即将显示的图片下标
+				var timer = setInterval(function(){
+					i++;
+					move();
+				}, 2000);
+				
+				function move(){
+					if (i >= 4) {
+						i = 0;
+					}
+					
+					for (var j=0; j<aLi.length; j++){
+						if (i == j) {
+							animate(aLi[i], {opacity:100}); //显示大图
+							animate(aLi2[i], {opacity:100}); //显示小图
+						}
+						else { 
+							animate(aLi[j], {opacity:0}); //隐藏大图
+							animate(aLi2[j], {opacity:30}); //隐藏小图
+						}
+					}
+				}
+				
+				
+				for (var j=0; j<aLi2.length; j++) {
+					aLi2[j].index = j;
+					aLi2[j].onmouseenter = function(){
+						i = this.index;
+						move();
+					}
+				}
+				
+				oBox.onmouseenter = function(){
+					clearInterval(timer);
+				}
+				oBox.onmouseleave = function(){
+					timer = setInterval(function(){
+						i++;
+						move();
+					}, 2000);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			
+			<ul id="list">
+				<li><img src="images/b1.jpg"/></li>
+				<li><img src="images/b2.jpg"/></li>
+				<li><img src="images/b3.jpg"/></li>
+				<li><img src="images/b4.jpg"/></li>
+			</ul>
+			<ul id="list2">
+				<li><img src="images/b1.jpg"/></li>
+				<li><img src="images/b2.jpg"/></li>
+				<li><img src="images/b3.jpg"/></li>
+				<li><img src="images/b4.jpg"/></li>
+			</ul>
+			
+			<!--<ul id="list">
+				<li style="background: red;">1</li>
+				<li style="background: green;">2</li>
+				<li style="background: blue;">3</li>
+				<li style="background: gray;">4</li>
+			</ul>
+			<ul id="list2">
+				<li style="background: red;">1</li>
+				<li style="background: green;">2</li>
+				<li style="background: blue;">3</li>
+				<li style="background: gray;">4</li>
+			</ul>-->
+		</div>
+	</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box {
+				width: 100px;
+				height: 30px;
+				background: green;
+				position: fixed;
+				right: 0;
+				bottom: 0;
+				cursor: pointer;
+			}
+		</style>
+		<script src="move.js"></script>
+		<script>
+			onload = function(){
+				
+				var oBox = document.getElementById("box");
+				var timer;
+				oBox.onclick = function(){
+					
+					clearInterval(timer)
+					timer = setInterval(function(){
+						
+						//1, current
+						var current = document.documentElement.scrollTop || document.body.scrollTop;
+						
+						//2, speed
+						//iTarget=0
+						var speed = (0-current)/5;
+						speed = Math.floor(speed);
+						
+						//3, 判断临界值
+						if (current == 0) {
+							clearInterval(timer);
+							return;
+						}
+						
+						//4,运动
+						document.documentElement.scrollTop = document.body.scrollTop = current + speed; 
+						
+					},30);
+					
+					//document.documentElement.scrollTop = document.body.scrollTop = 0;
+					
+					
+				
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		
+		<div id="box">回到顶部</div>
+	</body>
+</html>

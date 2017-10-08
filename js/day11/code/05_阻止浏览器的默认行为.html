@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				var aInput = document.getElementsByTagName("input");
+				
+				aInput[1].onclick = function(e){
+					console.log("submit");
+					
+					e = e || event;
+					
+					//阻止浏览器的默认行为
+					if (e.preventDefault) {
+						e.preventDefault(); //非IE
+					}
+					else {
+						e.returnValue = false; //IE
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<form>
+			<input type="text" value="1" />
+			<input type="submit" />
+		</form>
+	</body>
+</html>

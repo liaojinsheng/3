@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+					
+				
+				var oBox  = document.getElementById("box");
+				
+				//滚动事件
+				onscroll = function(){
+					//console.log("aaa");
+					
+//					var scrollTop1 = document.documentElement.scrollTop; //不支持谷歌浏览器, 支持火狐，支持IE
+//					console.log("--html--: " + scrollTop1);
+//					var scrollTop2 = document.body.scrollTop; //支持谷歌浏览器, 不支持火狐， IE
+//					console.log("--body--: " + scrollTop2);
+					
+					
+					//兼容性问题
+					//scrollTop
+					var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+					console.log(scrollTop);
+					
+					
+					
+					//var scrollLeft =  document.documentElement.scrollLeft;
+					//console.log("left: " + scrollLeft);
+					
+					oBox.innerHTML = scrollTop;
+					
+				}
+				
+				
+			}
+			
+		</script>
+	</head>
+	<body style="height:3000px; width: 2000px">
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		
+		<div id="box" style="width: 100%; height: 30px; background: red;">0</div>
+		
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+	</body>
+</html>

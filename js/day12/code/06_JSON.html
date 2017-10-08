@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//JSON : 表示数据的方式， 数据格式
+			
+			//JSON字符串
+			// "[张三, 李四， wangwu]"
+			// "{name:zhangsan, age:33, sex:男}"
+			// '[{"name":"张三","age":33}, {"name":"李四","age":44},...]'
+			
+			//JSON对象
+			// [张三, 李四， wangwu]
+			// {name:zhangsan, age:33, sex:男}
+			// [{"name":"张三","age":33}, {"name":"李四","age":44},...]
+			
+			
+			//JSON解析 ： JSON字符串转换成JSON对象
+			//JSON序列化 ： JSON对象转换成JSON字符串
+			
+			
+			//JSON解析
+			//eval
+			var jsonStr = '[{"name":"张三","age":33}, {"name":"李四","age":44}]';
+			console.log(typeof jsonStr); //string
+			var jsonObj = eval(jsonStr);   //JSON解析
+			console.log(jsonObj); //[[object Object],[object Object]]
+			console.log(typeof jsonObj); //object
+			console.log( jsonObj[0].name ); //张三
+			
+			var jsonStr = '{"name":"zhangsan", "age":33, "sex":"男"}';
+			var jsonObj = eval( "("+ jsonStr + ")" );
+			console.log(jsonObj); //[object Object]
+			
+			
+			//JSON.parse() : IE8+
+			var jsonStr = '[{"name":"张三","age":33}, {"name":"李四","age":44}]';
+			var jsonObj = JSON.parse(jsonStr); //JSON 解析
+			console.log(jsonObj); //[[object Object],[object Object]]
+			
+			
+			//JSON序列化
+			//JSON.stringify()
+			var obj = [{name:"张三",age:33}, {name:"李四",age:44}];
+			console.log(typeof obj); //object
+			var jsonStr = JSON.stringify(obj); //JSON序列化
+			console.log(jsonStr); //"[{"name":"张三","age":33},{"name":"李四","age":44}]"
+			console.log(typeof jsonStr); //string
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
+
+
+
+<!--
+//xml的写法
+<persons>
+	<person>
+		<name>张三</name>
+		<age>33</age>
+		<sex>男</sex>
+	</person>
+	<person>
+		<name>李四</name>
+		<age>33</age>
+		<sex>男</sex>
+	</person>
+</persons>
+-->

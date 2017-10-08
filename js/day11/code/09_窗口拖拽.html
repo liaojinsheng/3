@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {margin: 0; padding: 0; border: none;}
+			#box {
+				width: 300px;
+				height: 300px;
+				background: red;
+				position: absolute;
+				left: 10px;
+				top: 10px;
+				border-radius: 5px;
+			}
+			#nav {
+				width: 300px;
+				height: 30px;
+				background: green;
+				border-top-left-radius: 5px;
+				border-top-right-radius: 5px;
+				cursor: move;
+			}
+			#close {
+				width: 50px;
+				height: 30px;
+				text-align: center;
+				line-height: 30px;
+				color: white;
+				background: purple;
+				cursor: pointer;
+				float: right;
+				margin-right: 5px;
+			}
+		</style>
+		<script>
+			onload = function(){
+				
+				var oBox = document.getElementById("box");
+				var oNav = document.getElementById("nav");
+				var oClose = document.getElementById("close");
+				
+				//onmousedown
+				oNav.onmousedown = function(e){
+					e = e || event;
+					if (e.preventDefault) {
+						e.preventDefault(); //阻止浏览器默认行为，非IE
+					}else {
+						e.returnValue = false; //IE
+					}
+					
+//					var disX = e.offsetX;
+//					var disY = e.offsetY;
+					//console.log(e.offsetX);
+					
+					var disX = e.pageX - oBox.offsetLeft;
+					var disY = e.pageY - oBox.offsetTop;
+					
+					//onmousemove
+					document.onmousemove = function(e){
+						e = e || event;
+						oBox.style.left = e.pageX - disX + "px";
+						oBox.style.top = e.pageY - disY + "px";
+						
+					}
+					//onmouseup
+					document.onmouseup = function(){
+						document.onmousemove = null;
+						document.onmouseup = null;
+					}
+					
+					
+				}
+				oClose.onmousedown = function(e){
+					e = e || event;
+					if (e.stopPropagation) {
+						e.stopPropagation(); //非IE,阻止冒泡
+					}else {
+						e.cancelBubble = true; //IE
+					}
+				}
+				//关闭
+				oClose.onclick = function(){
+					oBox.style.display = "none";
+//					oBox.parentNode.removeChild(oBox);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<div id="nav">
+				<div id="close">关闭</div>
+			</div>
+		</div>
+	</body>
+</html>

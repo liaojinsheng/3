@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			onload = function(){
+				
+				//this : 哪个对象调用了函数， 那么该函数中的this就是这个对象
+			
+				//事件中的this
+				var btn = document.getElementsByTagName("button")[0];
+				btn.onclick = function(){
+					console.log(this); //btn
+				}
+			
+				//普通函数中的this	
+				function fn(){
+					console.log(this); //window对象
+				}
+				fn();
+				
+				//定时器/延时器中的this
+				/*
+				setInterval(function(){
+					console.log(this); //window对象
+				}, 2000)
+				*/
+				setTimeout(function(){
+					console.log(this); //window对象
+				}, 2000)
+				
+				
+				//构造函数中的this
+				function Person(){
+					console.log(this); //person
+				}
+				var person = new Person();
+				
+				
+				//this : 哪个对象调用了函数， 那么该函数中的this就是这个对象
+				btn.onclick = function(){
+					console.log(this.index); 
+				}
+				//btn.onclick();
+				
+				var obj = {index:2};
+				obj.fn = btn.onclick;
+				obj.fn();
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		<button>按钮</button>
+	</body>
+</html>

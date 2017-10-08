@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//2, 入职薪水10K，每年涨幅入职薪水的5%，50年后工资多少？
+			var salary = 10; 
+			var a = 0.05;
+			var years = 50;
+			var result = salary + salary*a * years;
+			console.log(result); //35
+			
+			
+			//3, 为抵抗洪水，战士连续作战89小时，编程计算共多少天零多少小时？
+			var b = 89;
+			var day = parseInt(b/24);
+			var hour = b % 24;
+			console.log(day + "天" + hour + "小时");
+			
+			//4, 小明要到美国旅游，可是那里的温度是以华氏度为单位记录的。
+			//它需要一个程序将华氏温度（80度）转换为摄氏度，
+			//并以华氏度和摄氏度为单位分别显示该温度。
+			//提示：摄氏度与华氏度的转换公式为：摄氏度 = 5/9.0*(华氏度-32)
+			
+			//toFixed(1): 保留一位小数
+			var c = 80;
+			var result = 5/9.0 * (c-32);
+			console.log(result.toFixed(1)); //26.7
+			
+			
+			//5, 给定一个三位数，分别把这个数字的百位、十位、个位算出来并显示。
+			var d = 345;
+			var a = parseInt(d / 100);
+			//var b = parseInt(d/10) % 10;
+			var b = parseInt((d % 100) / 10);
+			var c = d % 10;
+			console.log(a + "," + b + "," + c);
+
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			
+			//Set的属性和方法:
+		    //size : 数量
+		    //add(value)：添加某个值，返回Set结构本身
+		    //delete(value)：删除某个值，返回一个布尔值，表示删除是否成功
+		    //has(value)：返回一个布尔值，表示该值是否为Set的成员
+		    //clear()：清除所有成员，没有返回值
+			
+			//Set： 没有重复元素
+			var set = new Set([1,2,3,4,1,2,4,5,5,5,4,3,2]);
+			console.log(set); //Set {1, 2, 3, 4, 5}
+			console.log(set.size); //5
+			console.log(typeof set); //object
+			
+			var set = new Set();
+			console.log(set); //Set {}
+			
+			set.add(2).add(3).add(5);
+			console.log(set); //Set {2, 3, 5}
+			
+			console.log( set.delete(3) ); //true
+			console.log(set); //Set {2, 5}
+			
+			console.log( set.has(2) ); //true
+			
+			set.clear();
+			console.log(set); //Set {}
+
+			
+			//数组去重
+			var arr = [1,2,3,4,1,2,4,5,5,5,4,3,2];
+			var set = new Set(arr);  //Set {1, 2, 3, 4, 5}
+			var arr2 = new Array(...set);
+			console.log(arr2); //[1, 2, 3, 4, 5]
+			
+			
+			//遍历
+			//for-of
+			var set = new Set([1,2,3,4,1,2,4,5,5,5,4,3,2]);
+			for (let n of set){
+				console.log(n);
+			}
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

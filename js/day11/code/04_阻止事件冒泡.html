@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				document.onclick = function(){
+					console.log("document");
+				}
+				
+				document.getElementsByTagName("div")[0].onclick = function(){
+					console.log("div");
+				}
+				
+				document.getElementsByTagName("input")[0].onclick = function(e){
+					console.log("input");
+					e = e || event;
+					
+					//阻止事件冒泡
+					if (e.stopPropagation) {
+						e.stopPropagation(); //非IE
+					}else{
+						e.cancelBubble = true; //IE
+					}
+				}
+				
+				//window : 窗口对象
+				//document ：页面内容
+				//document.documentElement ： html
+				//document.body ： body
+				
+				//事件冒泡: 从里往外逐个触发. 
+				//事件捕获: 从外往里逐个触发.
+				
+				//阻止事件冒泡
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="box" style="width: 300px; height: 100px; background: green;">
+			<input type="button" value="按钮" />
+		</div>
+	</body>
+</html>

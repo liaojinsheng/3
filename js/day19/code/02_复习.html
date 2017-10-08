@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//变量：弱类型
+			//var  let  
+			//命名规范：数字字母下划线和$， 不能以数字开头
+			
+			//常量  const
+			//块级作用域： {}
+			
+			//变量提前声明
+			console.log(a); //undefined
+			var a = 10;
+			
+			
+			//数据类型
+			//Boolean, Number, String, Array, Object, Null, Undefined, Symbol
+			//特殊值： NaN, undefined, null
+			
+			//parseInt, parseFloat
+			console.log( parseInt("4+4") ); //4
+			
+			//Math数学函数
+			console.log( Math.round(4.45) ); //4
+			console.log( Math.random() ); //0~1的随机数（不包括1）
+			console.log( Math.sqrt(9) ); //3
+			console.log( Math.ceil(4.45) ); //5
+			console.log( Math.floor(-4.45) ); //-5
+			console.log( Math.pow(2,10) ); //1024
+			
+			
+			// + - * / %
+			// + ： 字符串连接
+			// - ： 字符串转数字
+			//NaN : 不合法的数值
+			
+			//null == undefined : true
+			//null === undefined : false
+			
+			// 5 == "5" : true
+			// 5 === "5" : false
+			
+			//++, --
+			//||, && : 短路操作
+			
+			
+			//if , switch
+			
+			//for, while, do-while, for-in, forEach, for-of
+			//break, continue : 在循环中使用
+			//return : 退出函数
+			
+			//函数function
+			//作用域： 函数会形成作用域
+			//局部变量， 全局变量
+			var a = 10;
+			function f(){
+				console.log(b); //undefined
+				var b = 20;
+				function f1(){
+					
+				}
+			}
+			
+			//匿名函数
+			//回调函数
+			//自运行函数
+			//构造函数
+			//递归调用
+			
+			
+			//数组
+			//数组的属性： length
+			//数组中的方法: push, pop, shift, unshift, slice, splice, sort, join, revese, concat
+			//             indexOf, map, filter, reduce....
+			//冒泡排序
+			var arr = [2,3,9,6,11,5,1];
+			for (var i=0; i<arr.length-1; i++){
+				for (var j=0; j<arr.length-1-i; j++){
+					if (arr[j] > arr[j+1]){
+						//[arr[j], arr[j+1]] = [arr[j+1], arr[j]];
+						var tmp = arr[j];
+						arr[j] = arr[j+1];
+						arr[j+1] = tmp;
+					}
+				}
+			}
+			console.log(arr); //[1,2,3,5,6,9,11]
+			
+			var arr = [2,3,9,6,11,5,1];
+			arr.sort(function(a,b){
+				if (a>b){return 1}
+				else {return 0};
+			})
+			console.log(arr); //[1,2,3,5,6,9,11]
+			
+			
+			//字符串
+			//字符串的属性： length
+			//字符串的方法： substring, indexOf, lastIndexOf, search, replace, split, match, 
+			//              concat, charAt, charCodeAt, String.fromCharCode, toUpperCase(), toLowerCase(), ...
+			//              includes(), startsWith(), endsWidth, repeat()
+			
+			
+			//日期
+			var d = new Date(2017, 12, 32);
+			console.log(d.getFullYear()); //2018
+			console.log(d.getMonth()); //1
+			console.log(d.getDate()); //1
+			
+			//日期的方法：getFullYear, getMonth, getDate, getDay(星期),getHours, getMinutes, getSeconds, 
+			//           getTime() ...
+			//
+			
+			//定时器/延时器
+			//异步
+			setInterval(function(){
+				console.log(1); //后执行
+			}, 1000000);
+			console.log(2); //先执行
+			
+			
+			//对象
+			var num = 10;
+			var obj = {age:11};
+			function fn(obj){
+				obj.age++;
+			}
+			fn(obj);
+			console.log(obj.age); //12
+			
+			
+			//BOM
+			//核心对象： window
+			//window对象： BOM, DOM， 
+			//document, location, history
+			//location.reload()
+			//location.search();
+			//location.href, location.assign()
+			//history.forward()
+			//history.back()
+			//history.go()
+			//history.length
+			
+			
+			
+			//DOM: DOM操作
+			//获取节点的方式： 
+			//  getElementById, getElementsByTagName, getElementsByClassName, getElementsByName
+			
+			//节点的共同属性： nodeName, nodeType, nodeValue
+			//元素节点： box.id, box.tagName, box.title, box.className, box.value, box.innerHTML, box.style...
+			//节点间的关系：childNodes, children, firstChild, lastChild, parentNode, previousSibling, nextSibling, 
+			
+			//DOM操作
+			//createElement(), appendChild, removeChild, replaceChild, insertBefore, cloneNode(true)
+			
+			
+			//事件
+			//鼠标事件： onclick, onmousedown, ondblclick, onmouseup, onmousemove, onmouseenter, onmouseleave, onmouseover, onmouseout...
+			//键盘事件：onkeydown, onkeyup, onkeypress
+			//html事件：onscroll, onload, onunload, onchange,onblur,onfocus, onselect, onsubmit, onresize,...
+			
+			//事件对象event
+			//button, clientX/Y, pageX/Y, screenX/Y, offsetX/Y, target, shiftKey, ctrlKey,altKey, keyCode, charCode, which,...
+			
+			
+			//target: 事件委托
+			onload = function(){
+				
+				var box = document.getElementById("box");
+				var aInput = document.getElementsByTagName("input");
+				//aInput[0].onclick = function(){
+				//	console.log("aaaaa");
+				//}
+				box.onclick = function(e){
+					e = e || event;
+					
+					if (e.target.nodeName.toLowerCase() == "input"){
+						console.log("bbbbb");
+					}
+				}
+				
+				
+				
+				//点击添加一个input
+				var aBtn = document.getElementsByTagName("button");
+				aBtn[0].onclick = function(){
+					var node1 = document.createElement("input");
+					node1.type = "button";
+					node1.value = "按钮2";
+					box.appendChild(node1);
+				}
+			}
+			
+			
+			
+			//冒泡 ， 捕获
+			//阻止冒泡： 
+			//IE : e.cancelBubble = true
+			//非IE: e.stopPropagation()
+			
+			//css样式
+			// 非IE(IE9+)：window.getComputedStyle()
+			//IE8- : box.currentStyle
+			
+			//scrollTop
+			//document.documentElement.scrollTop || document.body.scrollTop
+			
+			
+			//Cookie ： 存储文本 到本地， 4K
+			//document.cookie = "name=value; expires=过期日期; path=访问路径; domain=访问域名; secure"
+			/*
+			function setCookie(name, value, expires, path){
+				var str = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+				if (expires && expires instanceof Date){
+					str += "; expires=" + expires;
+				}
+				if (path) {
+					str += "; path=" + path;
+				}
+				document.cookie = str;
+			}
+			*/
+			
+			//json
+			//JSON解析： JSON.parse()
+			//JSON序列化： JSON.stringify()
+			
+			
+			//正则表达式
+			//reg.test()
+			//reg.exec()
+			
+			//用户名长度3-10，数字字母下划线
+			//    /^\w{3,10}$/
+			
+			
+			//ES5ES6
+			//let, const
+			//bind
+			//函数中的箭头函数： 
+			//var newArr = [1,2,3,4].map(function(v,i){return v*v;});
+			//var newArr = [1,2,3,4].map((v,i)=>v*v);
+			//console.log(newArr); //[1,4,9,16]
+			
+			//解构赋值
+			//var [a,b] = [10,20];
+			//console.log(a + "," + b);
+			//[a,b] = [b,a];
+			//console.log(a + "," + b);
+			
+			
+			//class
+			//Set, Map, ...
+			
+			
+			//运动
+			//动画效果
+			
+			//构造函数： 类， class
+			//闭包
+			//this
+			
+			setTimeout(function(){
+				console.log(2);
+				//for (var i=0; i<10000000;i++)
+			}, 0);
+			console.log(1);
+			
+			
+			//四核： 4个 CPU
+			//双核四线程： 2个CPU
+			
+			//硬件： 单核处理器 一次只能执行一个任务
+			//软件： 多线程
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		<button>点击添加一个按钮</button>
+		<div id="box" style="width: 300px; height: 300px; border: 1px solid red;">
+			点我试试
+			<input type="button" value="按钮" />
+		</div>
+	</body>
+</html>

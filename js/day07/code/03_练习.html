@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			
+			
+			//  
+			//  
+			//  围棋， 人机大战
+			//  
+			//  柯洁  vs  AphaGo 2.0（Google人工智能）
+			//           Master
+			//  
+			//  百度2004开始： 小度：人脸识别，讯飞语音
+			//  腾讯： 2016年开始  
+			//  阿里巴巴： 支付宝  ， 量子计算机
+			//  Facebook： 人工智能SDK
+			//  
+			
+			//  
+			//  京东
+			//  
+			//  PC互联网  -> Android/iOS 2007年 2009年智能手机    2012-2015移动互联网  2016急剧下滑  微型企业  
+			//  ->  人工智能    机器学习（微积分、算法）
+			//  
+			
+			//  
+			//  膜拜单车/橙色， ofo小黄， 小鸣， 小蓝，。。
+			//  京东   刘强东/奶茶妹妹
+			//  
+			
+			// 
+			// HTML5 很火 vue, react Angular
+			// Javasript, nodejs
+			// HTML5 JavaScript
+			// 
+			
+			// 
+			
+			/*
+			 练习:
+				1,  显示当前时间 (显示格式: 2016年 11月 11日 11时 11分 11秒)
+				2,  判断两个日期相差的天数(可先求毫秒数差,再转换成天)
+				3,  根据getDate()和setDate()， 封装一个函数afterDate(date,n)，得到日期date的n天后的日期
+			 */
+			
+			//1,  显示当前时间 (显示格式: 2016年 11月 11日 11时 11分 11秒)
+			var date = new Date(); 
+			var year = date.getFullYear(); //年
+			var month = date.getMonth() + 1; //月
+			var day = date.getDate(); //天
+			var hour = date.getHours(); //时
+			var minute = date.getMinutes(); //分
+			var sec = date.getSeconds(); //秒
+			console.log( year +"年" + month +"月" + day +"日"  + hour +"时"  + minute +"分" + sec +"秒" );
+			//"2017年5月23日14时17分5秒"
+			
+			
+			//2,  判断两个日期相差的天数(可先求毫秒数差,再转换成天)
+			function fn(d1, d2){
+				//return Math.abs( d1.getTime() - d2.getTime() ) / (1000*60*60*24);
+				return Math.abs( d1 - d2 ) / (1000*60*60*24);
+			}
+			var date1 = new Date("2017-02-09");
+			var date2 = new Date("2017-03-09");
+			console.log( fn(date1, date2) ); //28
+			
+			
+			//3,  根据getDate()和setDate()， 封装一个函数afterDate(date,n)，得到日期date的n天后的日期
+			function afterDate(date, n){
+				date.setDate( date.getDate() + n );
+				return date;
+			}
+			var date = new Date();
+			console.log( afterDate(date, 365).toLocaleDateString() ); //2018年5月23日
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

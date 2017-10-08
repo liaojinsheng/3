@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {margin: 0; padding: 0; border: none;}
+			ul, li {list-style: none;}
+			#box {
+				width: 360px;
+				height: 460px;
+				border: 1px solid #ccc;
+				padding: 10px;
+				position: relative;
+				margin-left: 50px;
+				margin-top: 50px;
+			}
+			#box #middleImg {
+				width: 350px; height: 350px;
+				border: 1px solid #ccc;
+				padding: 5px;
+				position: relative;
+			}
+			#box #middleImg img {
+				width: 350px; height: 350px;
+			}
+			
+			#box #middleArea {
+				width: 100px; height: 100px;
+				background: rgba(100, 222, 200, 0.5);
+				position: absolute;
+				left: 0; top: 0;
+				display: none;
+			}
+			
+			#box #small {
+				/*background: red;*/
+				width: 360px;
+				height: 50px;
+				margin-top: 10px;
+			}
+			#box #small li, #box #small li img {
+				width: 48px; height: 48px;
+			}
+			#box #small li {
+				float: left;
+				border: 1px solid #ccc;
+				margin-left: 10px;
+				padding: 5px;
+				cursor: pointer;
+			}
+			#box #bigArea {
+				position: absolute;
+				left: 420px; top: 50px;
+				overflow: hidden;
+				width: 400px;height: 400px;
+				border: 1px solid #ccc;
+				display: none;
+			}
+			#box #bigArea img {
+				position: absolute;
+				left: 0; top: 0;
+				width: 800px;
+				height: 800px;
+			}
+		</style>
+		<script>
+			onload = function(){
+				
+				function $(id){
+					return document.getElementById(id);
+				}
+				
+				//获取样式属性值
+				function getStyleAttr(obj, attr){
+					if (window.getComputedStyle){
+						return window.getComputedStyle(obj, null)[attr];
+					}
+					return obj.currentStyle[attr];
+				}
+				function _(obj, attr){
+					return parseInt(getStyleAttr($(obj), attr));
+				}
+				
+				//先固定比例
+				//计算小区域的宽高
+				$("middleArea").style.width = _("bigArea", "width") * _("middleImg", "width") / _("bigImg", "width") + "px";
+				$("middleArea").style.height = _("bigArea", "height") * _("middleImg", "height") / _("bigImg", "height") + "px";
+				
+				//放大比例/放大倍数: 
+				var scale = _("bigImg", "width") / _("middleImg", "width");
+				//console.log(scale);
+				
+				//在小图上移动
+				$("middleImg").onmousemove = function(e){
+					e = e || event;
+					
+					//显示小区域和大区域
+					$("middleArea").style.display = "block"; //显示小区域
+					$("bigArea").style.display = "block"; //显示大区域
+					
+					var x = e.pageX - $("box").offsetLeft - $("middleImg").offsetLeft - $("middleArea").offsetWidth/2;
+					var y = e.pageY - $("box").offsetLeft - $("middleImg").offsetTop - $("middleArea").offsetHeight/2;
+					
+					if (x <= 0) { //控制不超出左边界
+						x = 0;
+					}
+					else if (x >= $("middleImg").offsetWidth-$("middleArea").offsetWidth) { //右边界
+						x = $("middleImg").offsetWidth-$("middleArea").offsetWidth;
+					}
+					if (y <= 0)  { //上边界
+						y = 0;
+					}
+					else if (y >= $("middleImg").offsetHeight-$("middleArea").offsetHeight) { //下边界
+						y = $("middleImg").offsetHeight-$("middleArea").offsetHeight;
+					}
+					
+					//移动小区域
+					$("middleArea").style.left = x + "px";
+					$("middleArea").style.top = y + "px";
+					
+					//移动大图
+					$("bigImg").style.left = -x*scale + "px";
+					$("bigImg").style.top = -y*scale + "px";
+				}
+				
+				//移出小图
+				$("middleImg").onmouseleave = function(){
+					$("middleArea").style.display = "none"; //隐藏小区域
+					$("bigArea").style.display = "none"; //隐藏大区域
+				}
+				
+				
+				//小图
+				var aLi = $("small").getElementsByTagName("li");
+				
+				for (var i=0; i<aLi.length; i++){
+					aLi[i].index = i;
+					aLi[i].onmouseenter = function(){
+						$("middleImg").children[0].src = "images/images2/"+ (this.index+1) +"_2.jpeg"
+						$("bigImg").src = "images/images2/"+ (this.index+1) +"_3.jpeg";
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<div id="middleImg">
+				<img src="images/images2/1_2.jpeg" />
+				<div id="middleArea"></div>
+			</div>
+			<div id="small">
+				<ul>
+					<li><img src="images/images2/1_1.jpeg" /></li>
+					<li><img src="images/images2/2_1.jpeg" /></li>
+					<li><img src="images/images2/3_1.jpeg" /></li>
+					<li><img src="images/images2/4_1.jpeg" /></li>
+					<li><img src="images/images2/5_1.jpeg" /></li>
+				</ul>
+			</div>
+			<div id="bigArea">
+				<img id="bigImg" src="images/images2/1_3.jpeg" />
+			</div>
+		</div>
+	</body>
+</html>

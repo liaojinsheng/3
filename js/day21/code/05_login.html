@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="ajax.js"></script>
+		<script>
+			
+			/*
+			 登录（POST）
+				登录接口:  http://60.205.181.47/myPHPCode3/login.php
+				参数:username=zhangsan,用户名
+				参数:password=123456,密码
+			 */
+			onload = function(){
+				
+				var aInput = document.getElementsByTagName("input");
+				
+				aInput[2].onclick = function(){
+					
+					var xhr = createXHR();
+					xhr.open("POST", "http://60.205.181.47/myPHPCode3/login.php", true);
+					xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					xhr.send("username="+ aInput[0].value + "&password=" + aInput[1].value);
+					xhr.onreadystatechange = function(){
+						if (xhr.readyState==4 && xhr.status==200){
+							console.log(xhr.responseText);
+							var obj = JSON.parse(xhr.responseText);
+							console.log(obj.msg);
+							
+						}
+					}
+				}
+				
+				
+				//POST 和 GET 的区别：
+				//GET速度较POST快
+				//GET上传的参数大小2K以内，POST上传的参数4G
+				//GET上传参数是接在URL后， POST是放在请求体中
+				//GET 和 POST 都可以上传参数和获取数据
+				
+			}
+		</script>
+	</head>
+	<body>
+		<h2>登录</h2>
+		<form>
+			<input type="text" placeholder="请输入用户名"/> <br />
+			<input type="password" placeholder="请输入密码"/> <br />
+			<input type="button" value="登录" />
+		</form>
+	</body>
+</html>

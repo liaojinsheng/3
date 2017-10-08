@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			// 1, 求数组中所有元素的和
+      		var arr = [10, 20, 30, 40, 50];
+      		var sum = 0;
+      		for (var i=0; i<arr.length; i++){
+      		 	sum += arr[i];
+      		}
+      		console.log(sum); //150
+      		
+      		
+      		// 2, 让数组中的元素交换位置（重要）
+      		var arr = [10, 20, 30, 40, 50];
+      		//arr[1]  , arr[3]
+      		var tmp = arr[1];
+      		arr[1] = arr[3];
+      		arr[3] = tmp;
+      		console.log(arr); //[10,40,30,20,50]
+      		
+      		// 3, 求数组的最大数和最小数（重要）
+      		// 4, 求数组的最小数的下标（重要）
+      		var arr = [10, 200, 30, 4, 500,5];
+			var max = arr[0]; //默认第一个数是最大数
+			var min = arr[0]; //默认第一个数是最小数
+			var index = 0; //默认第一个数是最小数的下标
+			
+			for (var i=0; i<arr.length; i++){
+				if (max < arr[i]){
+					max = arr[i];
+				}
+				if (min > arr[i]){
+					min = arr[i];
+					index = i;
+				}
+			}
+			console.log("最大数： " + max); //500
+			console.log("最小数：" + min); //4
+			console.log("最小数的下标：" + index); //3
+			
+			
+			// 扁平化数组
+			// [1, [2, [3,4]], 5, 6] -> [1,2,3,4,5,6]
+			var newArr = [];
+			function fn(arr){
+				
+				for (var i=0; i<arr.length; i++) {
+					if (typeof arr[i] == 'number'){
+						newArr.push( arr[i] );
+					}
+					else {
+						fn (arr[i]);
+					}
+				}
+				
+			}
+			fn( [1, [2, [3,4]], 5, 6] );
+			console.log(newArr); //[1,2,3,4,5,6]
+			
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="1.css" />
+		
+		<script>
+			
+			onload = function(){
+				
+				//              nodeName      nodeType      nodeValue
+				//元素节点             标签名称               1 			    null
+				//属性节点             属性名称 		 2				属性值
+				//文本节点               #text 			 3				文本内容
+				
+				
+				var oBox = document.getElementById("box");
+				console.log(oBox.nodeName); //DIV
+				console.log(oBox.nodeType);  //1
+				console.log(oBox.nodeValue); //null
+				
+				
+				//childNodes: 获取所有子节点（包含元素节点，文本节点）
+				console.log( oBox.childNodes ); //[object NodeList], 节点数组
+				console.log( oBox.childNodes.length ); //3
+				
+				//文本节点
+				console.log( oBox.childNodes[0].nodeType ); //3,文本节点
+				console.log( oBox.childNodes[0].nodeValue ); //"春天在哪里
+															 //      "
+				console.log( oBox.childNodes[0].nodeName ); //"#text"
+				
+				//元素节点，P节点
+				console.log( oBox.childNodes[1].nodeType ); //1,元素节点
+				console.log( oBox.childNodes[1].nodeValue ); //null
+				console.log( oBox.childNodes[1].nodeName ); //P
+				
+				//
+				console.log( oBox.childNodes[2].nodeType ); //3, 文本节点
+				console.log( oBox.childNodes[2].nodeValue ); //"
+															 //    "
+				console.log( oBox.childNodes[2].nodeName );  //"#text"
+				
+				
+				//parentNode: 父节点
+				//removeChild(): 删除子节点
+				//忽略空白文本节点
+				function filterSpaceNode(node){
+					for (var i=0; i<node.childNodes.length; i++){
+						var n = node.childNodes[i];
+						if (n.nodeType==3 && /^\s+$/.test(n.nodeValue)) {
+							n.parentNode.removeChild(n); //使用node将其子节点n删除
+						}
+					}
+				}
+				filterSpaceNode(oBox);
+				console.log(oBox.childNodes.length); //2
+				
+				
+				//children: 子元素节点
+				console.log( oBox.children ); //[object HTMLCollection], 节点数组
+				console.log( oBox.children.length ); //1
+				console.log( oBox.children[0].nodeType ); //1
+				console.log( oBox.children[0].nodeName ); //P
+								
+				
+				
+				//nodeValue和innerHTML的区别
+				//nodeValue: 用于文本节点或属性节点； 不能识别html标签
+				//innerHTML：用于元素节点； 可以识别html标签
+				
+				//innerHTML
+				//console.log( oBox.innerHTML );
+				//oBox.innerHTML = "<strong>ABC</strong>"
+				
+				//nodeValue
+				//console.log(oBox.childNodes[0].nodeValue);
+				//oBox.childNodes[0].nodeValue = "<strong>ABC</strong>";
+				
+				//innerText
+				//outerHTML
+				//
+				//console.log( oBox.innerText );
+				//console.log( oBox.outerHTML );
+				/*
+				 <div id="box">春天在哪里
+					<p>在这里</p></div>
+				
+				 * */
+				//background-color ->backgroundColor
+				//font-size -> fontSize
+				
+				//rgb(255,255,255);
+				//随机颜色
+				//rgb(parseInt(Math.random()*256), parseInt(Math.random()*256), parseInt(Math.random()*256) )
+				
+				
+				//var link = document.getElementsByTagName("link");
+				//link.href = "2.css"
+
+			}
+			
+		</script>
+	</head>
+	<body> 
+		<div id="box">春天在哪里
+			<p>在这里</p> 
+		</div>
+	</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			
+			//严格模式 (全局)
+//			"use strict";
+			
+//			function fn(){
+//				"use strict"; //严格模式（局部）， 只对fn函数内有效
+//			}
+			
+			/*
+			 Javascript 为什么要设立严格模式：
+				1.消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为;
+				2.代码运行的一些不安全之处，保证代码运行的安全；
+				3.提高编译器效率，增加运行速度；
+			 
+			例如以下几点:
+				 1. 不可以省略var声明变量
+				 2. 禁止使用this关键字指向全局变量
+				 3. 禁止使用八进制方法
+				 4. 不允许在非函数的代码块内声明函数
+			 * */
+			
+			// 1. 不可以省略var声明变量
+//			a = 1; 
+//			console.log(a); //报错
+			
+			//2. 禁止使用this关键字指向全局变量
+//			function fn(){
+//				console.log(this); //[object Window], 严格模式下是undefined
+//			}
+//			fn();
+			
+			//3. 禁止使用八进制方法
+//			var b = 011;
+//			console.log(b); 
+			
+			//4. 不允许在非函数的代码块内声明函数
+//			if (1) {
+//				function fn2(){
+//					console.log("fn2");
+//				}
+//			}
+			
+			//5, 对象属性不能重复声明
+//			var obj = {
+//				name: 1,
+//				name: 2   
+//			}
+//			console.log(obj.name);
+
+			
+			
+			//bind() : 将对象绑定到函数的this
+			//绑定一个新对象， 让函数中的this指向该对象， 一般在定时器中使用较多
+			var name = "dd";
+			var obj1 = {name: "张三"};
+			var obj2 = {
+				name: "李四",
+				fn: function(){
+					console.log(this);
+					console.log(this.name);
+				}
+			}
+			//obj2.fn();
+			setInterval(obj2.fn.bind(obj1), 1000);
+
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

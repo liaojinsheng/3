@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			
+			//正则表达式的创建
+			//方式一
+			var reg = new RegExp("box");
+			console.log(reg); //   /box/
+			console.log(typeof reg); //object
+			
+			//如果是变量， 则必须使用new的方式
+			var n = "box";
+			var reg = new RegExp(n);
+			console.log(reg);  //   /box/
+			
+			var reg = new RegExp("box", "gi");
+			console.log(reg); //  /box/gi
+			
+			//g : 全局匹配
+			//i ： 忽略大小写
+			//m : 换行模式
+			
+			//方式二
+			var reg = /box/;
+			console.log(reg);  //   /box/
+			console.log(typeof reg); //object
+			
+			var reg = /box/gi;
+			console.log(reg); //   /box/gi
+			
+			
+			
+			//正则表达式对象的方法
+			//test() ： 返回true表示匹配， 返回false表示不匹配
+			//exec() ： 返回数组表示匹配， 返回null表示不匹配
+			
+			var str = "I am a good boy boy";
+			var reg = /bOy/i;
+			console.log( reg.test(str) );
+			
+			var str = "I am a good BOY boY Boy";
+			var reg = /bOy/gi;
+			console.log( reg.exec(str) ); //[BOY]
+			console.log( reg.exec(str) ); //[boY]
+			console.log( reg.exec(str) ); //[Boy]
+			console.log( reg.exec(str) ); //null
+			
+			
+			//字符串对象的方法
+			//match() ： 匹配则返回数组， 不匹配则返回null
+			var str = "I am a Boy bOy BOY";
+			var reg = /boy/gi;
+			console.log( str.match(reg) ); //[Boy,bOy,BOY]
+			
+			//search()
+			var str = "I am a Boy bOy BOY";
+			var reg = /boy/gi;
+			console.log( str.search(reg) ); //7
+			
+			//replace()
+			var str = "I am a Boy bOy BOY";
+			var reg = /boy/gi;
+			console.log( str.replace(reg, "man") ); //I am a man man man
+			
+			//split()
+			var str = "I am a Boy bOy BOY";
+			var reg = /boy/gi;
+			console.log( str.split(reg) ); //["I am a "," "," ",""]
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				
+				//事件对象Event
+				
+				var oBox = document.getElementById("box");
+				/*
+				oBox.onclick = function(){
+					console.log("点击了");
+					console.log(arguments.length);//1, 说明有一个参数
+					console.log(arguments[0]); //[object MouseEvent]
+					
+				}
+				
+				window.onkeydown = function(){
+					console.log(arguments[0]); //[object KeyboardEvent]
+				}
+				*/
+				
+				oBox.onclick = function(e){
+					//alert(e); //e支持谷歌，火狐， 不支持IE
+					//alert( window.event ); //支持IE，谷歌, 不支持火狐
+					
+					//兼容性问题
+					//var evt = e || window.event;
+//					var evt = window.event || e;
+					e = e || event;
+					//alert(e);
+					
+					
+					//事件对象中的属性
+					//button
+					//0表示鼠标左键，1表示鼠标轮滚按钮， 2表示鼠标右键 
+					console.log(e.button); //0,1,2
+					
+					//which
+					//1表示鼠标左键，2表示鼠标轮滚按钮， 3表示鼠标右键 
+					console.log(e.which); //1,2,3
+					
+				}
+				
+				document.onclick = function(e){
+					e = e || event;
+					
+					//clientX/clientY : 可视区域的鼠标坐标位置
+					console.log(e.clientX + "," + e.clientY); //鼠标位置
+					
+					//pageX/pageY : 内容区域的鼠标坐标位置
+					console.log(e.pageX + "," + e.pageY ); //鼠标位置
+					
+					//screenX / screenY : 显示器屏幕的鼠标坐标位置
+					console.log(e.screenX + "," + e.screenY);
+										
+					
+				}
+				
+				var oBox1 = document.getElementById("box1");
+				oBox1.onclick = function(e){
+					e = e || event;
+					
+					//offsetX / offsetY : 鼠标位置距离目标元素的坐标
+					console.log(e.offsetX + "," + e.offsetY);
+					
+				}
+				
+			}
+		</script>
+	</head>
+	<body style="height: 2000px; width: 2000px;">
+		<button id="box">按钮</button>
+		<div id="box1" style="width: 100px; height: 100px; background: green; position: absolute; left: 100px; top: 100px;"></div>
+	</body>
+</html>

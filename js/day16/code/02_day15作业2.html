@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {margin: 0; border: none; padding: 0;}
+			ul, li{list-style: none;}
+			ul {
+				width: 150px;
+			
+			}
+			ul li{
+				width: 150px;
+				height: 24px;
+				background: url(images/images1/bg.gif) repeat-x;
+				margin: 10px;
+				color: gray;
+				cursor: pointer;
+				border: 1px solid #ccc;
+				padding-left: 5px;
+				padding-right: 5px;
+				position: relative;
+			}
+			ul li span {
+				width: 10px;
+				height: 10px;
+				background: url(images/images1/ico.gif) no-repeat;
+				position: absolute;
+				top: 8px;
+				right: 10px;
+			}
+			
+		</style>
+		<script src="move.js"></script>
+		<script>
+			onload = function(){
+				
+				//getElementById()
+				//getElementsByTagName()
+				//getElementsByName()
+				//getElementsByClassName()
+				
+				var aLi = document.getElementsByTagName("li");
+				for (var i=0; i<aLi.length; i++){
+					aLi[i].onmouseenter = function(){
+						animate(this, {paddingLeft: 30, paddingRight:30});
+					}
+					aLi[i].onmouseleave = function(){
+						animate(this, {paddingLeft: 5, paddingRight:5});
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>首页<span></span></li>
+			<li>千锋精品课程<span></span></li>
+			<li>JS相关知识<span></span></li>
+			<li>关于我们<span></span></li>
+			<li>联系我们<span></span></li>
+		</ul>
+	</body>
+</html>

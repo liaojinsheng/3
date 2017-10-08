@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box {
+				width: 100px; height: 200px; background: red;
+			}
+		</style>
+		<script>
+			onload = function(){
+				
+				var oBox = document.getElementById("box");
+				console.log( oBox.style.height ); //获取行间css样式
+				
+				
+				//兼容问题
+				var style;
+				if (window.getComputedStyle) { //IE9+,非IE
+					style = getComputedStyle(oBox, null);
+				}
+				else { //IE8-
+					style = oBox.currentStyle; 
+				}
+				console.log(style.height); //200px
+				
+				//获取css样式对象
+				var _style = window.getComputedStyle ? getComputedStyle(oBox,null) : oBox.currentStyle; 
+				console.log(_style.height); //200px
+				
+				
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+</html>

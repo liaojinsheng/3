@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body {background: #abc;}
+			#box {
+				width: 200px;
+				height: 100px;
+				background: #bcd;
+				padding: 10px;
+			}
+		</style>
+		
+		<script src="cookie.js"></script>
+		<script>
+			onload = function(){
+				
+				/*
+				 练习
+				1, 十天内免登录:
+			   	 	如下图, 有账户,密码输入框, 当用户点击确定按钮, 如果选择了十天内免登录, 
+			   	 	则将账户和密码保存在cookie中.当下一次再进入该页面时, 自动填写上次保存的账户和密码 
+				*/
+				
+				var aInput = document.getElementsByTagName("input");
+				
+				//先获取cookie， 查看是否之前登录过
+				var uname = getCookie("uname");
+				var upwd = getCookie("upwd");
+				aInput[0].value = uname;
+				aInput[1].value = upwd;
+				
+				//点击确定按钮
+				aInput[3].onclick = function(){
+					if (aInput[2].checked) {
+						
+						var d = new Date();
+						d.setDate(d.getDate()+10);
+						setCookie("uname", aInput[0].value, d); //用户名
+						setCookie("upwd", aInput[1].value, d); //密码
+						
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			账号 <input type="text" /> <br />
+			密码 <input type="password" /> <br />
+			<input type="checkbox" />十天内免登录 <br >
+			<input type="button" value="确定" />
+			
+		</div>
+	</body>
+</html>

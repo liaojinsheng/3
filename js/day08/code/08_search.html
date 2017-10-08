@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			onload = function(){
+				
+				var aInput = document.getElementsByTagName("input");
+				
+				
+				aInput[2].onclick = function(){
+					var username = aInput[0].value;
+					var pwd = aInput[1].value;
+					//console.log(username);
+					//console.log(pwd);
+					
+					location.href = "09_search2.html?username=" + username + "&pwd=" + pwd;   
+					
+				}
+				
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+		<input type="text" placeholder="用户名" /> <br>
+		<input type="password" placeholder="密码" /> <br>
+		<input type="button" value="提交" />
+	</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {margin: 0; padding: 0; border: none;}
+			ul, li {list-style: none;}
+			#box {
+				width: 600px;
+				height: 300px;
+				margin: 100px auto;
+				border: 10px solid orange;
+				position: relative;
+				overflow: hidden;
+			}
+			#list {
+				width: 1000px;
+				height: 300px;
+				position: absolute;
+				left: 0px;
+				top: 0;
+			}
+			#list li {
+				width: 600px;
+				height: 300px;
+				float: left;
+				text-align: center;
+				font-size: 50px;
+				line-height: 300px;
+			}
+			#list li img {
+				width: 600px;
+				height: 300px;
+			}
+			#list2 {
+				width: 260px;
+				height: 20px;
+				position: absolute;
+				left: 10px;
+				bottom: 10px;
+				/*background: yellow;*/
+			}
+			#list2 li {
+				width: 18px;
+				height: 18px;
+				border: 1px solid white;
+				float: left;
+				margin-left: 10px;
+				background: yellow;
+				text-align: center;
+				line-height: 18px;
+				cursor: pointer;
+			}
+			#list2 li.active {
+				background: pink;
+			}
+			#prev, #next {
+				width: 50px;
+				height: 20px;
+				background: orange;
+				position: absolute;
+				top: 46%;
+				cursor: pointer;
+			}
+			#prev {
+				left: 5px;
+			}
+			#next {
+				right: 5px;
+			}
+			
+		</style>
+		<script src="move.js"></script>
+		<script src="ajax.js"></script>
+		<script>
+			onload = function(){
+				
+				//先获取数据
+				ajax({
+					type:"get",
+					url: "lunbotu.json",
+					data: {},
+					async: true,
+					
+					success: function(data){
+						//console.log(data);
+						
+						//JSON解析
+						var arr = JSON.parse(data);
+						
+						for (var i=0; i<arr.length; i++){
+							var obj = arr[i];
+							
+							//<li style="background: red;">1</li>
+							//创建节点
+							var li = document.createElement("li");
+							//li.style.background = obj.bg;
+							li.innerHTML = "<img src="+ obj.img +" >";
+							document.getElementById("list").appendChild(li);
+							
+							var li2 = document.createElement("li");
+							li2.innerHTML = i+1;
+							document.getElementById("list2").appendChild(li2);
+							if (i == 0) {
+								li2.className = "active";
+							}
+							
+						}
+						
+						//轮播
+						lunbo();
+						
+					},
+					error: function(){
+						console.log("获取数据失败");
+					}
+				})
+				
+				
+				//轮播效果
+				function lunbo(){
+					var oBox = document.getElementById("box");
+					var oList = document.getElementById("list");
+					var aLi  = oList.getElementsByTagName("li");
+					
+					var oList2 = document.getElementById("list2");
+					var aLi2 = oList2.getElementsByTagName("li");
+					
+					//初始化 
+					//将第1个li复制并添加到ul子节点末尾
+					oList.appendChild(aLi[0].cloneNode(true));
+					//console.log(aLi.length); //5
+					var liWidth = aLi[0].offsetWidth;
+					oList.style.width = aLi.length * liWidth  + "px";
+					
+					var size = aLi.length; //li的总数量,5
+					var i = 0; //表示即将移动到的li的下标
+					var timer = setInterval(function(){
+						i++;
+						move();
+					}, 2000);
+					
+					//移动并显示第i张图
+					function move(){
+						//控制左边界
+						if (i < 0) {
+							oList.style.left = -liWidth*(size-1) + "px"; //从第1张图瞬间变化(非动画)到第5张图（最后一张图）
+							i = size-2; //倒数第2个li的下标
+						}
+						
+						//控制右边界
+						if (i >= size){
+							oList.style.left = 0; //从第5张图瞬间变化(非动画)到第1张图
+							i = 1; //即将显示第2张图（i=1）
+						}
+						//移动, 显示第i张图
+						animate(oList, {left:-liWidth*i});
+						
+						//改变小按钮的选中状态
+						for (var j=0; j<aLi2.length; j++){
+							aLi2[j].className = "";
+						}
+						if (i == size-1) {
+							aLi2[0].className = "active";
+						}
+						else {
+							aLi2[i].className = "active";
+						}
+					}
+					
+					
+					//上一页
+					var oPrev = document.getElementById("prev");
+					oPrev.onclick = function(){
+						i--;
+						move();
+					}
+					
+					//下一页
+					var oNext = document.getElementById("next");
+					oNext.onclick = function(){
+						i++;
+						move();
+					}
+					
+					//小按钮的移入事件
+					for (var j=0; j<aLi2.length; j++) {
+						aLi2[j].index = j;
+						aLi2[j].onmouseenter = function(){
+							i = this.index;
+							move();
+						}
+					}
+					
+					//移入box，停止定时器
+					oBox.onmouseenter = function(){
+						clearInterval(timer);
+					}
+					oBox.onmouseleave = function(){
+						clearInterval(timer);
+						timer = setInterval(function(){
+							i++; 
+							move();
+						}, 2000);
+					}
+				}
+				
+			}
+		</script>
+	</head> 
+	<body>
+		<div id="box">
+			<ul id="list">
+				<!--<li style="background: red;">1</li>
+				<li style="background: green;">2</li>
+				<li style="background: blue;">3</li>
+				<li style="background: gray;">4</li>-->
+			</ul>
+			<ul id="list2">
+				<!--<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>-->
+			</ul>
+			<div id="prev">上一页</div>
+			<div id="next">下一页</div>
+		</div>
+	</body>
+</html>

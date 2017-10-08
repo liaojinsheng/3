@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//数组的常用函数
+			//栈方法: push(), pop()
+			
+			//push() : 给数组添加元素（在数组末尾添加）
+			var arr = [1,2,3,4];
+			arr.push(5,6,7);
+//			arr.push(5);
+			console.log(arr);  //[1,2,3,4,5,6,7]
+			
+			//pop() : 将数组的最后一个元素取出（删除）
+			var arr = [1,2,3,4];
+			var res = arr.pop();
+			console.log(arr); //[1,2,3]
+			console.log(res); //4
+			
+			
+			//队列方法
+			//push() : 和栈中的push一样
+			//shift(): 将数组的第一个元素删除
+			var arr = [1,2,3,4];
+			var res = arr.shift();
+			console.log(arr); //[2,3,4]
+			console.log(res); //1
+			
+			//unshift() : 从数组的最前面添加一个或多个元素
+			var arr = [1,2,3,4];
+			arr.unshift(0, 12);
+			console.log(arr);  //[0,12,1,2,3,4]
+			
+			
+			//reverse() : 逆向排序
+			var arr = [1,2,3,4,5];
+			arr.reverse();
+			console.log(arr); //[5,4,3,2,1]
+			
+			//sort() : 升序排序
+			//sort的排序规则是： 字符串的比较规则， ASCII码比较
+			var arr = [2,4,3,6,5,1];
+			arr.sort();
+			console.log(arr); //[1,2,3,4,5,6]
+			arr.reverse(); 
+			console.log(arr); //[6,5,4,3,2,1]
+			
+			var arr = [2,4,13,3,12,6,5,1];
+			arr.sort();
+			console.log(arr); //[1,12,13,2,3,4,5,6]
+			
+			function fn(a, b){
+				if (a > b){
+					return 1; //表示需要交换
+				}
+				return -1; //表示不需要交换
+			}
+			var arr = [2,4,13,3,12,6,5,1];
+			arr.sort(fn);
+			console.log(arr); //[1,2,3,4,5,6,12,13]
+			
+			
+			//回调函数
+			function fn1(f){ //f=fn2
+				f(11); //fn2()， 回调
+			}
+			function fn2(a){
+				console.log("fn2函数被调用了: " + a);
+			}
+			fn1( fn2 );
+			
+			
+			
+			
+			
+			//数组操作的方法
+			//concat() : 连接两个数组, 不会将原数组改变
+			var arr = ["美国队长", "钢铁侠", "冬兵", "蜘蛛侠", "猪猪侠", "煎饼侠"];
+			var arr2 = arr.concat("绿箭侠", "闪电侠", "小飞侠", "皮皮虾");
+			console.log( arr );
+			console.log( arr2 );
+			
+			//slice() : 提取数据， 不改变原数组
+			var arr = ["美国队长", "钢铁侠", "冬兵", "蜘蛛侠", "猪猪侠", "煎饼侠"];
+			var arr2 = arr.slice(4); //从指定下标开始到最后
+			console.log(arr2); //[蜘蛛侠,猪猪侠,煎饼侠]
+			
+			var arr3 = arr.slice(2, 4); //从下标2到4，包括2， 但是不包括4，[2,4)
+			console.log(arr3); //[冬兵,蜘蛛侠]
+			
+			
+			
+			//splice() : 截取数组， 会改变原数组
+			
+			//删除数据： 给定2个参数，且第二个参数不为0
+			var arr = ["美国队长", "黑寡妇", "冬兵", "钢铁侠", "绿箭侠"];
+		 	var arr2 = arr.splice(2, 2); //第二个参数是长度
+			console.log(arr); //[美国队长,黑寡妇,绿箭侠]
+			console.log(arr2); //[冬兵,钢铁侠]
+			
+			//插入数据: 给定至少3个参数，且第二个参数为0
+			var arr = [1,2,3,4,5];
+			arr.splice(2, 0, "h","e");
+			console.log(arr); //[1,2,h,e,3,4,5]
+			
+			//替换数据
+			var arr = [1,2,3,4,5];
+			arr.splice(2, 2, "h","e","l","l","o");
+			console.log(arr); //[1,2,h,e,l,l,o,5]
+			
+			//查询
+			//for循环
+			
+			
+			//join() : 将数组中的所有元素连接成一个字符串,默认是以逗号分隔
+			var arr = [1,2,3,4,5];
+			var str = arr.join();
+			console.log(str); //"1,2,3,4,5"
+			console.log(typeof str); //string
+			
+			var arr = [1,2,3,4,5];
+			var str = arr.join("++");
+			console.log(str); //1++2++3++4++5
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

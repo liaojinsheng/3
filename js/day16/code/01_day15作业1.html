@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="move.js"></script>
+		<script>
+			onload = function(){
+				
+				var oBtn = document.getElementsByTagName("input")[0];
+				var oBox = document.getElementById("box");
+				
+				oBtn.onclick = function(){
+					
+					animate(oBox, {"left": 400}, function(){
+						animate(oBox, {"left": 0});
+					})
+					
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="开始运动" />
+		<div id="box" style="width: 100px; height: 100px; background: red; position: absolute; left: 0; top: 50px;"></div>
+	</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//2.  判断一个整数，属于哪个范围：大于0；小于0；等于0
+			var a = -10;
+			if (a > 0) {
+				console.log("大于0");
+			}
+			else if (a == 0) {
+				console.log("等于0");
+			}
+			else  {
+				console.log("小于0")
+			}
+			
+			var res = a>0 ? "大于0" : (a==0 ? "等于0" : "小于0");
+			console.log(res);
+
+			//3.  判断一个整数是偶数还是奇数，并输出判断结果
+			//4.  开发一款软件，根据公式（身高-108）*2=标准体重，可以有10斤左右的浮动。
+			//来观察测试者体重是否合适
+			var height = 170;
+			var weight = 126;
+			var w = (height - 108) * 2; //标准体重
+			if (weight >= w-10  && weight <= w+10) {
+				console.log("体重合适");
+			}
+			else {
+				console.log("体重不太合适");
+			}
+			
+			//5.  已知圆的半径r，求出圆的面积s
+			var r = 4;
+			var s = 3.14 * r * r;
+			console.log(s);
+			
+			//随意输入一个年份，判断这个年份是否为闰年.
+			//7.  输入赵本山的考试成绩，显示所获奖励
+			//       成绩==100分，爸爸给他买辆车
+			//        成绩>=90分，妈妈给他买MP4
+			//        90分>成绩>=60分，妈妈给他买本参考书
+			//        成绩<60分，什么都不买 
+			var grade = 99;
+			if (grade == 100) {
+				console.log("爸爸给他买辆车");
+			}
+			else if (grade >= 90) {
+				console.log("妈妈给他买MP4");
+			}
+			else if (grade >= 60){
+				console.log("妈妈给他买本参考书");
+			}
+			else {
+				console.log("什么都不买");
+			}
+			
+			
+			//8.  会员购物时，根据积分的不同享受不同的折扣，计算会员购物时所获得折扣 
+			var a = 5000;
+			if (a < 2000){
+				console.log("9折");
+			}
+			else if (a < 4000) {
+				console.log("8折");
+			}
+			else if (a < 8000) {
+				console.log("7折");
+			}
+			else {
+				console.log("6折");
+			}
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				//
+				// 
+				/*
+				//父类
+				function A(){
+					this.name;
+					this.age;
+					...
+					this.address
+				}
+				//子类
+				function B(){
+					继承A
+					
+					this.huzi
+				}
+				//孙子类
+				function C(){
+					继承B
+				}
+				*/
+				
+				
+				//继承
+				//Ipod, IPad, Iphone
+				
+				/*
+				//Ipod
+				function Ipod(){
+					this.color = "黑色";
+					this.show = function(){
+						console.log("show");
+					}
+				}
+				
+				//Ipad
+				function Ipad(){
+					this.size = "9.7";
+				}
+				
+				//原型链继承
+				//var ipod = new Ipod();
+				//Ipad.prototype = ipod;
+				//console.log(Ipad.prototype.color);
+				Ipad.prototype = new Ipod();
+				*/
+				/*
+				//创建ipod对象
+				var ipod = new Ipod();
+				console.log(ipod.color);
+				*/
+				/*
+				//创建ipad对象
+				var ipad = new Ipad();
+				console.log(ipad.color);
+				console.log(ipad.size);
+				ipad.show();
+				
+				*/
+				
+				
+				
+				//Ipod
+				function Ipod(){
+					this.color = "黑色";
+				}
+				Ipod.prototype.color1 = "red";
+				
+				//Ipad
+				function Ipad(){
+					this.size = "9.7";
+				}
+				Ipad.prototype = new Ipod(); //继承Ipod
+				
+				//Iphone
+				function Iphone(){
+					this.price = 1000;
+				}
+				Iphone.prototype = new Ipad(); //继承Ipad
+				
+				
+				//创建iPhone对象
+				var iphone = new Iphone();
+//				console.log(iphone.price); 
+//				console.log(iphone.size);
+//				console.log(iphone.color);
+//				console.log(iphone.color1);
+				
+				//创建ipad对象
+				var ipad = new Ipad();
+				
+				//创建ipod对象
+				var ipod = new Ipod();
+				
+				//我们创建的每个构造函数默认都继承了Object
+				console.log( iphone instanceof Iphone );  //true
+				console.log( iphone instanceof Ipad );  //true
+				console.log( iphone instanceof Ipod );  //true
+				console.log( iphone instanceof Object );  //true
+				
+				console.log( ipad instanceof Iphone );  //false
+				console.log( ipad instanceof Ipad );  //true
+				console.log( ipad instanceof Ipod );  //true
+				console.log( ipad instanceof Object );  //true
+				
+				console.log( ipod instanceof Iphone );  //false
+				console.log( ipod instanceof Ipad );  //false
+				console.log( ipod instanceof Ipod );  //true
+				console.log( ipod instanceof Object );  //true
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div {
+				width: 100px;
+				height: 100px;
+				background: red;
+				margin-top: 10px;
+			}
+		</style>
+		<script type="text/javascript" src="move.js" ></script>
+		<script>
+			onload = function(){
+				
+				var aDiv = document.getElementsByTagName("div");
+				
+				for (var i=0; i<aDiv.length; i++){
+					aDiv[i].onmouseenter = function(){
+						animate(this, {width: 400});
+					}
+					aDiv[i].onmouseleave = function(){
+						animate2(this, "width", 100);
+					}
+				}
+				
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+</html>

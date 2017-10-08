@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="ajax.js"></script>
+		<script>
+			
+			/*
+			 注册（POST）
+				注册接口:  http://60.205.181.47/myPHPCode3/register.php
+				参数:username=zhangsan, 用户名（必须）
+				参数:password=123456,密码（必须）
+				参数:age=33,年龄（必须）
+			 */
+			
+			onload = function(){
+				
+				var aInput = document.getElementsByTagName("input");
+				
+				//注册： js调用注册接口 -> 在数据库中用户表添加一条记录 
+				//登录： js调用登录接口 -> 查询数据用户表中是否有该登录的账号和匹配的密码
+				
+				aInput[3].onclick = function(e){
+					e = e || event;
+					e.preventDefault();
+					
+					//POST
+					var xhr = createXHR();
+					xhr.open("POST", "http://60.205.181.47/myPHPCode3/register.php", true);
+					xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					xhr.send("username="+ aInput[0].value +"&password="+ aInput[1].value +"&age="+ aInput[2].value);
+					xhr.onreadystatechange = function(){
+						if (xhr.readyState==4 && xhr.status==200){
+							console.log(xhr.responseText);
+							var obj = JSON.parse(xhr.responseText);
+							console.log(obj.msg);
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<h2>注册</h2>
+		<form>
+			<input type="text" placeholder="请输入用户名"/> <br />
+			<input type="password" placeholder="请输入密码"/> <br />
+			<input type="text" placeholder="请输入年龄"/> <br />
+			<input type="submit" value="注册" />
+		</form>
+	</body>
+</html>

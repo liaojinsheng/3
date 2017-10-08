@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="ajax.js"></script>
+		<script>
+			
+			//支持POST和GET
+			//http://60.205.181.47/myPHPCode2/checkname.php?regname=zhangsan
+			
+			/*
+			//URI编码
+			var param = "regname=" + encodeURIComponent("张三");
+			
+			var xhr = createXHR();
+			xhr.open("GET", "http://60.205.181.47/myPHPCode2/checkname.php?"+param, true);
+			
+			//设置请求头
+			xhr.setRequestHeader("userToken", "DFEFDF*&(FDFSDSD");
+			
+			xhr.send(null);
+			xhr.onreadystatechange = function(){
+				if (xhr.readyState==4 && xhr.status==200){
+					console.log(xhr.responseText);
+					console.log(xhr.getAllResponseHeaders()); //获取所有的响应头信息
+					console.log(xhr.getResponseHeader("Content-Type")); //获取单个响应头信息
+					
+				}
+			}
+			
+			*/
+			//请求头request： 从客户端发送给服务器的http头信息
+			//响应头response： 从服务器发送给客户端的http头信息
+			
+			
+			
+			//POST
+			var xhr = createXHR();
+			xhr.open("post", "http://60.205.181.47/myPHPCode2/checkname.php", true);
+			//要模拟表单POST提交
+			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			xhr.send("regname=zhangsan");
+			xhr.onreadystatechange = function(){
+				if (xhr.readyState==4 && xhr.status==200){
+					console.log(xhr.responseText);
+				}
+			}
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

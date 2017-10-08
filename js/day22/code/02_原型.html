@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//原型
+			//var arr = [1,2,3,4];
+			//console.log(arr);
+			
+			
+			//prototype : 原型
+			//原型可以共享属性和方法
+			//原型的作用是: 可以让同一个构造函数创建的所有对象共享属性和方法
+			
+			
+			//构造函数
+			function Person(){
+			}
+			//console.log( Person.prototype ); //[object Object]
+			Person.prototype.name = "张三";
+			Person.prototype.age = 33;
+			Person.prototype.show = function(){
+				console.log("show");
+			}
+			
+			var person = new Person();
+			console.log(person.name); //张三
+			console.log(person.age);
+			person.show();
+			
+			var person2 = new Person();
+			console.log(person2.name); //张三
+			console.log(person2.age);
+			person2.show();
+			
+			
+			console.log( person.name == person2.name ); //true
+			console.log( person.age == person2.age ); //true
+			console.log( person.show == person2.show ); //true
+			
+			
+			//构造函数中的方法在不同的对象中是不一样的地址
+			function A(){
+				this.name = "李四";
+				this.show = function(){
+					console.log("show");
+				}
+			}
+			var a1 = new A();
+			var a2 = new A();
+			console.log(a1.name == a2.name); //true
+			console.log(a1.show == a2.show); //false
+			
+			*/
+			
+			
+			
+			//查找属性或方法顺序：
+			//1, 先查找构造函数中是否有该属性，如果存在该属性则直接使用，
+			//2， 如果构造函数中不存在该属性， 则继续去改构造函数的原型中查找，如果在原型中存在则使用该属性
+			//3， 如果原型中也不存在，则返回undefined
+			/*
+			function Person(){
+				this.name = "张三";
+			}
+			Person.prototype.name = "李四"; 
+			Person.prototype.age = 33; 
+			
+			//实例化， person实例对象
+			var person = new Person();
+			console.log(person.name); //张三
+			
+			
+			//constructor: 是原型的属性, 指向原型对象所属的构造函数;
+			console.log( Person.prototype.constructor == Person ); //true
+			
+			//__proto__ : 是实例对象的属性，指向构造函数的原型
+			console.log( person.__proto__  == Person.prototype ); //true
+			console.log( person.__proto__.name ); //李四
+			console.log( person.name ); //张三
+			
+			//isPrototypeOf(): 判断一个对象是否指向了该构造函数的原型对象
+			console.log( Person.prototype.isPrototypeOf(person) ); //true
+			
+			
+			//hasOwnProperty(): 判断实例对象中是否存在该属性
+			console.log( person.hasOwnProperty("name") ); //true
+			console.log( person.hasOwnProperty("age") ); //false
+			
+			//in操作符: 判断属性是否存在于该实例对象或者该对象的原型中
+			console.log( "name" in person ); //true
+			console.log( "age" in person ); //true
+			
+			function fn(obj, attr){
+				return (attr in obj) && !obj.hasOwnProperty(attr);
+			}
+			console.log( fn(person, "age") ); //true, age只存在原型中
+			
+			*/
+			
+			
+			//原型的字面量赋值
+			/*
+			function Person(){
+			}
+			Person.prototype = {
+				constructor : Person, //强制指向Person
+				name: "张三",
+				age: 33,
+				show: function(){
+					console.log("show");
+				}
+			}
+			var person = new Person();
+			console.log(person.name);
+			console.log(person.age);
+			person.show();
+			console.log( Person.prototype.constructor == Person ); //true
+			console.log( Person.prototype.constructor == Object ); //false
+			*/
+			
+			/*
+			var obj = {name: 1};
+			//obj.age = 33;
+			obj = {age:33};
+			console.log(obj.name);
+			console.log(obj.age);
+			*/
+			
+			
+			
+			//原型的作用：可以给已有的构造函数添加方法 
+			//console.log( Array.prototype.sort );
+			//console.log( String.prototype.substring );
+			
+			//给字符串String添加一个方法
+			String.prototype.myFun = function(str){
+				console.log("这是我给String添加的方法");
+				console.log(str); //李四
+				return this + " love " + str;
+			}
+			
+			//console.log( "hello".substring(2) ); //"llo"
+			//"hello".myFun();
+						
+			var str = "张三";
+			console.log( str.myFun("李四") );
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
